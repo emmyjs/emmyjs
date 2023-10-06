@@ -1,4 +1,4 @@
-import { LightComponent, launch } from "emmy-dom";
+import { LightComponent, launch } from "../../emmy.js";
 
 class Home extends LightComponent {
   constructor() {

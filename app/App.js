@@ -1,4 +1,4 @@
-import { LightComponent, launch } from "emmy-dom";
+import { LightComponent, launch } from "../emmy.js";
 
 class App extends LightComponent {
   constructor() {
@@ -12,10 +12,10 @@ class App extends LightComponent {
         <a href="/" onclick="route(event)">Home</a>
         <a href="/about" onclick="route(event)">About</a>
       </nav>
+      <Route href="/" to="Home"></Route>
+      <Route href="/about" to="About"></Route>
+      <Route href="/404" to="Code404"></Route>
       <Router>
-        <Route href="/" to="Home"></Route>
-        <Route href="/about" to="About"></Route>
-        <Route href="/404" to="Code404"></Route>
       </Router> 
     `);
   }
