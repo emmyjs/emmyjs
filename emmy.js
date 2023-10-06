@@ -154,7 +154,7 @@ class Router extends LightComponent {
     constructor() {
         super();
         this.behave('div');
-        this.setAttribute('class', 'flex flex-col justify-center items-center space-y-3');
+        this.setAttribute('class', 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full');
 
         this.routes = Route.routes;
 
