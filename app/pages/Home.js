@@ -22,4 +22,4 @@ class Home extends LightComponent {
   }
 }
 
-launch(Home);
+launch(Home, 'Home');

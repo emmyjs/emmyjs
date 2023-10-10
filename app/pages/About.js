@@ -16,4 +16,4 @@ class About extends LightComponent {
   }
 }
 
-launch(About);
+launch(About, 'About');

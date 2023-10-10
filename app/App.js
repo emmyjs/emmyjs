@@ -21,4 +21,4 @@ class App extends LightComponent {
   }
 }
 
-launch(App);
+launch(App, 'App');

@@ -39,4 +39,4 @@ class Counter extends LightComponent {
   }
 }
 
-launch(Counter);
+launch(Counter, 'Counter');

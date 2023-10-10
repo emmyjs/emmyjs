@@ -1,5 +1,3 @@
 export default {
-  build: {
-    minify: false,
-  },
-};
+    base: '/emmyjs.github.io/',
+}

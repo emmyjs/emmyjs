@@ -17,7 +17,7 @@ const processGenerator = (generator) => {
     return processedGenerator;
 }
 
-function parseCSS(cssString) {
+const parseCSS = (cssString) => {
     if (typeof cssString !== 'string') {
         return cssString;
     }
@@ -31,7 +31,7 @@ function parseCSS(cssString) {
     return styleObj;
 }
 
-function createInlineStyle(cssString) {
+const createInlineStyle = (cssString) => {
     const styleObj = parseCSS(cssString);
     let inlineStyle = '';
     for (const property in styleObj) {
@@ -180,11 +180,12 @@ class Router extends LightComponent {
     }
 }
 
-const launch = (component) => {
-    customElements.define('emmy-' + component.name.toLowerCase(), component)
+const launch = (component, name) => {
+    if (name === undefined) name = component.name;
+    customElements.define('emmy-' + name.toLowerCase(), component);
 }
 
-launch(Route);
-launch(Router);
+launch(Route, 'Route');
+launch(Router, 'Router');
 
 export { Component, LightComponent, Route, Router, launch };

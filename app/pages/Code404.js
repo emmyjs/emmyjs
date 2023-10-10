@@ -14,4 +14,4 @@ class Code404 extends LightComponent {
   }
 }
 
-launch(Code404);
+launch(Code404, 'Code404');
