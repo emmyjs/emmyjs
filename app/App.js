@@ -15,8 +15,7 @@ class App extends LightComponent {
       <Route href="/" to="Home"></Route>
       <Route href="/about" to="About"></Route>
       <Route href="/404" to="Code404"></Route>
-      <Router>
-      </Router> 
+      <Router></Router> 
     `);
   }
 }
