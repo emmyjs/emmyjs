@@ -1,14 +1,17 @@
-import { load, useState } from "../../emmy.js";
+import { load, useState, useEffect } from "../../emmy.js";
 
-const Counter = (THIS) => {
-  THIS.behave('section');
-  THIS.setAttribute('class', 'flex flex-col justify-center items-center space-y-3');
+function Counter () {
+  this.behave('section');
+  this.className = 'flex flex-col justify-center items-center space-y-3';
   const [counter, setCounter] = useState(0);
 
-  THIS.callback = () => {
-    THIS.$('#plusButton').$EventListener('click', () => setCounter(counter() + 1));
+  useEffect(() => {
+    console.log('Counter value changed to', counter());
+  }, [counter]);
 
-    THIS.$('#minusButton').$EventListener('click', () => setCounter(counter() - 1));
+  this.callback = () => {
+    this.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1));
+    this.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1));
   }
 
   return () => /*html*/`

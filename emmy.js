@@ -50,6 +50,13 @@ const vanillaElement = (element) => {
 
 
 class EmmyComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.contentGenerator = () => '';
+        this.callback = (_) => {};
+        this.Style = {};
+    }
+
     addStyle(style) {
         for (const [element, elementStyle] of Object.entries(style)) {
             this.Style[element] = createInlineStyle(elementStyle);
@@ -85,8 +92,6 @@ class Component extends EmmyComponent {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.callback = (_) => {};
-        this.Style = {};
     }
 
     connectedCallback() {
@@ -94,26 +99,77 @@ class Component extends EmmyComponent {
         this.callback(this);
     }
 
-    $(selector) {
+    querySelector(selector) {
         return this.shadowRoot.querySelector(vanillaElement(selector));
     }
 }
 
 
 class LightComponent extends EmmyComponent {
-    constructor() {
-        super();
-        this.callback = (_) => {};
-        this.Style = {};
-    }
-
     connectedCallback() {
         this.innerHTML = processGenerator(this.contentGenerator(this));
         this.callback(this);
     }
 
-    $(selector) {
-        return this.querySelector(vanillaElement(selector));
+    querySelector(selector) {
+        HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
+    }
+}
+
+
+class FunctionalComponent extends LightComponent {
+    constructor(func) {
+        super();
+        this.effectCallback = (_) => {};
+        useEffect = useEffect.bind(this);
+        this.setAttribute('state', JSON.stringify({rerenderCount: 0}));
+        const renderFunction = func.call(this, this);
+        this.render(renderFunction);
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        this.effectCallback(this);
+    }
+
+    static get observedAttributes() {
+        return ['state'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'state') {
+            this.connectedCallback();
+        }
+    }
+
+    patchState(newState) {
+        const currentState = this.state();
+        const updatedState = Object.assign(currentState, newState);
+        this.setState(updatedState);
+    }
+
+    rerender() {
+        this.patchState({ rerenderCount: this.state().rerenderCount + 1 });
+    }
+
+    state() {
+        return JSON.parse(this.getAttribute('state'));
+    }
+
+    setState(newState) {
+        this.setAttribute('state', JSON.stringify(newState));
+    }
+
+    querySelector(selector) {
+        let element = HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
+        element.__proto__.addEventListener = (event, callback) => {
+            const newCallback = (event) => {
+                callback(event);
+                this.rerender();
+            }
+            HTMLElement.prototype.addEventListener.call(element, event, newCallback);
+        }
+        return element;
     }
 }
 
@@ -162,57 +218,7 @@ class Router extends LightComponent {
     }
 }
 
-const launch = (component, name) => {
-    if (name === undefined) name = component.name;
-    customElements.define('emmy-' + name.toLowerCase(), component);
-}
-
-const load = (func, name) => {
-    class X extends LightComponent {
-        constructor() {
-            super();
-            this.setAttribute('state', JSON.stringify({rerenderCount: 0}));
-            const renderFunction = func(this);
-            this.render(renderFunction);
-        }
-        static get observedAttributes() {
-            return ['state'];
-        }
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (name === 'state') {
-                this.connectedCallback();
-            }
-        }
-        patchState(newState) {
-            const currentState = this.state();
-            const updatedState = Object.assign(currentState, newState);
-            this.setState(updatedState);
-        }
-        rerender() {
-            this.patchState({ rerenderCount: this.state().rerenderCount + 1 });
-        }
-        state() {
-            return JSON.parse(this.getAttribute('state'));
-        }
-        setState(newState) {
-            this.setAttribute('state', JSON.stringify(newState));
-        }
-        $(selector) {
-            let element = super.$(selector);
-            element.$EventListener = (event, callback) => {
-                const newCallback = (event) => {
-                    callback(event);
-                    this.rerender();
-                }
-                element.addEventListener(event, newCallback);
-            }
-            return element;
-        }
-    }
-    launch(X, name);
-}
-
-const useState = (initialValue) => {
+function useState (initialValue) {
     let value = initialValue;
     const state = () => value;
     const setState = (newValue) => {
@@ -221,7 +227,49 @@ const useState = (initialValue) => {
     return [state, setState];
 }
 
+const getValues = (dependencies) => {
+    return dependencies.map((dependency) => dependency());
+}
+
+function useEffect (callback, dependencies) {
+    const oldCallback = this.effectCallback;
+    if (!dependencies || dependencies.length === 0) {
+        this.effectCallback = (_) => {
+            oldCallback(_);
+            callback.call(_, _);
+        }
+        return;
+    }
+    let oldDependencies = getValues(dependencies);
+    this.effectCallback = (_) => {
+        oldCallback(_);
+        const newDependencies = getValues(dependencies);
+        if (JSON.stringify(oldDependencies) !== JSON.stringify(newDependencies)) {
+            oldDependencies = newDependencies;
+            callback.call(_, _);
+        }
+    }
+}
+
+const launch = (component, name) => {
+    if (name === undefined) name = component.name;
+    if (customElements.get(vanillaElement(name))) {
+        console.warn(`Custom element ${vanillaElement(name)} already defined`);
+        return;
+    }
+    customElements.define(vanillaElement(name), component);
+}
+
+const load = (func, name) => {
+    class X extends FunctionalComponent {
+        constructor() {
+            super(func);
+        }
+    }
+    launch(X, name);
+}
+
 launch(Route, 'Route');
 launch(Router, 'Router');
 
-export { Component, LightComponent, Route, Router, launch, load, useState };
+export { Component, LightComponent, FunctionalComponent, Route, Router, launch, load, useState, useEffect };
