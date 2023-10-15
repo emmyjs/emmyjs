@@ -1,4 +1,4 @@
-const processGenerator = (generator) => {
+function processGenerator (generator) {
     let processedGenerator = generator.replace(/<\/?[^>]+>/g, match => {
         let element = match.slice(0, -1);
         if (/^[A-Z]/.test(match.slice(1, -1))) {
@@ -15,8 +15,7 @@ const processGenerator = (generator) => {
     });
     return processedGenerator;
 }
-
-const parseCSS = (cssString) => {
+function parseCSS (cssString) {
     if (typeof cssString !== 'string') {
         return cssString;
     }
@@ -30,7 +29,7 @@ const parseCSS = (cssString) => {
     return styleObj;
 }
 
-const createInlineStyle = (cssString) => {
+function createInlineStyle (cssString) {
     const styleObj = parseCSS(cssString);
     let inlineStyle = '';
     for (const property in styleObj) {
@@ -41,7 +40,7 @@ const createInlineStyle = (cssString) => {
     return inlineStyle.trim();
 }
 
-const vanillaElement = (element) => {
+function vanillaElement (element) {
     if (/^[A-Z]/.test(element)) {
         element = 'emmy-' + element.toLowerCase();
     }
@@ -96,7 +95,7 @@ class Component extends EmmyComponent {
 
     connectedCallback() {
         this.shadowRoot.innerHTML = processGenerator(this.contentGenerator(this));
-        this.callback(this);
+        this.callback.call(this, this);
     }
 
     querySelector(selector) {
@@ -108,11 +107,44 @@ class Component extends EmmyComponent {
 class LightComponent extends EmmyComponent {
     connectedCallback() {
         this.innerHTML = processGenerator(this.contentGenerator(this));
-        this.callback(this);
+        this.callback.call(this, this);
     }
 
     querySelector(selector) {
         HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
+    }
+}
+
+function useState (initialValue) {
+    let value = initialValue;
+    const state = () => value;
+    const setState = (newValue) => {
+        value = newValue;
+    }
+    return [state, setState];
+}
+
+function getValues (dependencies) {
+    return dependencies.map((dependency) => dependency());
+}
+
+function useEffect (callback, dependencies) {
+    const oldCallback = this.effectCallback;
+    if (!dependencies || dependencies.length === 0) {
+        this.effectCallback = (_) => {
+            oldCallback(_);
+            callback.call(_, _);
+        }
+        return;
+    }
+    let oldDependencies = getValues(dependencies);
+    this.effectCallback = (_) => {
+        oldCallback(_);
+        const newDependencies = getValues(dependencies);
+        if (JSON.stringify(oldDependencies) !== JSON.stringify(newDependencies)) {
+            oldDependencies = newDependencies;
+            callback.call(_, _);
+        }
     }
 }
 
@@ -121,10 +153,15 @@ class FunctionalComponent extends LightComponent {
     constructor(func) {
         super();
         this.effectCallback = (_) => {};
-        useEffect = useEffect.bind(this);
-        this.setAttribute('state', JSON.stringify({rerenderCount: 0}));
-        const renderFunction = func.call(this, this);
-        this.render(renderFunction);
+        this.bindHooks();
+        this.setState({rerenderCount: 0})
+        const renderFunctionOrString = func.call(this, this);
+        this.render(renderFunctionOrString);
+    }
+
+    bindHooks() {
+        this.useState = useState.bind(this);
+        this.useEffect = useEffect.bind(this);
     }
 
     connectedCallback() {
@@ -179,9 +216,10 @@ class Route extends LightComponent {
     constructor() {
         super();
 
-        this.render(``, (THIS) => {
-            const componentName = "emmy-" + THIS.getAttribute('to').toLowerCase();
-            const path = (THIS.getAttribute('href') === '/') ? '/root' : THIS.getAttribute('href');
+        this.render(``, () => {
+            let to = this.getAttribute('to');
+            const componentName = "emmy-" + to.toLowerCase();
+            const path = (this.getAttribute('href') === '/') ? '/root' : this.getAttribute('href');
             Route.routes[path] = `<${componentName}></${componentName}>`;
         });
     }
@@ -192,7 +230,7 @@ class Router extends LightComponent {
     constructor() {
         super();
         this.behave('div');
-        this.setAttribute('class', 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full');
+        this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full';
 
         this.routes = Route.routes;
 
@@ -204,54 +242,19 @@ class Router extends LightComponent {
         }
 
         window.route = (event) => {
-        event.preventDefault();
-        if (window.location.pathname === event.target.href) return;
-            window.history.pushState({}, '', event.target.href);
-            this.handleLocation();
+            event.preventDefault();
+            if (window.location.pathname === event.target.href) return;
+                window.history.pushState({}, '', event.target.href);
+                this.handleLocation();
         }
 
         window.onpopstate = this.handleLocation;
 
-        this.render(``, () => {
-            this.handleLocation();
-        });
+        this.render(``, () => this.handleLocation());
     }
 }
 
-function useState (initialValue) {
-    let value = initialValue;
-    const state = () => value;
-    const setState = (newValue) => {
-        value = newValue;
-    }
-    return [state, setState];
-}
-
-const getValues = (dependencies) => {
-    return dependencies.map((dependency) => dependency());
-}
-
-function useEffect (callback, dependencies) {
-    const oldCallback = this.effectCallback;
-    if (!dependencies || dependencies.length === 0) {
-        this.effectCallback = (_) => {
-            oldCallback(_);
-            callback.call(_, _);
-        }
-        return;
-    }
-    let oldDependencies = getValues(dependencies);
-    this.effectCallback = (_) => {
-        oldCallback(_);
-        const newDependencies = getValues(dependencies);
-        if (JSON.stringify(oldDependencies) !== JSON.stringify(newDependencies)) {
-            oldDependencies = newDependencies;
-            callback.call(_, _);
-        }
-    }
-}
-
-const launch = (component, name) => {
+function launch (component, name) {
     if (name === undefined) name = component.name;
     if (customElements.get(vanillaElement(name))) {
         console.warn(`Custom element ${vanillaElement(name)} already defined`);
@@ -260,7 +263,19 @@ const launch = (component, name) => {
     customElements.define(vanillaElement(name), component);
 }
 
-const load = (func, name) => {
+function createPageComponent (url, name) {
+    fetch(url)
+        .then(res => res.text())
+        .then(html => {
+            load(() => html, name);
+        });
+}
+
+function load (func, name)  {
+    if (typeof func === 'string' && func.indexOf('/') !== -1) {
+        return createPageComponent(func, name);
+    }
+
     class X extends FunctionalComponent {
         constructor() {
             super(func);
@@ -272,4 +287,8 @@ const load = (func, name) => {
 launch(Route, 'Route');
 launch(Router, 'Router');
 
-export { Component, LightComponent, FunctionalComponent, Route, Router, launch, load, useState, useEffect };
+export {
+    Component, LightComponent, FunctionalComponent,
+    Route, Router,
+    launch, load 
+};
