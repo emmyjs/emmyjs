@@ -1,13 +1,13 @@
 import { load } from "../emmy.js";
 
-load('/Home.html', 'Home');
+import "./Home.js";
 load('/About.html', 'About');
 load('/Contact.html', 'Contact');
 load('/Code404.html', 'Code404');
 
 function App () {
     this.behave('div');
-    this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full';
+    this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full text-white';
 
   return /*html*/`
     <nav>
