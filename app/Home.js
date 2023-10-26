@@ -1,9 +1,9 @@
-import { load } from "../emmy.js";
+import { load } from "emmy-dom";
 import "./components/Counter.js";
 
 function Home () {
   this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full';
-  
+
   return /*html*/`
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
@@ -11,7 +11,7 @@ function Home () {
             app/index.js
         </code> and save to reload.
     </p>
-    <a href="/docs" onclick="route(event)" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg hover:text-gray-900 hover:bg-gray-100 text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white">
+    <a href="/docs" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg hover:text-gray-900 hover:bg-gray-100 text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white">
         <img src="/logo.png" alt="Emmy.js logo" class="w-6 h-6 mr-2">
         <span class="w-full">Get started with Emmy.js</span>
         <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">

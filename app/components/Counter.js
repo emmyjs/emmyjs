@@ -1,4 +1,4 @@
-import { load } from "../../emmy.js";
+import { load } from "emmy-dom";
 
 function Counter () {
   this.behave('section');
