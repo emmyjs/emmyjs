@@ -15,6 +15,7 @@ function processGenerator (generator) {
     });
     return processedGenerator;
 }
+
 function parseCSS (cssString) {
     if (typeof cssString !== 'string') {
         return cssString;
@@ -125,27 +126,44 @@ function useState (initialValue) {
 }
 
 function getValues (dependencies) {
-    return dependencies.map((dependency) => dependency());
+    return dependencies.map((dependency) => {
+        if (typeof dependency === 'function') {
+            return dependency();
+        }
+        return dependency;
+    });
 }
 
 function useEffect (callback, dependencies) {
-    const oldCallback = this.effectCallback;
+    const oldEffectCallback = this.effectCallback;
     if (!dependencies || dependencies.length === 0) {
         this.effectCallback = (component) => {
-            oldCallback(component);
+            oldEffectCallback(component);
             callback.call(component, component);
         }
         return;
     }
     let oldDependencies = getValues(dependencies);
     this.effectCallback = (component) => {
-        oldCallback(component);
+        oldEffectCallback(component);
         const newDependencies = getValues(dependencies);
         if (JSON.stringify(oldDependencies) !== JSON.stringify(newDependencies)) {
             oldDependencies = newDependencies;
             callback.call(component, component);
         }
     }
+    dependencies.find((dependency) => {
+        if (typeof dependency === 'string') {
+            if (dependency === 'didMount') {
+                const oldCallback = this.callback;
+                this.callback = (component) => {
+                    oldCallback.call(component, component);
+                    callback.call(component, component);
+                };
+            }
+        }
+        return false;
+    });
 }
 
 function bindHooks (component) {
@@ -159,7 +177,7 @@ class FunctionalComponent extends LightComponent {
         super();
         this.effectCallback = (component) => {};
         bindHooks(this);
-        this.setState({rerenderCount: 0})
+        this.setState({ rerenderCount: 0 });
         const renderFunctionOrString = func.call(this, this);
         this.render(renderFunctionOrString);
     }
@@ -230,22 +248,20 @@ class Router extends LightComponent {
     constructor() {
         super();
         this.behave('div');
-        this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full';
-
-        this.routes = Route.routes;
+        this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full box-border';
 
         this.handleLocation = () => {
             const path = window.location.pathname;
-            const html = (path === '/' ? this.routes['/root'] : this.routes[path])
-                || this.routes['/404'] || '<h1>404</h1>';
+            const html = (path === '/' ? Route.routes['/root'] : Route.routes[path])
+                || Route.routes['/404'] || '<h1>404</h1>';
             if (this.innerHTML !== html) this.innerHTML = html;
         }
 
         window.route = (event) => {
             event.preventDefault();
             if (window.location.pathname === event.target.href) return;
-                window.history.pushState({}, '', event.target.href);
-                this.handleLocation();
+            window.history.pushState({}, '', event.target.href);
+            this.handleLocation();
         }
 
         window.onpopstate = this.handleLocation;
@@ -289,7 +305,7 @@ launch(Router, 'Router');
 
 export {
     Component, LightComponent, FunctionalComponent,
-    Route, Router,
+    Route, Router, 
     useState, useEffect,
     launch, load 
 };

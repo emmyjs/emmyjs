@@ -1,13 +1,13 @@
-import { load } from "emmy-dom";
+import { load } from "../../emmy.js";
 
 function Header () {
   const [hidden, setHidden] = this.useState(true);
 
-  this.callback = () => {
+  this.useEffect(() => {
     this.querySelector('[data-collapse-toggle]').addEventListener('click', () => {;
       setHidden(!hidden());
     });
-  }
+  }, ['didMount']);
 
   this.useEffect(() => {
     const target = this.querySelector('#navbar-default');
@@ -16,7 +16,7 @@ function Header () {
   }, [hidden]);
 
   return /*html*/`
-    <nav class="border-gray-200 bg-gray-900 z-40">
+    <nav class="border-gray-200 z-40">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://emmyjs.github.io/" class="flex items-center">
           <img src="/logo.png" alt="Emmy.js logo" class="h-8 mr-3">

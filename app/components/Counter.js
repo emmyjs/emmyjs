@@ -1,4 +1,6 @@
-import { load } from "emmy-dom";
+import { load } from "../../emmy.js";
+import Toastify from 'toastify-js';
+import "toastify-js/src/toastify.css";
 
 function Counter () {
   this.behave('section');
@@ -6,13 +8,22 @@ function Counter () {
   const [counter, setCounter] = this.useState(0);
 
   this.useEffect(() => {
-    console.log('Counter value changed to', counter());
-  }, [counter]);
-
-  this.callback = () => {
     this.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1));
     this.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1));
-  }
+  }, ['didMount']);
+
+  this.useEffect(() => {
+    Toastify({
+      text: `Counter value changed to ${counter()}`,
+      style: {
+        background: "#1F2937",
+        color: "#fff",
+        borderRadius: "10px",
+      },
+      gravity: "bottom",
+      duration: 600
+    }).showToast();
+  }, [counter]);
 
   return () => /*html*/`
     <h2 class='text-2xl font-bold'>Counter</h2>

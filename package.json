@@ -17,6 +17,7 @@
     "vite": "4.4.5"
   },
   "dependencies": {
-    "emmy-dom": "^0.0.3"
+    "emmy-dom": "^0.0.3",
+    "toastify-js": "^1.12.0"
   }
 }
