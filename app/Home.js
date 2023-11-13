@@ -1,4 +1,4 @@
-import { load } from "../emmy.js";
+import { load } from "emmy-dom";
 import "./components/Counter.js";
 
 function Home () {
@@ -11,13 +11,15 @@ function Home () {
             app/index.js
         </code> and save to reload.
     </p>
-    <a href="/docs" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white">
+    <!--
+    <a href="/docs" onclick="route(event)" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white">
         <img src="/logo.png" alt="Emmy.js logo" class="w-6 h-6 mr-2">
         <span class="w-full">Get started with Emmy.js</span>
         <svg class="w-4 h-4 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
         </svg>
     </a>
+    -->
     <Counter></Counter>
     <a
     href="https://github.com/emmyjs"

@@ -1,4 +1,4 @@
-import { load, Router, Route } from "../emmy.js";
+import { load, Router, Route } from "emmy-dom";
 
 import "./Home.js";
 import "./Docs.js";
