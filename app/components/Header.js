@@ -1,4 +1,4 @@
-import { load } from "../../emmy.js";
+import { load } from "../../emmy.ts";
 
 function Header () {
   const [hidden, setHidden] = this.useState(true);

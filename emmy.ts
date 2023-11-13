@@ -1,4 +1,22 @@
-function processGenerator (generator) {
+import reactToCSS from 'react-style-object-to-css';
+
+type HTMLGenerator = ((component: EmmyComponent) => string) | ((component?: EmmyComponent) => string) | (() => string);
+type Callback = ((component: EmmyComponent) => void) | ((component?: EmmyComponent) => void) | (() => void);
+type StyleObject = {
+    [key: string]: string
+}
+type DependencyArray = Array<(() => any) | any>;
+declare global {
+    interface Window {
+      route: (event: Event) => void;
+    }
+}
+type ClassComponent = Component | LightComponent;
+type RouteString = `/${string}`;
+type ComponentType = ClassComponent | FunctionalComponent | HTMLGenerator | RouteString;
+
+
+function processGenerator (generator: string): string {
     let processedGenerator = generator.replace(/<\/?[^>]+>/g, match => {
         let element = match.slice(0, -1);
         if (/^[A-Z]/.test(match.slice(1, -1))) {
@@ -16,10 +34,7 @@ function processGenerator (generator) {
     return processedGenerator;
 }
 
-function parseCSS (cssString) {
-    if (typeof cssString !== 'string') {
-        return cssString;
-    }
+function parseCSS (cssString: string): object {
     const styleObj = {};
     cssString.split(';').forEach((declaration) => {
         const [property, value] = declaration.split(':');
@@ -30,7 +45,8 @@ function parseCSS (cssString) {
     return styleObj;
 }
 
-function createInlineStyle (cssString) {
+function createInlineStyle (cssString: string | object): string {
+    if (typeof cssString !== 'string') return reactToCSS(cssString).trim();
     const styleObj = parseCSS(cssString);
     let inlineStyle = '';
     for (const property in styleObj) {
@@ -41,7 +57,7 @@ function createInlineStyle (cssString) {
     return inlineStyle.trim();
 }
 
-function vanillaElement (element) {
+function vanillaElement (element: string): string {
     if (/^[A-Z]/.test(element)) {
         element = 'emmy-' + element.toLowerCase();
     }
@@ -49,15 +65,19 @@ function vanillaElement (element) {
 }
 
 
-class EmmyComponent extends HTMLElement {
+abstract class EmmyComponent extends HTMLElement {
+    contentGenerator: HTMLGenerator;
+    callback: Callback;
+    Style: StyleObject;
+
     constructor() {
         super();
         this.contentGenerator = () => '';
-        this.callback = (component) => {};
+        this.callback = (component: EmmyComponent) => {};
         this.Style = {};
     }
 
-    addStyle(style) {
+    addStyle(style: StyleObject) {
         for (const [element, elementStyle] of Object.entries(style)) {
             this.Style[element] = createInlineStyle(elementStyle);
             if (element == 'this') {
@@ -66,15 +86,13 @@ class EmmyComponent extends HTMLElement {
         }
     }
 
-    behave(element) {
+    behave(element: string) {
         this.setAttribute('is', element);
     }
 
-    connectedCallback() {
-        throw new Error('EmmyComponent must be extended');
-    }
+    abstract connectedCallback(): void;
 
-    render(generator, callback) {
+    render(generator: string | HTMLGenerator, callback?: Callback) {
         if (typeof generator !== 'function') {
             this.contentGenerator = () => generator;
         }
@@ -85,38 +103,40 @@ class EmmyComponent extends HTMLElement {
             this.callback = callback;
         }
     }
+
+    abstract querySelector(selector: string): HTMLElement | null;
 }
 
 
-class Component extends EmmyComponent {
+export class Component extends EmmyComponent {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
-        this.shadowRoot.innerHTML = processGenerator(this.contentGenerator(this));
+        this.shadowRoot!.innerHTML = processGenerator(this.contentGenerator(this));
         this.callback.call(this, this);
     }
 
-    querySelector(selector) {
-        return this.shadowRoot.querySelector(vanillaElement(selector));
+    querySelector(selector: string): HTMLElement | null {
+        return this.shadowRoot!.querySelector(vanillaElement(selector));
     }
 }
 
 
-class LightComponent extends EmmyComponent {
+export class LightComponent extends EmmyComponent {
     connectedCallback() {
         this.innerHTML = processGenerator(this.contentGenerator(this));
         this.callback.call(this, this);
     }
 
-    querySelector(selector) {
-        HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
+    querySelector(selector: string): HTMLElement | null {
+        return HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
     }
 }
 
-function useState (initialValue) {
+export function useState (initialValue): [() => any, (newValue: any) => void] {
     let value = initialValue;
     const state = () => value;
     const setState = (newValue) => {
@@ -125,7 +145,7 @@ function useState (initialValue) {
     return [state, setState];
 }
 
-function getValues (dependencies) {
+function getValues (dependencies: DependencyArray): Array<any> {
     return dependencies.map((dependency) => {
         if (typeof dependency === 'function') {
             return dependency();
@@ -134,7 +154,7 @@ function getValues (dependencies) {
     });
 }
 
-function useEffect (callback, dependencies) {
+export function useEffect (callback: Callback, dependencies: DependencyArray) {
     const oldEffectCallback = this.effectCallback;
     if (!dependencies || dependencies.length === 0) {
         this.effectCallback = (component) => {
@@ -166,17 +186,21 @@ function useEffect (callback, dependencies) {
     });
 }
 
-function bindHooks (component) {
+function bindHooks (component: FunctionalComponent) {
     component.useState = useState.bind(component);
     component.useEffect = useEffect.bind(component);
 }
 
 
-class FunctionalComponent extends LightComponent {
-    constructor(func) {
+export class FunctionalComponent extends LightComponent {
+    effectCallback: (component: FunctionalComponent) => void;
+    useState: (initialValue: any) => [() => any, (newValue: any) => void];
+    useEffect: (callback: Callback, dependencies: DependencyArray) => void;
+
+    constructor(func: HTMLGenerator) {
         super();
-        this.effectCallback = (component) => {};
-        bindHooks(this);
+        this.effectCallback = (component: FunctionalComponent) => {};
+        bindHooks.call(this, this);
         this.setState({ rerenderCount: 0 });
         const renderFunctionOrString = func.call(this, this);
         this.render(renderFunctionOrString);
@@ -197,7 +221,7 @@ class FunctionalComponent extends LightComponent {
         }
     }
 
-    patchState(newState) {
+    patchState(newState: object) {
         const currentState = this.state();
         const updatedState = Object.assign(currentState, newState);
         this.setState(updatedState);
@@ -208,14 +232,14 @@ class FunctionalComponent extends LightComponent {
     }
 
     state() {
-        return JSON.parse(this.getAttribute('state'));
+        return JSON.parse(this.getAttribute('state') || '');
     }
 
-    setState(newState) {
+    setState(newState: object) {
         this.setAttribute('state', JSON.stringify(newState));
     }
 
-    querySelector(selector) {
+    querySelector(selector: string): HTMLElement | null {
         let element = HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
         element.__proto__.addEventListener = (event, callback) => {
             const newCallback = (event) => {
@@ -229,22 +253,25 @@ class FunctionalComponent extends LightComponent {
 }
 
 
-class Route extends LightComponent {
-    static routes = {};
+export class Route extends LightComponent {
+    static routes: { [key: RouteString]: string } = {};
+
     constructor() {
         super();
 
         this.render(``, () => {
-            let to = this.getAttribute('to');
+            let to = this.getAttribute('to') || '';
             const componentName = "emmy-" + to.toLowerCase();
-            const path = (this.getAttribute('href') === '/') ? '/root' : this.getAttribute('href');
+            const path = (this.getAttribute('href') === '/') ? '/root' : this.getAttribute('href') || '/404';
             Route.routes[path] = `<${componentName}></${componentName}>`;
         });
     }
 }
 
 
-class Router extends LightComponent {
+export class Router extends LightComponent {
+    handleLocation: () => void;
+
     constructor() {
         super();
         this.behave('div');
@@ -259,8 +286,9 @@ class Router extends LightComponent {
 
         window.route = (event) => {
             event.preventDefault();
-            if (window.location.pathname === event.target.href) return;
-            window.history.pushState({}, '', event.target.href);
+            const target = event.target as HTMLAnchorElement;
+            if (window.location.pathname === target.href!) return;
+            window.history.pushState({}, '', target.href!);
             this.handleLocation();
         }
 
@@ -270,16 +298,15 @@ class Router extends LightComponent {
     }
 }
 
-function launch (component, name) {
-    if (name === undefined) name = component.name;
+export function launch (component: ClassComponent | FunctionalComponent, name: string) {
     if (customElements.get(vanillaElement(name))) {
         console.warn(`Custom element ${vanillaElement(name)} already defined`);
         return;
     }
-    customElements.define(vanillaElement(name), component);
+    customElements.define(vanillaElement(name), component as unknown as CustomElementConstructor);
 }
 
-function createPageComponent (url, name) {
+function createPageComponent (url: string, name: string) {
     fetch(url)
         .then(res => res.text())
         .then(html => {
@@ -287,25 +314,22 @@ function createPageComponent (url, name) {
         });
 }
 
-function load (func, name)  {
-    if (typeof func === 'string' && func.indexOf('/') !== -1) {
+export function load (func: ComponentType, name: string) {
+    if (typeof func === 'string') {
         return createPageComponent(func, name);
     }
 
-    class X extends FunctionalComponent {
-        constructor() {
-            super(func);
+    if (typeof func === 'function') {
+        class X extends FunctionalComponent {
+            constructor() {
+                super(func as HTMLGenerator);
+            }
         }
+        launch(X as unknown as FunctionalComponent, name);
     }
-    launch(X, name);
+
+    return launch(func as ClassComponent, name);
 }
 
-launch(Route, 'Route');
-launch(Router, 'Router');
-
-export {
-    Component, LightComponent, FunctionalComponent,
-    Route, Router, 
-    useState, useEffect,
-    launch, load 
-};
+load(Route as unknown as ComponentType, 'Route');
+load(Router as unknown as ComponentType, 'Router');
