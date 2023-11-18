@@ -1,7 +1,7 @@
 import { load } from "../src/server.ts";
 import './components/UnderConstruction.js';
 
-function contact () {
+export function contact () {
     this.className = 'flex flex-col justify-center items-center space-y-3 relative bg-gray-900 bg-opacity-90 w-full h-full';
     this.behave('div');
     

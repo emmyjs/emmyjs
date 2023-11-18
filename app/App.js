@@ -1,4 +1,5 @@
 import { load, Router, Route } from "../src/server.ts";
+import { html } from "../src/utils.ts";
 
 import "./Home.js";
 import "./Docs.js";
@@ -10,7 +11,7 @@ export function app () {
   this.behave('div');
   this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full text-white box-border';
 
-  return /*html*/`
+  return html`
     <Header></Header>
     <Route href="/" to="Home"></Route>
     <Route href="/docs" to="Docs"></Route>
