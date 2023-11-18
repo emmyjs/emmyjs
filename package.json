@@ -4,22 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run ssr && vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prod": "vite build && vite preview"
+    "ssr": "bun main.js",
+    "prod": "npm run ssr && vite build && vite preview"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "0.5.6",
+    "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.10",
     "autoprefixer": "10.4.16",
     "postcss": "8.4.31",
-    "tailwindcss": "3.3.3",
-    "vite": "4.4.5"
+    "tailwindcss": "3.3.5",
+    "vite": "5.0.0"
   },
   "dependencies": {
     "emmy-dom": "0.0.3",
+    "parse5": "7.1.2",
     "react-style-object-to-css": "1.1.2",
-    "toastify-js": "1.12.0"
+    "toastify-js": "1.12.0",
+    "undom": "0.4.0"
   }
 }

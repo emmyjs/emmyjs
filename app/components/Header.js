@@ -1,6 +1,6 @@
-import { load } from "../../emmy.ts";
+import { load } from "../../src/server.ts";
 
-function Header () {
+export function header () {
   const [hidden, setHidden] = this.useState(true);
 
   this.useEffect(() => {
@@ -46,4 +46,4 @@ function Header () {
   `;
 }
 
-load(Header, 'Header');
+load(header, 'Header');
