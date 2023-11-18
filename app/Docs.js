@@ -1,6 +1,6 @@
-import { load } from "emmy-dom";
+import { load } from "../src/server.ts";
 
-function Docs () {
+export function docs () {
   this.className = 'flex flex-col justify-center items-center text-center bg-gray-900 w-full h-full box-border';
   this.behave('section');
 
@@ -70,4 +70,4 @@ function Docs () {
   `;
 }
 
-load(Docs, 'Docs');
+load(docs, 'Docs');

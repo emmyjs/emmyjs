@@ -1,7 +1,7 @@
-import { load } from "emmy-dom";
+import { load } from "../src/server.ts";
 import "./components/Counter.js";
 
-function Home () {
+export function home () {
   this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full';
 
   return /*html*/`
@@ -33,4 +33,4 @@ function Home () {
   `;
 }
 
-load(Home, 'Home');
+load(home, 'Home');

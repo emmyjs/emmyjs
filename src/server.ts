@@ -1,7 +1,13 @@
 import reactToCSS from 'react-style-object-to-css';
+import { writeFileSync } from 'fs';
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const render = require('./ssr');
+require('./ssr/register');
 
-type HTMLGenerator = ((component: EmmyComponent) => string) | ((component?: EmmyComponent) => string) | (() => string);
-type Callback = ((component: EmmyComponent) => void) | ((component?: EmmyComponent) => void) | (() => void);
+export type HTMLGenerator = ((component: EmmyComponent) => string) | ((component?: EmmyComponent) => string) | (() => string);
+export type HTMLGeneratorGenerator = ((component: EmmyComponent) => HTMLGenerator) | ((component?: EmmyComponent) => HTMLGenerator) | (() => HTMLGenerator) | HTMLGenerator;
+export type Callback = ((component: EmmyComponent) => void) | ((component?: EmmyComponent) => void) | (() => void);
 type StyleObject = {
     [key: string]: string
 }
@@ -11,10 +17,9 @@ declare global {
       route: (event: Event) => void;
     }
 }
-type ClassComponent = Component | LightComponent;
+export type ClassComponent = Component | LightComponent;
 type RouteString = `/${string}`;
-type ComponentType = ClassComponent | FunctionalComponent | HTMLGenerator | RouteString;
-
+type ComponentType = ClassComponent | FunctionalComponent | HTMLGeneratorGenerator | RouteString;
 
 function processGenerator (generator: string): string {
     let processedGenerator = generator.replace(/<\/?[^>]+>/g, match => {
@@ -104,7 +109,12 @@ abstract class EmmyComponent extends HTMLElement {
         }
     }
 
-    abstract querySelector(selector: string): HTMLElement | null;
+    abstract __querySelector(selector: string): HTMLElement | null;
+
+    querySelector(selector: string): HTMLElement | null {
+        this.setAttribute(`emmy-hydratation`, 'true');
+        return this;
+    }
 }
 
 
@@ -119,7 +129,7 @@ export class Component extends EmmyComponent {
         this.callback.call(this, this);
     }
 
-    querySelector(selector: string): HTMLElement | null {
+    __querySelector(selector: string): HTMLElement | null {
         return this.shadowRoot!.querySelector(vanillaElement(selector));
     }
 }
@@ -131,7 +141,7 @@ export class LightComponent extends EmmyComponent {
         this.callback.call(this, this);
     }
 
-    querySelector(selector: string): HTMLElement | null {
+    __querySelector(selector: string): HTMLElement | null {
         return HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
     }
 }
@@ -232,14 +242,14 @@ export class FunctionalComponent extends LightComponent {
     }
 
     state() {
-        return JSON.parse(this.getAttribute('state') || '');
+        return JSON.parse(this.getAttribute('state')!.replace(/'/g, '"') || '');
     }
 
     setState(newState: object) {
-        this.setAttribute('state', JSON.stringify(newState));
+        this.setAttribute('state', JSON.stringify(newState).replace(/"/g, "'"));
     }
 
-    querySelector(selector: string): HTMLElement | null {
+    __querySelector(selector: string): HTMLElement | null {
         let element = HTMLElement.prototype.querySelector.call(this, vanillaElement(selector));
         element.__proto__.addEventListener = (event, callback) => {
             const newCallback = (event) => {
@@ -298,38 +308,86 @@ export class Router extends LightComponent {
     }
 }
 
-export function launch (component: ClassComponent | FunctionalComponent, name: string) {
-    if (customElements.get(vanillaElement(name))) {
+export function launch (component: ClassComponent | FunctionalComponent, name: string): ClassComponent | FunctionalComponent {
+    if (window.customElements.get(vanillaElement(name))) {
         console.warn(`Custom element ${vanillaElement(name)} already defined`);
-        return;
+        return component;
     }
-    customElements.define(vanillaElement(name), component as unknown as CustomElementConstructor);
+    window.customElements.define(vanillaElement(name), component as unknown as CustomElementConstructor);
+    return component;
 }
 
-function createPageComponent (url: string, name: string) {
-    fetch(url)
-        .then(res => res.text())
-        .then(html => {
-            load(() => html, name);
-        });
+function createPageComponent (url: string, name: string): ClassComponent | FunctionalComponent {
+    let component;
+    async () => {
+        const result = await fetch(url);
+        const html = await result.text();
+        component = load(() => html, name);
+    }
+    return component;
 }
 
-export function load (func: ComponentType, name: string) {
+export function load (func: ComponentType, name: string): ClassComponent | FunctionalComponent {
     if (typeof func === 'string') {
         return createPageComponent(func, name);
     }
-
-    if (typeof func === 'function') {
+    try {
+        const instance = new (func as any)() as any;
+        if (instance instanceof Component || instance instanceof LightComponent || instance instanceof FunctionalComponent) {
+            return launch(func as ClassComponent, name);
+        }
+        throw new Error('Not a valid component');
+    }
+    catch (e) {
         class X extends FunctionalComponent {
             constructor() {
                 super(func as HTMLGenerator);
             }
         }
-        launch(X as unknown as FunctionalComponent, name);
+        return launch(X as unknown as FunctionalComponent, name);
     }
-
-    return launch(func as ClassComponent, name);
 }
 
-load(Route as unknown as ComponentType, 'Route');
-load(Router as unknown as ComponentType, 'Router');
+load(Route as unknown as ClassComponent, 'Route');
+load(Router as unknown as ClassComponent, 'Router');
+
+export async function renderToString(component: ClassComponent | FunctionalComponent): Promise<string> {
+    const instance = new (component as any)();
+    const html = await render(instance);
+    return html;
+}
+
+function capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function uncapitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toLowerCase() + str.slice(1);
+}
+
+function hydrateScript(generator: HTMLGeneratorGenerator, name: string) {
+    return /*javascript*/`
+        ${String(generator)}
+        load(${uncapitalizeFirstLetter(name)}, '${capitalizeFirstLetter(name)}');
+        document.querySelectorAll('${vanillaElement(name)}').forEach((element) => {
+        element.connectedCallback();
+        });
+    `;
+}
+
+export async function build(imports: string, template: string, component: FunctionalComponent | ClassComponent, generators: { [key: string]: HTMLGeneratorGenerator }, path: string = 'index.html') {
+    const ssr = await renderToString(component);
+    let javascript = '';
+    for (const name in generators) {
+        if ([ 'Route', 'Router' ].includes(name)) continue;
+        javascript += hydrateScript(generators[name], name);
+    }
+    let content = /*html*/`${ssr}
+    <script type="module">
+        ${imports}
+        ${javascript}
+    </script>
+    `;
+    const html = template.replace('{content}', content);
+    writeFileSync(path, html);
+}

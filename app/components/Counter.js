@@ -1,8 +1,8 @@
-import { load } from "../../emmy.ts";
+import { load } from "../../src/server.ts";
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
-function Counter () {
+export function counter () {
   this.behave('section');
   this.className = 'flex flex-col justify-center items-center space-y-3';
   const [counter, setCounter] = this.useState(0);
@@ -39,4 +39,4 @@ function Counter () {
   `;
 }
 
-load(Counter, 'Counter');
+load(counter, 'Counter');

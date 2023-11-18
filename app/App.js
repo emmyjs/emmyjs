@@ -1,4 +1,4 @@
-import { load, Router, Route } from "emmy-dom";
+import { load, Router, Route } from "../src/server.ts";
 
 import "./Home.js";
 import "./Docs.js";
@@ -6,7 +6,7 @@ import "./Contact.js";
 import "./components/Header.js";
 load('/Code404.html', 'Code404');
 
-function App () {
+export function app () {
   this.behave('div');
   this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full text-white box-border';
 
@@ -20,4 +20,4 @@ function App () {
   `;
 }
 
-load(App, 'App');
+export const App = load(app, 'App');

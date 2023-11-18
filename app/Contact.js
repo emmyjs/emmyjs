@@ -1,7 +1,7 @@
-import { load } from "emmy-dom";
+import { load } from "../src/server.ts";
 import './components/UnderConstruction.js';
 
-function Contact () {
+function contact () {
     this.className = 'flex flex-col justify-center items-center space-y-3 relative bg-gray-900 bg-opacity-90 w-full h-full';
     this.behave('div');
     
@@ -11,4 +11,4 @@ function Contact () {
     `;
 }
 
-load(Contact, 'Contact');
+load(contact, 'Contact');
