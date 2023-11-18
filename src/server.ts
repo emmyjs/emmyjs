@@ -1,5 +1,5 @@
 import reactToCSS from 'react-style-object-to-css';
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const render = require('./ssr');
@@ -370,13 +370,23 @@ function hydrateScript(generator: HTMLGeneratorGenerator, name: string) {
         ${String(generator)}
         load(${uncapitalizeFirstLetter(name)}, '${capitalizeFirstLetter(name)}');
         document.querySelectorAll('${vanillaElement(name)}').forEach((element) => {
-        element.connectedCallback();
+            element.connectedCallback();
         });
     `;
 }
 
-export async function build(imports: string, template: string, component: FunctionalComponent | ClassComponent, generators: { [key: string]: HTMLGeneratorGenerator }, path: string = 'index.html') {
-    const ssr = await renderToString(component);
+type BuildOptions = {
+    dependencies: string,
+    template: string,
+    app: FunctionalComponent | ClassComponent,
+    generators: { [key: string]: HTMLGeneratorGenerator },
+    path?: string
+}
+
+export async function build ({ dependencies, template, app, generators, path }: BuildOptions) {
+    if (!path) path = 'index.html';
+    const templateString = readFileSync(template, 'utf-8');
+    const ssr = await renderToString(app);
     let javascript = '';
     for (const name in generators) {
         if ([ 'Route', 'Router' ].includes(name)) continue;
@@ -384,10 +394,10 @@ export async function build(imports: string, template: string, component: Functi
     }
     let content = /*html*/`${ssr}
     <script type="module">
-        ${imports}
+        ${dependencies}
         ${javascript}
     </script>
     `;
-    const html = template.replace('{content}', content);
+    const html = templateString.replace('{content}', content);
     writeFileSync(path, html);
 }
