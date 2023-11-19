@@ -6,16 +6,19 @@ import { contact } from "./app/Contact.js";
 import { counter } from "./app/components/Counter.js";
 import { header } from "./app/components/Header.js";
 import { underConstruction } from "./app/components/UnderConstruction.js";
+import { link } from "./src/router.ts";
 
 build({
   app: App,
   dependencies: /*javascript*/`
-    import { load, Route, Router } from './src/index.ts';
+    import { load } from './src/index.ts';
+    import { html } from './src/utils.ts';
+    import { NAVIGATION_EVENT, navigate } from './src/router.ts';
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   `,
   generators: {
-    app, docs, home, contact, counter, header, underConstruction 
+    app, docs, home, contact, counter, header, underConstruction, link 
   },
   template: './template.html'
 });

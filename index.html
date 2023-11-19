@@ -75,7 +75,9 @@
   </emmy-app>
     <script type="module">
       
-    import { load, Route, Router } from './src/index.ts';
+    import { load } from './src/index.ts';
+    import { html } from './src/utils.ts';
+    import { NAVIGATION_EVENT, navigate } from './src/router.ts';
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   
@@ -91,7 +93,7 @@
   `;
 }
     load(app, 'App');
-    document.querySelectorAll('app').forEach((element) => {
+    document.querySelectorAll('emmy-app').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -162,7 +164,7 @@
   `;
 }
     load(docs, 'Docs');
-    document.querySelectorAll('docs').forEach((element) => {
+    document.querySelectorAll('emmy-docs').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -196,7 +198,7 @@
   `;
 }
     load(home, 'Home');
-    document.querySelectorAll('home').forEach((element) => {
+    document.querySelectorAll('emmy-home').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -207,7 +209,7 @@
     `;
 }
     load(contact, 'Contact');
-    document.querySelectorAll('contact').forEach((element) => {
+    document.querySelectorAll('emmy-contact').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -241,7 +243,7 @@
   `;
 }
     load(counter, 'Counter');
-    document.querySelectorAll('counter').forEach((element) => {
+    document.querySelectorAll('emmy-counter').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -285,7 +287,7 @@
   `;
 }
     load(header, 'Header');
-    document.querySelectorAll('header').forEach((element) => {
+    document.querySelectorAll('emmy-header').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -293,7 +295,22 @@
   return this.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", this.behave("div"), '<div class="text-white text-3xl font-bold mb-4">Under construction \uD83D\uDEA7</div>';
 }
     load(underConstruction, 'UnderConstruction');
-    document.querySelectorAll('underConstruction').forEach((element) => {
+    document.querySelectorAll('emmy-underconstruction').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function link() {
+  this.behave("a");
+  const to = this.getAttribute("to") || "/";
+  return this.setAttribute("href", to), this.useEffect(() => {
+    const handleClick = (event) => {
+      event.preventDefault(), window.route(event);
+    };
+    return this.addEventListener("click", handleClick), () => this.removeEventListener("click", handleClick);
+  }, ["didMount"]), (component) => component.innerHTML;
+}
+    load(link, 'Link');
+    document.querySelectorAll('emmy-link').forEach((element) => {
       element.connectedCallback();
     });
   

@@ -1,4 +1,5 @@
 import { load } from "../../src/server.ts";
+import { link } from "../../src/router.ts";
 
 export function header () {
   const [hidden, setHidden] = this.useState(true);
@@ -46,4 +47,5 @@ export function header () {
   `;
 }
 
+load(link, 'Link');
 load(header, 'Header');

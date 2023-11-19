@@ -298,7 +298,7 @@ function hydrateScript(generator: HTMLGeneratorGenerator, name: string) {
   return javascript`
     ${String(generator)}
     load(${uncapitalizeFirstLetter(name)}, '${capitalizeFirstLetter(name)}');
-    document.querySelectorAll('${vanillaElement(name)}').forEach((element) => {
+    document.querySelectorAll('${vanillaElement(capitalizeFirstLetter(name))}').forEach((element) => {
       element.connectedCallback();
     });
   `;
