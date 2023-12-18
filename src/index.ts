@@ -1,6 +1,6 @@
 import { type DependencyArray, type RouteString, type StyleObject,
   html, createInlineStyle, processGenerator,
-  vanillaElement, getValues, useState } from './utils.ts';
+  vanillaElement, getValues, useState, routerClassNames } from './utils.ts';
 
 export type HTMLGenerator = ((component: EmmyComponent) => string) | ((component?: EmmyComponent) => string) | (() => string);
 export type HTMLGeneratorGenerator = ((component: EmmyComponent) => HTMLGenerator) | ((component?: EmmyComponent) => HTMLGenerator) | (() => HTMLGenerator);
@@ -206,7 +206,7 @@ export class Router extends LightComponent {
   constructor() {
     super();
     this.behave('div');
-    this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full box-border';
+    this.className = routerClassNames;
 
     this.handleLocation = () => {
       const path = window.location.pathname;

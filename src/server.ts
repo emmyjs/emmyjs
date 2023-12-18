@@ -1,6 +1,6 @@
 import { type DependencyArray, type RouteString, type StyleObject,
   html, javascript, createInlineStyle, processGenerator,
-  vanillaElement, getValues, useState, capitalizeFirstLetter, uncapitalizeFirstLetter } from './utils.ts';
+  vanillaElement, getValues, useState, capitalizeFirstLetter, uncapitalizeFirstLetter, routerClassNames } from './utils.ts';
 import { readFileSync, writeFileSync } from 'fs';
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -222,7 +222,7 @@ export class Router extends LightComponent {
   constructor() {
     super();
     this.behave('div');
-    this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full box-border';
+    this.className = routerClassNames;
 
     this.handleLocation = () => {
       const path = window.location.pathname;

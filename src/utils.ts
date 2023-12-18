@@ -82,3 +82,5 @@ export function capitalizeFirstLetter(str: string): string {
 export function uncapitalizeFirstLetter(str: string): string {
   return str.charAt(0).toLowerCase() + str.slice(1);
 }
+
+export const routerClassNames = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border';
