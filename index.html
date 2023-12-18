@@ -77,7 +77,6 @@
       
     import { load } from './src/index.ts';
     import { html } from './src/utils.ts';
-    import { NAVIGATION_EVENT, navigate } from './src/router.ts';
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   
@@ -296,21 +295,6 @@
 }
     load(underConstruction, 'UnderConstruction');
     document.querySelectorAll('emmy-underconstruction').forEach((element) => {
-      element.connectedCallback();
-    });
-  
-    function link() {
-  this.behave("a");
-  const to = this.getAttribute("to") || "/";
-  return this.setAttribute("href", to), this.useEffect(() => {
-    const handleClick = (event) => {
-      event.preventDefault(), window.route(event);
-    };
-    return this.addEventListener("click", handleClick), () => this.removeEventListener("click", handleClick);
-  }, ["didMount"]), (component) => component.innerHTML;
-}
-    load(link, 'Link');
-    document.querySelectorAll('emmy-link').forEach((element) => {
       element.connectedCallback();
     });
   

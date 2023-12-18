@@ -1,6 +1,5 @@
 import { load } from "../src/server.ts";
 import { html } from "../src/utils.ts";
-import { NAVIGATION_EVENT } from "../src/router.ts";
 
 import "./Home.js";
 import "./Docs.js";

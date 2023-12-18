@@ -1,5 +1,5 @@
 import { type DependencyArray, type RouteString, type StyleObject,
-  createInlineStyle, processGenerator,
+  html, createInlineStyle, processGenerator,
   vanillaElement, getValues, useState } from './utils.ts';
 
 export type HTMLGenerator = ((component: EmmyComponent) => string) | ((component?: EmmyComponent) => string) | (() => string);
@@ -85,7 +85,7 @@ export class LightComponent extends EmmyComponent {
   }
 }
 
-export function useEffect (callback: Callback, dependencies: DependencyArray) {
+export function useEffect(callback: Callback, dependencies: DependencyArray) {
   const oldEffectCallback = this.effectCallback;
   if (!dependencies || dependencies.length === 0) {
     this.effectCallback = (component) => {
@@ -117,7 +117,7 @@ export function useEffect (callback: Callback, dependencies: DependencyArray) {
   });
 }
 
-function bindHooks (component: FunctionalComponent) {
+function bindHooks(component: FunctionalComponent) {
   component.useState = useState.bind(component);
   component.useEffect = useEffect.bind(component);
 }
@@ -210,9 +210,9 @@ export class Router extends LightComponent {
 
     this.handleLocation = () => {
       const path = window.location.pathname;
-      const html = (path === '/' ? Route.routes['/root'] : Route.routes[path])
-        || Route.routes['/404'] || '<h1>404</h1>';
-      if (this.innerHTML !== html) this.innerHTML = html;
+      const htmlText = (path === '/' ? Route.routes['/root'] : Route.routes[path])
+        || Route.routes['/404'] || html`<h1>404</h1>`;
+      if (this.innerHTML !== htmlText) this.innerHTML = htmlText;
     }
 
     window.route = (event) => {
@@ -229,7 +229,7 @@ export class Router extends LightComponent {
   }
 }
 
-export function launch (component: ClassComponent | FunctionalComponent, name: string) {
+export function launch(component: ClassComponent | FunctionalComponent, name: string) {
   if (customElements.get(vanillaElement(name))) {
     console.warn(`Custom element ${vanillaElement(name)} already defined`);
     return component;
@@ -238,17 +238,17 @@ export function launch (component: ClassComponent | FunctionalComponent, name: s
   return component;
 }
 
-function createPageComponent (url: string, name: string): ClassComponent | FunctionalComponent {
+function createPageComponent(url: string, name: string): ClassComponent | FunctionalComponent {
   let component;
   async () => {
     const result = await fetch(url);
-    const html = await result.text();
-    component = load(() => html, name);
+    const htmlText = await result.text();
+    component = load(() => htmlText, name);
   }
   return component;
 }
 
-export function load (func: ComponentType, name: string): ClassComponent | FunctionalComponent {
+export function load(func: ComponentType, name: string): ClassComponent | FunctionalComponent {
   if (typeof func === 'string') {
     return createPageComponent(func, name);
   }

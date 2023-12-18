@@ -9,7 +9,7 @@ export type StyleObject = {
 export const html = String.raw;
 export const javascript = String.raw;
 
-export function processGenerator (generator: string): string {
+export function processGenerator(generator: string): string {
   let processedGenerator = generator.replace(/<\/?[^>]+>/g, match => {
     let element = match.slice(0, -1);
     if (/^[A-Z]/.test(match.slice(1, -1))) {
@@ -27,7 +27,7 @@ export function processGenerator (generator: string): string {
   return processedGenerator;
 }
 
-export function parseCSS (cssString: string): object {
+export function parseCSS(cssString: string): object {
   const styleObj = {};
   cssString.split(';').forEach((declaration) => {
     const [property, value] = declaration.split(':');
@@ -38,7 +38,7 @@ export function parseCSS (cssString: string): object {
   return styleObj;
 }
 
-export function createInlineStyle (cssString: string | object): string {
+export function createInlineStyle(cssString: string | object): string {
   if (typeof cssString !== 'string') return reactToCSS(cssString).trim();
   const styleObj = parseCSS(cssString);
   let inlineStyle = '';
@@ -50,14 +50,14 @@ export function createInlineStyle (cssString: string | object): string {
   return inlineStyle.trim();
 }
 
-export function vanillaElement (element: string): string {
+export function vanillaElement(element: string): string {
   if (/^[A-Z]/.test(element)) {
     element = 'emmy-' + element.toLowerCase();
   }
   return element;
 }
 
-export function getValues (dependencies: DependencyArray): Array<any> {
+export function getValues(dependencies: DependencyArray): Array<any> {
   return dependencies.map((dependency) => {
     if (typeof dependency === 'function') {
       return dependency();
@@ -66,7 +66,7 @@ export function getValues (dependencies: DependencyArray): Array<any> {
   });
 }
 
-export function useState (initialValue): [() => any, (newValue: any) => void] {
+export function useState(initialValue): [() => any, (newValue: any) => void] {
   let value = initialValue;
   const state = () => value;
   const setState = (newValue) => {

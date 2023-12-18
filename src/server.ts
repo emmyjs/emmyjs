@@ -226,9 +226,9 @@ export class Router extends LightComponent {
 
     this.handleLocation = () => {
       const path = window.location.pathname;
-      const html = (path === '/' ? Route.routes['/root'] : Route.routes[path])
-          || Route.routes['/404'] || '<h1>404</h1>';
-      if (this.innerHTML !== html) this.innerHTML = html;
+      const htmlText = (path === '/' ? Route.routes['/root'] : Route.routes[path])
+          || Route.routes['/404'] || html`<h1>404</h1>`;
+      if (this.innerHTML !== htmlText) this.innerHTML = htmlText;
     }
 
     window.route = (event) => {
@@ -258,8 +258,8 @@ function createPageComponent (url: string, name: string): ClassComponent | Funct
   let component;
   async () => {
     const result = await fetch(url);
-    const html = await result.text();
-    component = load(() => html, name);
+    const htmlText= await result.text();
+    component = load(() => htmlText, name);
   }
   return component;
 }
@@ -290,8 +290,8 @@ load(Router as unknown as ClassComponent, 'Router');
 
 export async function renderToString(component: ClassComponent | FunctionalComponent): Promise<string> {
   const instance = new (component as any)();
-  const html = await render(instance);
-  return html;
+  const htmlText = await render(instance);
+  return htmlText;
 }
 
 function hydrateScript(generator: HTMLGeneratorGenerator, name: string) {
