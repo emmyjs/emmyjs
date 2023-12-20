@@ -1,18 +1,21 @@
-import { build } from "./src/server.ts";
+import { build } from "emmy-dom/dist/server.js";
 import { app, App } from "./app/App.js";
 import { docs } from "./app/Docs.js";
 import { home } from "./app/Home.js";
+import { contact } from "./app/Contact.js";
 import { counter } from "./app/components/Counter.js";
 import { header } from "./app/components/Header.js";
 import { underConstruction } from "./app/components/UnderConstruction.js";
-import { readFileSync } from "fs";
 
-build(
-  /*javascript*/`
-    import { load, Route, Router } from './src/index.ts';
+build({
+  app: App,
+  dependencies: /*javascript*/`
+    import { load, html } from "emmy-dom/dist/index.js";
     import Toastify from 'toastify-js';
-    import "toastify-js/src/toastify.css";
+    import 'toastify-js/src/toastify.css';
   `,
-  readFileSync('./template.html', 'utf8'), App,
-  { app, docs, home, counter, header, underConstruction }
-);
+  generators: {
+    app, docs, home, contact, counter, header, underConstruction
+  },
+  template: './template.html'
+});

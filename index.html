@@ -45,7 +45,7 @@
     <emmy-route href="/docs" to="Docs"></emmy-route>
     <emmy-route href="/404" to="Code404"></emmy-route>
     <emmy-route href="/contact" to="Contact"></emmy-route>
-    <emmy-router is="div" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
+    <emmy-router is="div" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
         Edit <code style="font-family: source-code-pro, Menlo, Monaco, Consolas;">
@@ -74,14 +74,14 @@
   </emmy-home></emmy-router> 
   </emmy-app>
     <script type="module">
-        
-    import { load, Route, Router } from './src/index.ts';
+      
+    import { load, html } from "emmy-dom/dist/index.js";
     import Toastify from 'toastify-js';
-    import "toastify-js/src/toastify.css";
+    import 'toastify-js/src/toastify.css';
   
-        
-        function app() {
-  return this.behave("div"), this.className = "flex flex-col justify-space-between space-y-3 text-center w-full h-full text-white box-border", `
+      
+    function app() {
+  return this.behave("div"), this.className = "flex flex-col justify-space-between space-y-3 text-center w-full h-full text-white box-border", html`
     <Header></Header>
     <Route href="/" to="Home"></Route>
     <Route href="/docs" to="Docs"></Route>
@@ -90,12 +90,12 @@
     <Router></Router> 
   `;
 }
-        load(app, 'App');
-        document.querySelectorAll('app').forEach((element) => {
-        element.connectedCallback();
-        });
-    
-        function docs() {
+    load(app, 'App');
+    document.querySelectorAll('emmy-app').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function docs() {
   return this.className = "flex flex-col justify-center items-center text-center bg-gray-900 w-full h-full box-border", this.behave("section"), `
     <div class="px-4 mx-auto h-full" style="top: -1rem; box-sizing: border-box; width: 70%;">
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8">
@@ -161,12 +161,12 @@
     </div>
   `;
 }
-        load(docs, 'Docs');
-        document.querySelectorAll('docs').forEach((element) => {
-        element.connectedCallback();
-        });
-    
-        function home() {
+    load(docs, 'Docs');
+    document.querySelectorAll('emmy-docs').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function home() {
   return this.className = "flex flex-col justify-center items-center space-y-3 text-center w-full h-full", `
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
@@ -195,12 +195,23 @@
     </a>
   `;
 }
-        load(home, 'Home');
-        document.querySelectorAll('home').forEach((element) => {
-        element.connectedCallback();
-        });
-    
-        function counter() {
+    load(home, 'Home');
+    document.querySelectorAll('emmy-home').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function contact() {
+  return this.className = "flex flex-col justify-center items-center space-y-3 relative bg-gray-900 bg-opacity-90 w-full h-full", this.behave("div"), `
+        <UnderConstruction></UnderConstruction>
+        <div class="text-white text-3xl font-bold mb-4">Contact</div>
+    `;
+}
+    load(contact, 'Contact');
+    document.querySelectorAll('emmy-contact').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function counter() {
   this.behave("section"), this.className = "flex flex-col justify-center items-center space-y-3";
   const [counter, setCounter] = this.useState(0);
   return this.useEffect(() => {
@@ -229,12 +240,12 @@
     </div>
   `;
 }
-        load(counter, 'Counter');
-        document.querySelectorAll('counter').forEach((element) => {
-        element.connectedCallback();
-        });
-    
-        function header() {
+    load(counter, 'Counter');
+    document.querySelectorAll('emmy-counter').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function header() {
   const [hidden, setHidden] = this.useState(!0);
   return this.useEffect(() => {
     this.querySelector("[data-collapse-toggle]").addEventListener("click", () => {
@@ -273,21 +284,21 @@
     </nav>
   `;
 }
-        load(header, 'Header');
-        document.querySelectorAll('header').forEach((element) => {
-        element.connectedCallback();
-        });
-    
-        function underConstruction() {
+    load(header, 'Header');
+    document.querySelectorAll('emmy-header').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function underConstruction() {
   return this.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", this.behave("div"), '<div class="text-white text-3xl font-bold mb-4">Under construction \uD83D\uDEA7</div>';
 }
-        load(underConstruction, 'UnderConstruction');
-        document.querySelectorAll('underConstruction').forEach((element) => {
-        element.connectedCallback();
-        });
-    
+    load(underConstruction, 'UnderConstruction');
+    document.querySelectorAll('emmy-underconstruction').forEach((element) => {
+      element.connectedCallback();
+    });
+  
     </script>
-    
+  
     </main>
   </body>
 </html>

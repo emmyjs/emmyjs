@@ -1,4 +1,4 @@
-import { load } from "../../src/server.ts";
+import { load } from "emmy-dom/dist/server.js";
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 

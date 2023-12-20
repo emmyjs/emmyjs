@@ -1,4 +1,4 @@
-import { load } from "../../src/server.ts";
+import { load } from "emmy-dom/dist/server.js";
 
 export function underConstruction () {
     this.className = 'absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full';
