@@ -1,4 +1,4 @@
-import { build } from "./src/server.ts";
+import { build } from "emmy-dom/dist/server.js";
 import { app, App } from "./app/App.js";
 import { docs } from "./app/Docs.js";
 import { home } from "./app/Home.js";
@@ -10,8 +10,7 @@ import { underConstruction } from "./app/components/UnderConstruction.js";
 build({
   app: App,
   dependencies: /*javascript*/`
-    import { load } from './src/index.ts';
-    import { html } from './src/utils.ts';
+    import { load, html } from "emmy-dom/dist/index.js";
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   `,

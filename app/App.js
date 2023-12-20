@@ -1,5 +1,4 @@
-import { load } from "../src/server.ts";
-import { html } from "../src/utils.ts";
+import { load, html } from "emmy-dom/dist/server.js";
 
 import "./Home.js";
 import "./Docs.js";

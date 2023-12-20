@@ -1,4 +1,4 @@
-import { load } from "../src/server.ts";
+import { load } from "emmy-dom/dist/server.js";
 
 export function docs () {
   this.className = 'flex flex-col justify-center items-center text-center bg-gray-900 w-full h-full box-border';
