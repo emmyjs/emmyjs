@@ -10,7 +10,7 @@ import { underConstruction } from "./app/components/UnderConstruction.js";
 build({
   app: App,
   dependencies: /*javascript*/`
-    import { load, html } from "emmy-dom/dist/index.js";
+    import { load, html } from "emmy-dom";
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   `,
