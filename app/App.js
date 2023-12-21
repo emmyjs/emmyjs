@@ -16,7 +16,7 @@ export function app () {
     <Route href="/docs" to="Docs"></Route>
     <Route href="/404" to="Code404"></Route>
     <Route href="/contact" to="Contact"></Route>
-    <Router></Router> 
+    <Router></Router>
   `;
 }
 
