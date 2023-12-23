@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run ssr && vite",
-    "build": "vite build",
+    "build": "npm run ssr && vite build",
     "preview": "vite preview",
     "ssr": "bun main.js",
     "prod": "npm run ssr && vite build && vite preview"
