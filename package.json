@@ -7,7 +7,7 @@
     "dev": "npm run ssr && vite",
     "build": "npm run ssr && vite build",
     "preview": "vite preview",
-    "ssr": "bun main.js",
+    "ssr": "node main.js",
     "prod": "npm run ssr && vite build && vite preview"
   },
   "devDependencies": {
