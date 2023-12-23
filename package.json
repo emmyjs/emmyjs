@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "npm run ssr && vite",
-    "build": "npm run ssr && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "ssr": "node main.js",
+    "ssr": "bun main.js",
     "prod": "npm run ssr && vite build && vite preview"
   },
   "devDependencies": {
