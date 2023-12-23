@@ -1,11 +1,11 @@
 import { load } from "emmy-dom/dist/server.js";
 
 export function docs () {
-  this.className = 'flex flex-col justify-center items-center text-center bg-gray-900 w-full h-full box-border';
+  this.className = 'flex flex-col justify-center items-center text-center bg-gray-900 w-full h-fit box-border';
   this.behave('section');
 
   return /*html*/`
-    <div class="px-4 mx-auto h-full" style="top: -1rem; box-sizing: border-box; width: 70%;">
+    <div class="px-4 mx-auto h-fit" style="top: -1rem; box-sizing: border-box; width: 70%;">
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8">
         <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-red-400 mb-2">
           <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
@@ -26,7 +26,7 @@ export function docs () {
           </svg>
         </a>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 h-fit gap-8 mb-[10%]">
         <div class="bg-gray-50 bg-gray-800 border border-gray-200 border-gray-700 rounded-lg p-8 md:p-12">
           <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-green-400 mb-2">
             <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">

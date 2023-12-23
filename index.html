@@ -34,7 +34,7 @@
               <a href="/docs" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Docs</a>
             </li>
             <li>
-              <a href="/contact" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Contact</a>
+              <a href="/status" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Status</a>
             </li>
           </ul>
         </div>
@@ -44,7 +44,7 @@
     <emmy-route href="/" to="Home"></emmy-route>
     <emmy-route href="/docs" to="Docs"></emmy-route>
     <emmy-route href="/404" to="Code404"></emmy-route>
-    <emmy-route href="/contact" to="Contact"></emmy-route>
+    <emmy-route href="/status" to="Status"></emmy-route>
     <emmy-router is="div" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
@@ -74,7 +74,7 @@
   </emmy-app>
     <script type="module">
       
-    import { load, html } from "emmy-dom";
+    import { load, html, Router, Route } from "emmy-dom";
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   
@@ -85,7 +85,7 @@
     <Route href="/" to="Home"></Route>
     <Route href="/docs" to="Docs"></Route>
     <Route href="/404" to="Code404"></Route>
-    <Route href="/contact" to="Contact"></Route>
+    <Route href="/status" to="Status"></Route>
     <Router></Router>
   `;
 }
@@ -95,8 +95,8 @@
     });
   
     function docs() {
-  return this.className = "flex flex-col justify-center items-center text-center bg-gray-900 w-full h-full box-border", this.behave("section"), `
-    <div class="px-4 mx-auto h-full" style="top: -1rem; box-sizing: border-box; width: 70%;">
+  return this.className = "flex flex-col justify-center items-center text-center bg-gray-900 w-full h-fit box-border", this.behave("section"), `
+    <div class="px-4 mx-auto h-fit" style="top: -1rem; box-sizing: border-box; width: 70%;">
       <div class="bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8">
         <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-red-400 mb-2">
           <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
@@ -117,7 +117,7 @@
           </svg>
         </a>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 h-fit gap-8 mb-[10%]">
         <div class="bg-gray-50 bg-gray-800 border border-gray-200 border-gray-700 rounded-lg p-8 md:p-12">
           <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-green-400 mb-2">
             <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
@@ -190,14 +190,36 @@
       element.connectedCallback();
     });
   
-    function contact() {
-  return this.className = "flex flex-col justify-center items-center space-y-3 relative bg-gray-900 bg-opacity-90 w-full h-full", this.behave("div"), `
-        <UnderConstruction></UnderConstruction>
-        <div class="text-white text-3xl font-bold mb-4">Contact</div>
-    `;
+    function row() {
+  return html`
+    <li class="py-3 sm:py-4 justify-between space-x-3 rtl:space-x-reverse flex items-center">
+      <p class="text-sm font-semibold text-gray-900 truncate dark:text-white">
+        ${this.innerHTML}
+      </p>
+      <Pill type="${this.getAttribute("status")}"></Pill>
+    </li>
+  `;
 }
-    load(contact, 'Contact');
-    document.querySelectorAll('emmy-contact').forEach((element) => {
+    load(row, 'Row');
+    document.querySelectorAll('emmy-row').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function status() {
+  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit mb-[10%]", html`
+    <h1 class="text-4xl font-bold">Features Status</h1>
+    <ul role="list" class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+      <Row status="stable">Class components</Row>
+      <Row status="experimental">Functional Components</Row>
+      <Row status="experimental">Emmy Hooks</Row>
+      <Row status="unstable">Emmy Router</Row>
+      <Row status="unstable">Prerendering</Row>
+      <Row status="planned">Server-side rendering</Row>
+    </ul>
+  `;
+}
+    load(status, 'Status');
+    document.querySelectorAll('emmy-status').forEach((element) => {
       element.connectedCallback();
     });
   
@@ -266,7 +288,7 @@
               <a href="/docs" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Docs</a>
             </li>
             <li>
-              <a href="/contact" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Contact</a>
+              <a href="/status" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Status</a>
             </li>
           </ul>
         </div>
@@ -276,6 +298,21 @@
 }
     load(header, 'Header');
     document.querySelectorAll('emmy-header').forEach((element) => {
+      element.connectedCallback();
+    });
+  
+    function pill() {
+  let type = this.getAttribute("type"), color = {
+    unstable: "bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300",
+    stable: "bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300",
+    deprecated: "bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300",
+    experimental: "bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300",
+    planned: "bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300"
+  }[type.trim()];
+  return this.className = `${color} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`, type.charAt(0).toUpperCase() + type.slice(1);
+}
+    load(pill, 'Pill');
+    document.querySelectorAll('emmy-pill').forEach((element) => {
       element.connectedCallback();
     });
   
