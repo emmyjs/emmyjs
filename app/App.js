@@ -8,7 +8,7 @@ load('/Code404.html', 'Code404');
 
 export function app () {
   this.behave('div');
-  this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full text-white box-border';
+  this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border';
 
   return html`
     <Header></Header>

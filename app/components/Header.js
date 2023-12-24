@@ -19,8 +19,9 @@ export function header () {
     <nav class="border-gray-200 z-40">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://emmyjs.github.io/" class="flex items-center">
-          <img src="/logo.png" alt="Emmy.js logo" class="h-8 mr-3">
-          <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Emmy.js</span>
+          <img class="hidden dark:block h-8 mr-3" src="/logo.png" alt="Emmy.js logo">
+          <img class="dark:hidden h-8 w-8 mr-3" src="/android-chrome-512x512.png" alt="Emmy.js logo">
+          <span class="self-center text-2xl font-semibold whitespace-nowrap">Emmy.js</span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
@@ -29,15 +30,15 @@ export function header () {
           </svg>
         </button>
         <div class="hidden w-50 md:block md:w-auto" id="navbar-default" aria-expanded="false">
-          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
+          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:md:bg-gray-900 border-gray-700">
             <li>
-              <a href="/" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent" aria-current="page">Home</a>
+              <a href="/" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent" aria-current="page">Home</a>
             </li>
             <li>
-              <a href="/docs" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Docs</a>
+              <a href="/docs" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Docs</a>
             </li>
             <li>
-              <a href="/status" onclick="route(event)" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 text-white md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Status</a>
+              <a href="/status" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Status</a>
             </li>
           </ul>
         </div>
