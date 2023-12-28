@@ -1,4 +1,4 @@
-import { load } from "emmy-dom/dist/server.js";
+import { load, html } from "emmy-dom/dist/server.js";
 
 export function header () {
   const [hidden, setHidden] = this.useState(true);
@@ -15,7 +15,7 @@ export function header () {
     target.classList = hidden() ? 'hidden w-full md:block md:w-auto' : 'w-full md:block md:w-auto';
   }, [hidden]);
 
-  return /*html*/`
+  return html`
     <nav class="border-gray-200 z-40">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://emmyjs.github.io/" class="flex items-center">

@@ -1,4 +1,4 @@
-import { load } from "emmy-dom/dist/server.js";
+import { load, html } from "emmy-dom/dist/server.js";
 import Toastify from 'toastify-js';
 import "toastify-js/src/toastify.css";
 
@@ -25,7 +25,7 @@ export function counter () {
     }).showToast();
   }, [counter]);
 
-  return () => /*html*/`
+  return () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id="counter">${ counter() }</p>
     <div class='flex flex-row justify-center items-center space-x-2'>

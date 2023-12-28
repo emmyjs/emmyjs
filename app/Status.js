@@ -1,18 +1,5 @@
 import { load, html } from "emmy-dom/dist/server.js";
-import "./components/Pill.js";
-
-export function row() {
-  return html`
-    <li class="py-3 sm:py-4 justify-between space-x-3 rtl:space-x-reverse flex items-center">
-      <p class="text-sm font-semibold text-gray-900 truncate dark:text-white">
-        ${this.innerHTML}
-      </p>
-      <Pill type="${this.getAttribute('status')}"></Pill>
-    </li>
-  `;
-}
-
-load(row, 'Row');
+import "./components/Row.js";
 
 export function status() {
   this.className = 'flex flex-col justify-center items-center text-center w-full h-fit mb-[10%]';
@@ -26,6 +13,8 @@ export function status() {
       <Row status="unstable">Emmy Router</Row>
       <Row status="unstable">Prerendering</Row>
       <Row status="planned">Server-side rendering</Row>
+      <Row status="planned">Declarative props</Row>
+      <Row status="planned">Auto-close tags</Row>
     </ul>
   `;
 }

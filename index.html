@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Emmy.js</title>
     <meta charset="utf-8">
@@ -96,7 +96,7 @@
     });
   
     function docs() {
-  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", this.behave("section"), `
+  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", this.behave("section"), html`
     <div class="px-4 mx-auto h-fit" style="top: -1rem; box-sizing: border-box; width: 70%;">
       <div class="bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8">
         <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-red-400 mb-2">
@@ -167,7 +167,7 @@
     });
   
     function home() {
-  return this.className = "flex flex-col justify-center items-center space-y-3 text-center w-full h-full", `
+  return this.className = "flex flex-col justify-center items-center space-y-3 text-center w-full h-full", html`
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
       Run <code style="font-family: source-code-pro, Menlo, Monaco, Consolas;">
@@ -216,6 +216,8 @@
       <Row status="unstable">Emmy Router</Row>
       <Row status="unstable">Prerendering</Row>
       <Row status="planned">Server-side rendering</Row>
+      <Row status="planned">Declarative props</Row>
+      <Row status="planned">Auto-close tags</Row>
     </ul>
   `;
 }
@@ -240,7 +242,7 @@
       gravity: "bottom",
       duration: 600
     }).showToast();
-  }, [counter]), () => `
+  }, [counter]), () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id="counter">${counter()}</p>
     <div class='flex flex-row justify-center items-center space-x-2'>
@@ -267,7 +269,7 @@
   }, ["didMount"]), this.useEffect(() => {
     const target = this.querySelector("#navbar-default");
     target.setAttribute("aria-expanded", !hidden()), target.classList = hidden() ? "hidden w-full md:block md:w-auto" : "w-full md:block md:w-auto";
-  }, [hidden]), `
+  }, [hidden]), html`
     <nav class="border-gray-200 z-40">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://emmyjs.github.io/" class="flex items-center">
@@ -319,7 +321,7 @@
     });
   
     function underConstruction() {
-  return this.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", this.behave("div"), '<div class="text-white text-3xl font-bold mb-4">Under construction \uD83D\uDEA7</div>';
+  return this.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", this.behave("div"), html`<div class="text-white text-3xl font-bold mb-4">Under construction \u{1f6a7}</div>`;
 }
     load(underConstruction, 'UnderConstruction');
     document.querySelectorAll('emmy-underconstruction').forEach((element) => {

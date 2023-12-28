@@ -1,10 +1,10 @@
-import { load } from "emmy-dom/dist/server.js";
+import { load, html } from "emmy-dom/dist/server.js";
 import "./components/Counter.js";
 
 export function home () {
   this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full';
 
-  return /*html*/`
+  return html`
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
       Run <code style="font-family: source-code-pro, Menlo, Monaco, Consolas;">
