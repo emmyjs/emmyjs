@@ -2,7 +2,7 @@ import { load, html } from 'emmy-dom/dist/server.js'
 import './components/Counter.js'
 
 export function home () {
-  this.className = 'flex flex-col justify-between items-center text-center w-full h-[83dvh] gap-4'
+  this.className = 'flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4'
 
   return html`
     <main class='flex flex-col justify-center items-center gap-4'>
