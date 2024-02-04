@@ -47,7 +47,7 @@
     <emmy-route href="/docs" to="Docs"></emmy-route>
     <emmy-route href="/404" to="Code404"></emmy-route>
     <emmy-route href="/status" to="Status"></emmy-route>
-    <emmy-router class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-between items-center text-center w-full h-[83dvh] gap-4">
+    <emmy-router class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4">
     <main class="flex flex-col justify-center items-center gap-4">
       <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
       <p class="text-xl">
@@ -185,7 +185,7 @@
     })
   
     function home() {
-  return this.className = "flex flex-col justify-between items-center text-center w-full h-[83dvh] gap-4", html`
+  return this.className = "flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4", html`
     <main class='flex flex-col justify-center items-center gap-4'>
       <h1 class='text-3xl font-bold'>Hello from Emmy.js!</h1>
       <p class='text-xl'>
@@ -248,7 +248,8 @@
       <Row status='stable'>Class components</Row>
       <Row status='stable'>Functional Components</Row>
       <Row status='stable'>Emmy Hooks</Row>
-      <Row status='unstable'>Emmy Router</Row>
+      <Row status='experimental'>Emmy Router: Routes</Row>
+      <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>
       <Row status='planned'>Server-side rendering</Row>
       <Row status='experimental'>Declarative props</Row>
@@ -261,7 +262,7 @@
           <div class='w-4 h-4 rounded-full bg-green-500 mr-2'></div>
           Stable
         </div>
-        <span class='ml-2'>Do not expect breaking changes</span>
+        <span class='ml-2'>No breaking changes expected</span>
       </li>
       <li class='flex items-center py-2 flex-col md:flex-row'>
         <div class='font-bold flex items-center'>

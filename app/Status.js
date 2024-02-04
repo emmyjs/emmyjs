@@ -10,7 +10,8 @@ export function status() {
       <Row status='stable'>Class components</Row>
       <Row status='stable'>Functional Components</Row>
       <Row status='stable'>Emmy Hooks</Row>
-      <Row status='unstable'>Emmy Router</Row>
+      <Row status='experimental'>Emmy Router: Routes</Row>
+      <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>
       <Row status='planned'>Server-side rendering</Row>
       <Row status='experimental'>Declarative props</Row>
@@ -23,7 +24,7 @@ export function status() {
           <div class='w-4 h-4 rounded-full bg-green-500 mr-2'></div>
           Stable
         </div>
-        <span class='ml-2'>Do not expect breaking changes</span>
+        <span class='ml-2'>No breaking changes expected</span>
       </li>
       <li class='flex items-center py-2 flex-col md:flex-row'>
         <div class='font-bold flex items-center'>
