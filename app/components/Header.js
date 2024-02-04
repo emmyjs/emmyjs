@@ -18,7 +18,7 @@ export function header () {
   return html`
     <nav class='border-gray-200 z-40'>
       <div class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
-        <a href='https://emmyjs.github.io/' class='flex items-center'>
+        <a href='https://emmyjs.pages.dev' class='flex items-center'>
           <img class='hidden dark:block h-8 mr-3' src='/logo.png' alt='Emmy.js logo'>
           <img class='dark:hidden h-8 w-8 mr-3' src='/android-chrome-512x512.png' alt='Emmy.js logo'>
           <span class='self-center text-2xl font-semibold whitespace-nowrap'>Emmy.js</span>

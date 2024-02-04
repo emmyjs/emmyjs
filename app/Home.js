@@ -2,7 +2,7 @@ import { load, html } from 'emmy-dom/dist/server.js';
 import './components/Counter.js';
 
 export function home () {
-  this.className = 'flex flex-col justify-center items-center space-y-3 text-center w-full h-full';
+  this.className = 'flex flex-col justify-center items-center text-center w-full h-full gap-4';
 
   return html`
     <h1 class='text-3xl font-bold'>Hello from Emmy.js!</h1>
@@ -11,6 +11,13 @@ export function home () {
         npm install emmy-dom
       </code> and start building your app!
     </p>
+    <a href='/docs' onclick='navigate()'  class='inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white'>
+        <img src='/logo.png' alt='Emmy.js logo' class='w-6 h-6 mr-2'>
+        <span class='w-full'>Get started with Emmy.js</span>
+        <svg class='w-4 h-4 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
+            <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
+        </svg>
+    </a>
     <Counter></Counter>
     <a
       href='https://github.com/emmyjs'
