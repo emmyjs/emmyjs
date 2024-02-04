@@ -1,8 +1,8 @@
-import { load, html } from 'emmy-dom/dist/server.js';
-import './components/Row.js';
+import { load, html } from 'emmy-dom/dist/server.js'
+import './components/Row.js'
 
 export function status() {
-  this.className = 'flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4';
+  this.className = 'flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4'
 
   return html`
     <h1 class='text-4xl font-bold'>Features Status</h1>
@@ -46,7 +46,7 @@ export function status() {
         </div>
         <span class='ml-2'>Not implemented yet</span>
       </li>
-  `;
+  `
 }
 
-load(status, 'Status');
+load(status, 'Status')

@@ -1,15 +1,15 @@
-import { load, html } from 'emmy-dom/dist/server.js';
-import Toastify from 'toastify-js';
-import 'toastify-js/src/toastify.css';
+import { load, html } from 'emmy-dom/dist/server.js'
+import Toastify from 'toastify-js'
+import 'toastify-js/src/toastify.css'
 
 export function counter () {
-  this.className = 'flex flex-col justify-center items-center space-y-3';
-  const [counter, setCounter] = this.useState(0);
+  this.className = 'flex flex-col justify-center items-center space-y-3'
+  const [counter, setCounter] = this.useState(0)
 
   this.useEffect(() => {
-    this.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1));
-    this.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1));
-  }, ['didMount']);
+    this.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1))
+    this.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1))
+  }, ['didMount'])
 
   this.useEffect(() => {
     Toastify({
@@ -21,8 +21,8 @@ export function counter () {
       },
       gravity: 'bottom',
       duration: 600
-    }).showToast();
-  }, [counter]);
+    }).showToast()
+  }, [counter])
 
   return () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
@@ -35,7 +35,7 @@ export function counter () {
         -
       </button>
     </div>
-  `;
+  `
 }
 
-load(counter, 'Counter');
+load(counter, 'Counter')

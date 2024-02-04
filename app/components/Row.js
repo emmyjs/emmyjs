@@ -1,5 +1,5 @@
-import { load, html } from 'emmy-dom/dist/server.js';
-import './Pill.js';
+import { load, html } from 'emmy-dom/dist/server.js'
+import './Pill.js'
 
 export function row() {
   return html`
@@ -9,7 +9,7 @@ export function row() {
       </p>
       <Pill type='${this.getAttribute('status')}'></Pill>
     </li>
-  `;
+  `
 }
 
-load(row, 'Row');
+load(row, 'Row')
