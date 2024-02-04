@@ -12,7 +12,7 @@
   </head>
   <body class="antialiased h-screen w-full flex flex-col justify-center items-center dark:bg-slate-900 dark:text-white bg-white text-slate-900">
     <main class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
-      <emmy-app state="{'rerenderCount':0}" is="div" class="flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border">
+      <emmy-app state="{'rerenderCount':0}" class="flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border">
     <emmy-header state="{'rerenderCount':0}" emmy-hydratation="true">
     <nav class="border-gray-200 z-40">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -47,14 +47,14 @@
     <emmy-route href="/docs" to="Docs"></emmy-route>
     <emmy-route href="/404" to="Code404"></emmy-route>
     <emmy-route href="/status" to="Status"></emmy-route>
-    <emmy-router is="div" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
+    <emmy-router class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
     <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
     <p class="text-xl">
       Run <code style="font-family: source-code-pro, Menlo, Monaco, Consolas;">
         npm install emmy-dom
       </code> and start building your app!
     </p>
-    <emmy-counter state="{'rerenderCount':0}" is="section" class="flex flex-col justify-center items-center space-y-3" emmy-hydratation="true">
+    <emmy-counter state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3" emmy-hydratation="true">
     <h2 class="text-2xl font-bold">Counter</h2>
     <p id="counter">0</p>
     <div class="flex flex-row justify-center items-center space-x-2">
@@ -76,85 +76,85 @@
   </emmy-app>
     <script type="module">
       
-    import { load, html, Router, Route } from "emmy-dom";
+    import { load, html, Router, Route } from 'emmy-dom';
     import Toastify from 'toastify-js';
     import 'toastify-js/src/toastify.css';
   
       
     function app() {
-  return this.behave("div"), this.className = "flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border", html`
+  return this.className = "flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border", html`
     <Header></Header>
-    <Route href="/" to="Home"></Route>
-    <Route href="/docs" to="Docs"></Route>
-    <Route href="/404" to="Code404"></Route>
-    <Route href="/status" to="Status"></Route>
+    <Route href='/' to='Home'></Route>
+    <Route href='/docs' to='Docs'></Route>
+    <Route href='/404' to='Code404'></Route>
+    <Route href='/status' to='Status'></Route>
     <Router></Router>
   `;
 }
-    load(app, 'App');
+    load(app, 'App')
     document.querySelectorAll('emmy-app').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function docs() {
-  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", this.behave("section"), html`
-    <div class="px-4 mx-auto h-fit" style="top: -1rem; box-sizing: border-box; width: 70%;">
-      <div class="bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8">
-        <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-red-400 mb-2">
-          <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
-            <path d="M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z"/>
+  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", html`
+    <div class='px-4 mx-auto h-fit' style='top: -1rem; box-sizing: border-box; width: 70%;'>
+      <div class='bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8'>
+        <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-red-400 mb-2'>
+          <svg class='w-2.5 h-2.5 mr-1.5' aria-hidden='true' fill='currentColor' viewBox='0 0 20 14'>
+            <path d='M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z'/>
           </svg>
           Tutorial
         </a>
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-2">
+        <h1 class='text-3xl md:text-5xl font-extrabold mb-2'>
           How to build a website with Emmy.js
         </h1>
-        <p class="text-lg font-normal text-gray-700 dark:text-gray-400 mb-6">
+        <p class='text-lg font-normal text-gray-700 dark:text-gray-400 mb-6'>
           Emmy.js is a JavaScript library for building user interfaces. It is a lightweight library that is easy to learn and use.
         </p>
-        <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:ring-blue-900">
+        <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:ring-blue-900'>
           See the tutorial
-          <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 10'>
+            <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
           </svg>
         </a>
       </div>
-      <div class="grid md:grid-cols-2 h-fit gap-8 mb-[10%]">
-        <div class="bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12">
-          <a href="https://github.com/emmyjs/emmy-dom/blob/main/docs/1.0.0.md" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-green-400 mb-2">
-            <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
-              <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"/>
+      <div class='grid md:grid-cols-2 h-fit gap-8 mb-[10%]'>
+        <div class='bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12'>
+          <a href='https://github.com/emmyjs/emmy-dom/blob/main/docs/1.0.0.md' class='text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-green-400 mb-2'>
+            <svg class='w-2.5 h-2.5 mr-1.5' aria-hidden='true' fill='currentColor' viewBox='0 0 18 18'>
+              <path d='M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z'/>
             </svg>
             Basics
           </a>
-          <h2 class="text-3xl font-extrabold mb-2">
+          <h2 class='text-3xl font-extrabold mb-2'>
             The basics of Emmy.js
           </h2>
-          <p class="text-lg font-normal text-gray-700 dark:text-gray-400 mb-4">
+          <p class='text-lg font-normal text-gray-700 dark:text-gray-400 mb-4'>
             Learn the basics of Emmy.js, including how to create a simple application, using components, and how to work with data.
           </p>
-          <a href="https://github.com/emmyjs/emmy-dom/blob/main/docs/1.0.0.md" class="text-blue-600 text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Read more
-            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          <a href='https://github.com/emmyjs/emmy-dom/blob/main/docs/1.0.0.md' class='text-blue-600 text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>Read more
+            <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
+            <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
           </svg>
           </a>
         </div>
-        <div class="bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12">
-          <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-purple-400 mb-2">
-            <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"/>
+        <div class='bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12'>
+          <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-purple-400 mb-2'>
+            <svg class='w-2.5 h-2.5 mr-1.5' aria-hidden='true' fill='none' viewBox='0 0 20 16'>
+              <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15'/>
             </svg>
             Examples
           </a>
-          <h2 class="text-3xl font-extrabold mb-2">
+          <h2 class='text-3xl font-extrabold mb-2'>
             See Emmy.js in action
           </h2>
-          <p class="text-lg font-normal text-gray-700 dark:text-gray-400 mb-4">
+          <p class='text-lg font-normal text-gray-700 dark:text-gray-400 mb-4'>
             Explore Emmy.js in action with these examples of Emmy.js applications.
           </p>
-          <a href="https://www.youtube.com/watch?v=rOxAJ9c068c" class="text-blue-600 text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Read more
-            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='text-blue-600 text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>Read more
+            <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
+              <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
             </svg>
           </a>
         </div>
@@ -162,103 +162,103 @@
     </div>
   `;
 }
-    load(docs, 'Docs');
+    load(docs, 'Docs')
     document.querySelectorAll('emmy-docs').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function home() {
   return this.className = "flex flex-col justify-center items-center space-y-3 text-center w-full h-full", html`
-    <h1 class="text-3xl font-bold">Hello from Emmy.js!</h1>
-    <p class="text-xl">
-      Run <code style="font-family: source-code-pro, Menlo, Monaco, Consolas;">
+    <h1 class='text-3xl font-bold'>Hello from Emmy.js!</h1>
+    <p class='text-xl'>
+      Run <code style='font-family: source-code-pro, Menlo, Monaco, Consolas;'>
         npm install emmy-dom
       </code> and start building your app!
     </p>
     <Counter></Counter>
     <a
-      href="https://github.com/emmyjs"
-      class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mb-2"
+      href='https://github.com/emmyjs'
+      class='text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mb-2'
     >
-      <svg class="w-4 h-4 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+      <svg class='w-4 h-4 mr-2' aria-hidden='true' fill='currentColor' viewBox='0 0 20 20'>
+        <path fill-rule='evenodd' d='M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z' clip-rule='evenodd'/>
       </svg>
       View Emmy.js on GitHub
     </a>
   `;
 }
-    load(home, 'Home');
+    load(home, 'Home')
     document.querySelectorAll('emmy-home').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function row() {
   return html`
-    <li class="py-3 sm:py-4 justify-between space-x-3 rtl:space-x-reverse flex items-center gap-5">
-      <p class="text-sm font-semibold text-gray-900 truncate dark:text-white">
+    <li class='py-3 sm:py-4 justify-between space-x-3 rtl:space-x-reverse flex items-center gap-5'>
+      <p class='text-sm font-semibold text-gray-900 truncate dark:text-white'>
         ${this.innerHTML}
       </p>
-      <Pill type="${this.getAttribute("status")}"></Pill>
+      <Pill type='${this.getAttribute("status")}'></Pill>
     </li>
   `;
 }
-    load(row, 'Row');
+    load(row, 'Row')
     document.querySelectorAll('emmy-row').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function status() {
   return this.className = "flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4", html`
-    <h1 class="text-4xl font-bold">Features Status</h1>
-    <ul role="list" class="max-w-lg divide-y divide-gray-200 dark:divide-gray-700">
-      <Row status="stable">Class components</Row>
-      <Row status="stable">Functional Components</Row>
-      <Row status="experimental">Emmy Hooks</Row>
-      <Row status="unstable">Emmy Router</Row>
-      <Row status="unstable">Prerendering</Row>
-      <Row status="planned">Server-side rendering</Row>
-      <Row status="experimental">Declarative props</Row>
-      <Row status="planned">Auto-close tags</Row>
+    <h1 class='text-4xl font-bold'>Features Status</h1>
+    <ul role='list' class='max-w-lg divide-y divide-gray-200 dark:divide-gray-700'>
+      <Row status='stable'>Class components</Row>
+      <Row status='stable'>Functional Components</Row>
+      <Row status='stable'>Emmy Hooks</Row>
+      <Row status='unstable'>Emmy Router</Row>
+      <Row status='unstable'>Prerendering</Row>
+      <Row status='planned'>Server-side rendering</Row>
+      <Row status='experimental'>Declarative props</Row>
+      <Row status='planned'>Auto-close tags</Row>
     </ul>
-    <h2 class="text-2xl font-bold mt-8">Statuses legend</h2>
-    <ul role="list" class="max-w-lg md:max-w-4xl divide-y divide-gray-200 dark:divide-gray-700">
-      <li class="flex items-center py-2 flex-col md:flex-row">
-        <div class="font-bold flex items-center">
-          <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+    <h2 class='text-2xl font-bold mt-8'>Statuses legend</h2>
+    <ul role='list' class='max-w-lg md:max-w-4xl divide-y divide-gray-200 dark:divide-gray-700'>
+      <li class='flex items-center py-2 flex-col md:flex-row'>
+        <div class='font-bold flex items-center'>
+          <div class='w-4 h-4 rounded-full bg-green-500 mr-2'></div>
           Stable
         </div>
-        <span class="ml-2">Do not expect breaking changes</span>
+        <span class='ml-2'>Do not expect breaking changes</span>
       </li>
-      <li class="flex items-center py-2 flex-col md:flex-row">
-        <div class="font-bold flex items-center">
-          <div class="w-4 h-4 rounded-full bg-purple-500 mr-2"></div>
+      <li class='flex items-center py-2 flex-col md:flex-row'>
+        <div class='font-bold flex items-center'>
+          <div class='w-4 h-4 rounded-full bg-purple-500 mr-2'></div>
           Experimental
         </div>
-        <span class="ml-2">No breaking changes expected, but there is a chance</span>
+        <span class='ml-2'>No breaking changes expected, but there is a chance</span>
       </li>
-      <li class="flex items-center py-2 flex-col md:flex-row">
-        <div class="font-bold flex items-center">
-          <div class="w-4 h-4 rounded-full bg-yellow-500 mr-2"></div>
+      <li class='flex items-center py-2 flex-col md:flex-row'>
+        <div class='font-bold flex items-center'>
+          <div class='w-4 h-4 rounded-full bg-yellow-500 mr-2'></div>
           Unstable
         </div>
-        <span class="ml-2">Breaking changes are expected</span>
+        <span class='ml-2'>Breaking changes are expected</span>
       </li>
-      <li class="flex items-center py-2 flex-col md:flex-row">
-        <div class="font-bold flex items-center">
-          <div class="w-4 h-4 rounded-full bg-blue-500 mr-2"></div>
+      <li class='flex items-center py-2 flex-col md:flex-row'>
+        <div class='font-bold flex items-center'>
+          <div class='w-4 h-4 rounded-full bg-blue-500 mr-2'></div>
           Planned
         </div>
-        <span class="ml-2">Not implemented yet</span>
+        <span class='ml-2'>Not implemented yet</span>
       </li>
   `;
 }
-    load(status, 'Status');
+    load(status, 'Status')
     document.querySelectorAll('emmy-status').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function counter() {
-  this.behave("section"), this.className = "flex flex-col justify-center items-center space-y-3";
+  this.className = "flex flex-col justify-center items-center space-y-3";
   const [counter, setCounter] = this.useState(0);
   return this.useEffect(() => {
     this.querySelector("#plusButton").addEventListener("click", () => setCounter(counter() + 1)), this.querySelector("#minusButton").addEventListener("click", () => setCounter(counter() - 1));
@@ -275,7 +275,7 @@
     }).showToast();
   }, [counter]), () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
-    <p id="counter">${counter()}</p>
+    <p id='counter'>${counter()}</p>
     <div class='flex flex-row justify-center items-center space-x-2'>
       <button id='plusButton' class='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>
         +
@@ -286,10 +286,10 @@
     </div>
   `;
 }
-    load(counter, 'Counter');
+    load(counter, 'Counter')
     document.querySelectorAll('emmy-counter').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function header() {
   const [hidden, setHidden] = this.useState(!0);
@@ -301,29 +301,29 @@
     const target = this.querySelector("#navbar-default");
     target.setAttribute("aria-expanded", !hidden()), target.classList = hidden() ? "hidden w-full md:block md:w-auto" : "w-full md:block md:w-auto";
   }, [hidden]), html`
-    <nav class="border-gray-200 z-40">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://emmyjs.github.io/" class="flex items-center">
-          <img class="hidden dark:block h-8 mr-3" src="/logo.png" alt="Emmy.js logo">
-          <img class="dark:hidden h-8 w-8 mr-3" src="/android-chrome-512x512.png" alt="Emmy.js logo">
-          <span class="self-center text-2xl font-semibold whitespace-nowrap">Emmy.js</span>
+    <nav class='border-gray-200 z-40'>
+      <div class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+        <a href='https://emmyjs.github.io/' class='flex items-center'>
+          <img class='hidden dark:block h-8 mr-3' src='/logo.png' alt='Emmy.js logo'>
+          <img class='dark:hidden h-8 w-8 mr-3' src='/android-chrome-512x512.png' alt='Emmy.js logo'>
+          <span class='self-center text-2xl font-semibold whitespace-nowrap'>Emmy.js</span>
         </a>
-        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        <button data-collapse-toggle='navbar-default' type='button' class='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600' aria-controls='navbar-default' aria-expanded='false'>
+          <span class='sr-only'>Open main menu</span>
+          <svg class='w-5 h-5' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 17 14'>
+              <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 1h15M1 7h15M1 13h15'/>
           </svg>
         </button>
-        <div class="hidden w-50 md:block md:w-auto" id="navbar-default" aria-expanded="false">
-          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:md:bg-gray-900 border-gray-700">
+        <div class='hidden w-50 md:block md:w-auto' id='navbar-default' aria-expanded='false'>
+          <ul class='font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:md:bg-gray-900 border-gray-700'>
             <li>
-              <a href="/" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent" aria-current="page">Home</a>
+              <a href='/' onclick='route(event)' class='block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent' aria-current='page'>Home</a>
             </li>
             <li>
-              <a href="/docs" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Docs</a>
+              <a href='/docs' onclick='route(event)' class='block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent'>Docs</a>
             </li>
             <li>
-              <a href="/status" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Status</a>
+              <a href='/status' onclick='route(event)' class='block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent'>Status</a>
             </li>
           </ul>
         </div>
@@ -331,10 +331,10 @@
     </nav>
   `;
 }
-    load(header, 'Header');
+    load(header, 'Header')
     document.querySelectorAll('emmy-header').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function pill() {
   let type = this.getAttribute("type"), color = {
@@ -346,18 +346,18 @@
   }[type.trim()];
   return this.className = `${color} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`, type.charAt(0).toUpperCase() + type.slice(1);
 }
-    load(pill, 'Pill');
+    load(pill, 'Pill')
     document.querySelectorAll('emmy-pill').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     function underConstruction() {
-  return this.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", this.behave("div"), html`<div class="text-white text-3xl font-bold mb-4">Under construction \u{1f6a7}</div>`;
+  return this.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", this.behave("div"), html`<div class='text-white text-3xl font-bold mb-4'>Under construction \u{1f6a7}</div>`;
 }
-    load(underConstruction, 'UnderConstruction');
+    load(underConstruction, 'UnderConstruction')
     document.querySelectorAll('emmy-underconstruction').forEach((element) => {
-      element.connectedCallback();
-    });
+      element.connectedCallback()
+    })
   
     </script>
   
