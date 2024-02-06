@@ -1,24 +1,253 @@
-import { build } from 'emmy-dom/dist/server.js';
-import { app, App } from './app/App.js';
-import { docs } from './app/Docs.js';
-import { home } from './app/Home.js';
-import { status } from './app/Status.js';
-import { counter } from './app/components/Counter.js';
-import { header } from './app/components/Header.js';
-import { pill } from './app/components/Pill.js';
-import { row } from './app/components/Row.js';
-import { underConstruction } from './app/components/UnderConstruction.js';
+import { build } from 'emmy-dom/dist/server.js'
+import { app, App } from './app/App.js'
+import { counter } from './app/components/Counter.js'
+import { header } from './app/components/Header.js'
+import { pill } from './app/components/Pill.js'
+import { row } from './app/components/Row.js'
+import { underConstruction } from './app/components/UnderConstruction.js'
+import { docs } from './app/Docs.js'
+import { home } from './app/Home.js'
+import { markdown } from './app/Markdown.js'
+import { status } from './app/Status.js'
+import { marked } from 'marked'
+
+const md = `
+# emmy-dom
+Emmy.js is a JavaScript library for building user interfaces. It is inspired by React.js and Astro
+
+## Functional Components
+You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:
+\`\`\`javascript
+import { load, html } from 'emmy-dom'
+
+function helloWorld() {
+  return html\`<h1>Hello World!</h1>\`
+}
+
+load(helloWorld, 'HelloWorld')
+\`\`\`
+
+## Page Components
+You can use page components to create components that are rendered only once, from a html file. The following example shows how to create a page component:
+\`\`\`html
+<!-- home.html -->
+<h1>Hello World!</h1>
+\`\`\`
+
+\`\`\`javascript
+import { load } from 'emmy-dom'
+
+load('/home.html', 'Home')
+\`\`\`
+
+## Class Components
+You can use class components to create components with classes. The following example shows how to create a class component:
+
+### Light Components
+\`\`\`javascript
+import { LightComponent, launch, html } from 'emmy-dom'
+
+class HelloWorld extends LightComponent {
+  constructor() {
+    super()
+    this.render(html\`<h1>Hello World!</h1>\`)
+  }
+}
+
+launch(HelloWorld, 'HelloWorld')
+\`\`\`
+
+### Shadow Components
+\`\`\`javascript
+import { Component, launch, html } from 'emmy-dom'
+
+class HelloWorld extends Component {
+  constructor() {
+    super()
+    this.render(html\`<h1>Hello World!</h1>\`)
+  }
+}
+
+launch(HelloWorld, 'HelloWorld')
+\`\`\`
+
+## Emmy Hooks
+Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the \`state\` property. 
+
+### useState
+\`\`\`javascript
+import { load, html } from 'emmy-dom'
+
+function counter() {
+  const [count, setCount] = this.useState(0)
+
+  this.useEffect(() => {
+    this.querySelector('#increment').addEventListener('click', () => {
+      setCount(count() + 1)
+    })
+  }, ['didMount'])
+
+  return () => html\`
+    <div>
+      <h1>Count: \${count()}</h1>
+      <button id='increment'>+</button>
+    </div>
+  \`
+}
+
+load(counter, 'Counter')
+\`\`\`
+
+### useEffect
+\`\`\`javascript
+import { load, html } from 'emmy-dom'
+
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  this.useEffect(() => {
+    this.querySelector('#increment').addEventListener('click', () => {
+      setCount(count() + 1)
+    })
+  }, ['didMount'])
+
+  this.useEffect(() => {
+    console.log('Count changed to', count())
+  }, [count])
+
+  return () => html\`
+    <div>
+      <h1>Count: \${count()}</h1>
+      <button id='increment'>+</button>
+    </div>
+  \`
+}
+
+load(Counter, 'Counter')
+\`\`\`
+
+## Emmy Router
+Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:
+\`\`\`javascript
+import { load, Router, Route, html } from 'emmy-dom'
+
+load('/home.html', 'Home')
+load('/about.html', 'About')
+
+const app = () => html\`
+  <div>
+    <Route path='/' component='Home' />
+    <Route path='/about' component='About' />
+    <Router></Router>
+  </div>
+\`
+
+load(app, 'App')
+\`\`\`
+
+## Why Functional Components?
+Functional components are easier to write than class components. For example, the following class component:
+\`\`\`javascript
+import { LightComponent, launch, html } from 'emmy-dom'
+
+class OldCounter extends LightComponent {
+  constructor() {
+    super()
+
+    this.setAttribute('counter', 0)
+    this.setAttribute('word', 'a')
+
+    this.render(html\`
+      <div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'>
+        <h1 class='text-3xl font-bold'>Counter</h1>
+        <h3 class='text-3xl font-bold' id='counter'>\${this.getAttribute('counter')}</h3>
+        <h3 class='text-3xl font-bold' id='word'>\${this.getAttribute('word')}</h3>
+        <button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Increment
+        </button>
+        <button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Word Change
+        </button>
+      </div>
+
+    \`, (component) => {
+      component.querySelector('#plusButton').onclick = () => {
+        componentsetAttribute('counter', parseInt(component.getAttribute('counter')) + 1)
+      }
+      component.querySelector('#wordButton').onclick = () => {
+        component.setAttribute('word', 'a' + component.getAttribute('word'))
+      }
+    })
+  }
+
+  static get observedAttributes() {
+    return ['counter', 'word']
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'counter') {
+      this.$('#counter').innerHTML = newValue
+    }
+    else if (name === 'word') {
+      this.$('#word').innerHTML = newValue
+    }
+  }
+}
+
+launch(OldCounter, 'OldCounter')
+\`\`\`
+can be written as the following functional component:
+\`\`\`javascript
+import { load, html } from 'emmy-dom'
+
+function counter () {
+  const [count, setCount] = this.useState(0)
+  const [word, setWord] = this.useState('a')
+
+  this.useEffect(() => {
+    const handleClick = () => setCount(count() + 1)
+    this.querySelector('#plusButton').addEventListener('click', handleClick)
+
+    const handleWord = () => setWord('a' + word())
+    this.querySelector('#wordButton').addEventListener('click', handleWord)
+  }, ['didMount'])
+
+  return () => html\`
+    <div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'>
+      <h1 class='text-3xl font-bold'>Counter</h1>
+      <h3 class='text-3xl font-bold'>\${count()}</h3>
+      <h3 class='text-3xl font-bold'>\${word()}</h3>
+      <button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Increment
+      </button>
+      <button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Word Change
+      </button>
+    </div>
+  \`
+}
+
+load(counter, 'Counter')
+\`\`\`
+`
+let result = `<section class="flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6">${await marked(md)}</section>`
+  .replace(/&#39;/g, "'").replace(/`/g, '\\`').replace(/\${/g, '\\${')
+  .replace(/<h1>/g, '<h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-purple-300">')
+  .replace(/<h2>/g, '<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">')
+console.log(result)
 
 build({
   app: App,
   dependencies: /*javascript*/`
-    import { load, html, Router, Route } from 'emmy-dom';
-    import Toastify from 'toastify-js';
-    import 'toastify-js/src/toastify.css';
+    import { load, html, Router, Route } from 'emmy-dom'
+    import Toastify from 'toastify-js'
+    import 'toastify-js/src/toastify.css'
+    const Emmy = {}
+    Emmy.md = \`${result}\`
   `,
   generators: {
-    app, docs, home, row, status, counter, header, pill,
+    app, docs, home, row, status, counter, header, pill, markdown,
     underConstruction
   },
   template: './template.html'
-});
+})
