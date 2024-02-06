@@ -45,6 +45,7 @@
   </emmy-header>
     <emmy-route href="/" to="Home"></emmy-route>
     <emmy-route href="/docs" to="Docs"></emmy-route>
+    <emmy-route href="/d" to="Markdown"></emmy-route>
     <emmy-route href="/404" to="Code404"></emmy-route>
     <emmy-route href="/status" to="Status"></emmy-route>
     <emmy-router class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4">
@@ -93,9 +94,206 @@
   </emmy-app>
     <script type="module">
       
-    import { load, html, Router, Route } from 'emmy-dom';
-    import Toastify from 'toastify-js';
-    import 'toastify-js/src/toastify.css';
+    import { load, html, Router, Route } from 'emmy-dom'
+    import Toastify from 'toastify-js'
+    import 'toastify-js/src/toastify.css'
+    let md = `<h1>emmy-dom</h1>
+<p>Emmy.js is a JavaScript library for building user interfaces. It is inspired by React.js and Astro</p>
+<h2>Functional Components</h2>
+<p>You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:</p>
+<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
+
+function helloWorld() {
+  return html\`<h1>Hello World!</h1>\`
+}
+
+load(helloWorld, 'HelloWorld')
+</code></pre>
+<h2>Page Components</h2>
+<p>You can use page components to create components that are rendered only once, from a html file. The following example shows how to create a page component:</p>
+<pre><code class="language-html"><!-- home.html -->
+<h1>Hello World!</h1>
+</code></pre>
+<pre><code class="language-javascript">import { load } from 'emmy-dom'
+
+load('/home.html', 'Home')
+</code></pre>
+<h2>Class Components</h2>
+<p>You can use class components to create components with classes. The following example shows how to create a class component:</p>
+<h3>Light Components</h3>
+<pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
+
+class HelloWorld extends LightComponent {
+  constructor() {
+    super()
+    this.render(html\`<h1>Hello World!</h1>\`)
+  }
+}
+
+launch(HelloWorld, 'HelloWorld')
+</code></pre>
+<h3>Shadow Components</h3>
+<pre><code class="language-javascript">import { Component, launch, html } from 'emmy-dom'
+
+class HelloWorld extends Component {
+  constructor() {
+    super()
+    this.render(html\`<h1>Hello World!</h1>\`)
+  }
+}
+
+launch(HelloWorld, 'HelloWorld')
+</code></pre>
+<h2>Emmy Hooks</h2>
+<p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code>state</code> property. </p>
+<h3>useState</h3>
+<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
+
+function counter() {
+  const [count, setCount] = this.useState(0)
+
+  this.useEffect(() => {
+    this.querySelector('#increment').addEventListener('click', () => {
+      setCount(count() + 1)
+    })
+  }, ['didMount'])
+
+  return () => html\`
+    <div>
+      <h1>Count: \${count()}</h1>
+      <button id='increment'>+</button>
+    </div>
+  \`
+}
+
+load(counter, 'Counter')
+</code></pre>
+<h3>useEffect</h3>
+<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
+
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  this.useEffect(() => {
+    this.querySelector('#increment').addEventListener('click', () => {
+      setCount(count() + 1)
+    })
+  }, ['didMount'])
+
+  this.useEffect(() => {
+    console.log('Count changed to', count())
+  }, [count])
+
+  return () => html\`
+    <div>
+      <h1>Count: \${count()}</h1>
+      <button id='increment'>+</button>
+    </div>
+  \`
+}
+
+load(Counter, 'Counter')
+</code></pre>
+<h2>Emmy Router</h2>
+<p>Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
+<pre><code class="language-javascript">import { load, Router, Route, html } from 'emmy-dom'
+
+load('/home.html', 'Home')
+load('/about.html', 'About')
+
+const app = () => html\`
+  <div>
+    <Route path='/' component='Home' />
+    <Route path='/about' component='About' />
+    <Router></Router>
+  </div>
+\`
+
+load(app, 'App')
+</code></pre>
+<h2>Why Functional Components?</h2>
+<p>Functional components are easier to write than class components. For example, the following class component:</p>
+<pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
+
+class OldCounter extends LightComponent {
+  constructor() {
+    super()
+
+    this.setAttribute('counter', 0)
+    this.setAttribute('word', 'a')
+
+    this.render(html\`
+      <div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'>
+        <h1 class='text-3xl font-bold'>Counter</h1>
+        <h3 class='text-3xl font-bold' id='counter'>\${this.getAttribute('counter')}</h3>
+        <h3 class='text-3xl font-bold' id='word'>\${this.getAttribute('word')}</h3>
+        <button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Increment
+        </button>
+        <button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Word Change
+        </button>
+      </div>
+
+    \`, (component) => {
+      component.querySelector('#plusButton').onclick = () => {
+        componentsetAttribute('counter', parseInt(component.getAttribute('counter')) + 1)
+      }
+      component.querySelector('#wordButton').onclick = () => {
+        component.setAttribute('word', 'a' + component.getAttribute('word'))
+      }
+    })
+  }
+
+  static get observedAttributes() {
+    return ['counter', 'word']
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'counter') {
+      this.$('#counter').innerHTML = newValue
+    }
+    else if (name === 'word') {
+      this.$('#word').innerHTML = newValue
+    }
+  }
+}
+
+launch(OldCounter, 'OldCounter')
+</code></pre>
+<p>can be written as the following functional component:</p>
+<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
+
+function counter () {
+  const [count, setCount] = this.useState(0)
+  const [word, setWord] = this.useState('a')
+
+  this.useEffect(() => {
+    const handleClick = () => setCount(count() + 1)
+    this.querySelector('#plusButton').addEventListener('click', handleClick)
+
+    const handleWord = () => setWord('a' + word())
+    this.querySelector('#wordButton').addEventListener('click', handleWord)
+  }, ['didMount'])
+
+  return () => html\`
+    <div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'>
+      <h1 class='text-3xl font-bold'>Counter</h1>
+      <h3 class='text-3xl font-bold'>\${count()}</h3>
+      <h3 class='text-3xl font-bold'>\${word()}</h3>
+      <button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Increment
+      </button>
+      <button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+        Word Change
+      </button>
+    </div>
+  \`
+}
+
+load(counter, 'Counter')
+</code></pre>
+`
   
       
     function app() {
@@ -103,6 +301,7 @@
     <Header></Header>
     <Route href='/' to='Home'></Route>
     <Route href='/docs' to='Docs'></Route>
+    <Route href='/d' to='Markdown'></Route>
     <Route href='/404' to='Code404'></Route>
     <Route href='/status' to='Status'></Route>
     <Router></Router>
@@ -131,7 +330,7 @@
         </p>
         <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:ring-blue-900'>
           See the tutorial
-          <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 14 10'>
+          <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
             <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
           </svg>
         </a>
@@ -383,6 +582,14 @@
 }
     load(pill, 'Pill')
     document.querySelectorAll('emmy-pill').forEach((element) => {
+      element.connectedCallback()
+    })
+  
+    function markdown() {
+  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", md;
+}
+    load(markdown, 'Markdown')
+    document.querySelectorAll('emmy-markdown').forEach((element) => {
       element.connectedCallback()
     })
   
