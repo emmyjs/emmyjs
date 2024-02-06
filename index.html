@@ -98,9 +98,9 @@
     import Toastify from 'toastify-js'
     import 'toastify-js/src/toastify.css'
     const Emmy = {}
-    Emmy.md = `<section class="flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6"><h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-purple-300">emmy-dom</h1>
+    Emmy.md = `<section class="flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6"><h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-purple-600 dark:text-purple-300">emmy-dom</h1>
 <p>Emmy.js is a JavaScript library for building user interfaces. It is inspired by React.js and Astro</p>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Functional Components</h2>
+<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Functional Components</h2>
 <p>You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:</p>
 <pre><code class="language-javascript">import { load, html } from 'emmy-dom'
 
@@ -110,7 +110,7 @@ function helloWorld() {
 
 load(helloWorld, 'HelloWorld')
 </code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Page Components</h2>
+<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Page Components</h2>
 <p>You can use page components to create components that are rendered only once, from a html file. The following example shows how to create a page component:</p>
 <pre><code class="language-html">&lt;!-- home.html --&gt;
 &lt;h1&gt;Hello World!&lt;/h1&gt;
@@ -119,7 +119,7 @@ load(helloWorld, 'HelloWorld')
 
 load('/home.html', 'Home')
 </code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Class Components</h2>
+<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Class Components</h2>
 <p>You can use class components to create components with classes. The following example shows how to create a class component:</p>
 <h3>Light Components</h3>
 <pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
@@ -145,7 +145,7 @@ class HelloWorld extends Component {
 
 launch(HelloWorld, 'HelloWorld')
 </code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Emmy Hooks</h2>
+<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Emmy Hooks</h2>
 <p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code>state</code> property. </p>
 <h3>useState</h3>
 <pre><code class="language-javascript">import { load, html } from 'emmy-dom'
@@ -195,7 +195,7 @@ function Counter() {
 
 load(Counter, 'Counter')
 </code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Emmy Router</h2>
+<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Emmy Router</h2>
 <p>Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
 <pre><code class="language-javascript">import { load, Router, Route, html } from 'emmy-dom'
 
@@ -212,7 +212,7 @@ const app = () =&gt; html\`
 
 load(app, 'App')
 </code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Why Functional Components?</h2>
+<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Why Functional Components?</h2>
 <p>Functional components are easier to write than class components. For example, the following class component:</p>
 <pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
 
@@ -605,5 +605,10 @@ load(counter, 'Counter')
     </script>
   
     </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/javascript.min.js"></script>
+    <link rel="stylesheet" href="dracula-modified.css">
+    <script>hljs.highlightAll();</script>
   </body>
 </html>
