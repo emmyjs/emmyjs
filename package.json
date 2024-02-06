@@ -20,7 +20,6 @@
   },
   "dependencies": {
     "emmy-dom": "1.0.0",
-    "highlight.js": "^11.9.0",
     "marked": "12.0.0",
     "parse5": "7.1.2",
     "react-style-object-to-css": "1.1.2",
