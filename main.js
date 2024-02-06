@@ -230,9 +230,10 @@ function counter () {
 load(counter, 'Counter')
 \`\`\`
 `
-let result = (await marked(md))
-  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'")
-  .replace(/`/g, '\\`').replace(/\${/g, '\\${')
+let result = `<section class="flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6">${await marked(md)}</section>`
+  .replace(/&#39;/g, "'").replace(/`/g, '\\`').replace(/\${/g, '\\${')
+  .replace(/<h1>/g, '<h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-purple-300">')
+  .replace(/<h2>/g, '<h2 class="text-3xl font-extrabold mb-2 text-emerald-300">')
 console.log(result)
 
 build({
@@ -241,7 +242,8 @@ build({
     import { load, html, Router, Route } from 'emmy-dom'
     import Toastify from 'toastify-js'
     import 'toastify-js/src/toastify.css'
-    let md = \`${result}\`
+    const Emmy = {}
+    Emmy.md = \`${result}\`
   `,
   generators: {
     app, docs, home, row, status, counter, header, pill, markdown,
