@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Emmanuel Norambuena">
-    <meta name=description content="Emmy.js is a simple and lightweight JavaScript framework for building web applications.">
+    <meta name=description content="Emmy.js is a simple and lightweight JavaScript library for building web applications using Web Components.">
     <meta name="theme-color" content="#0F172A">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./styles/index.css">
@@ -121,7 +121,7 @@ load('/home.html', 'Home')
 </code></pre>
 <h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Class Components</h2>
 <p>You can use class components to create components with classes. The following example shows how to create a class component:</p>
-<h3>Light Components</h3>
+<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">Light Components</h3>
 <pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
 
 class HelloWorld extends LightComponent {
@@ -133,7 +133,7 @@ class HelloWorld extends LightComponent {
 
 launch(HelloWorld, 'HelloWorld')
 </code></pre>
-<h3>Shadow Components</h3>
+<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">Shadow Components</h3>
 <pre><code class="language-javascript">import { Component, launch, html } from 'emmy-dom'
 
 class HelloWorld extends Component {
@@ -147,7 +147,7 @@ launch(HelloWorld, 'HelloWorld')
 </code></pre>
 <h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Emmy Hooks</h2>
 <p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code>state</code> property. </p>
-<h3>useState</h3>
+<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">useState</h3>
 <pre><code class="language-javascript">import { load, html } from 'emmy-dom'
 
 function counter() {
@@ -169,7 +169,7 @@ function counter() {
 
 load(counter, 'Counter')
 </code></pre>
-<h3>useEffect</h3>
+<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">useEffect</h3>
 <pre><code class="language-javascript">import { load, html } from 'emmy-dom'
 
 function Counter() {
