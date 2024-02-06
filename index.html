@@ -146,7 +146,7 @@ class HelloWorld extends Component {
 launch(HelloWorld, 'HelloWorld')
 </code></pre>
 <h2 class="text-3xl font-extrabold mb-2 text-emerald-300">Emmy Hooks</h2>
-<p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code>state</code> property. </p>
+<p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code class="text-xs bg-gray-100 dark:bg-gray-800 dark:text-gray-400 text-gray-700 p-1 rounded-md">state</code> property. </p>
 <h3>useState</h3>
 <pre><code class="language-javascript">import { load, html } from 'emmy-dom'
 
@@ -605,5 +605,10 @@ load(counter, 'Counter')
     </script>
   
     </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/javascript.min.js"></script>
+    <link rel="stylesheet" href="dracula-modified.css">
+    <script>hljs.highlightAll();</script>
   </body>
 </html>
