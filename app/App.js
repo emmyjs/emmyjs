@@ -14,7 +14,8 @@ export function app () {
     <Header></Header>
     <Route href='/' to='Home'></Route>
     <Route href='/docs' to='Docs'></Route>
-    <Route href='/documentation' to='Markdown'></Route>
+    <Route href='/documentation' to='Index'></Route>
+    <Route href='/documentation/rails' to='Rails'></Route>
     <Route href='/404' to='Code404'></Route>
     <Route href='/status' to='Status'></Route>
     <Router></Router>

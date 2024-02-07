@@ -215,3 +215,8 @@ function counter () {
 
 load(counter, 'Counter')
 ```
+
+<hr>
+Might be useful to you. Give it a try! 🚀
+
+- [Ruby on Rails with Emmy.js](/documentation/rails)

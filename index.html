@@ -45,7 +45,8 @@
   </emmy-header>
     <emmy-route href="/" to="Home"></emmy-route>
     <emmy-route href="/docs" to="Docs"></emmy-route>
-    <emmy-route href="/documentation" to="Markdown"></emmy-route>
+    <emmy-route href="/documentation" to="Index"></emmy-route>
+    <emmy-route href="/documentation/rails" to="Rails"></emmy-route>
     <emmy-route href="/404" to="Code404"></emmy-route>
     <emmy-route href="/status" to="Status"></emmy-route>
     <emmy-router class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4">
@@ -94,207 +95,10 @@
   </emmy-app>
     <script type="module">
       
+    const Emmy = {"markdown":{"index":"<section class=\"flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6\"><h1 class=\"text-3xl md:text-5xl font-extrabold mb-2 text-purple-600 dark:text-purple-300\" >emmy-dom</h1>\n<p>Emmy.js is a JavaScript library for building user interfaces. It is inspired by React.js and Astro</p>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Functional Components</h2>\n<p>You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:</p>\n<pre><code class=\"language-javascript\">import { load, html } from 'emmy-dom'\n\nfunction helloWorld() {\n  return html`&lt;h1&gt;Hello World!&lt;/h1&gt;`\n}\n\nload(helloWorld, 'HelloWorld')\n</code></pre>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Page Components</h2>\n<p>You can use page components to create components that are rendered only once, from a html file. The following example shows how to create a page component:</p>\n<pre><code class=\"language-html\">&lt;!-- home.html --&gt;\n&lt;h1&gt;Hello World!&lt;/h1&gt;\n</code></pre>\n<pre><code class=\"language-javascript\">import { load } from 'emmy-dom'\n\nload('/home.html', 'Home')\n</code></pre>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Class Components</h2>\n<p>You can use class components to create components with classes. The following example shows how to create a class component:</p>\n<h3 class=\"text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300\" >Light Components</h3>\n<pre><code class=\"language-javascript\">import { LightComponent, launch, html } from 'emmy-dom'\n\nclass HelloWorld extends LightComponent {\n  constructor() {\n    super()\n    this.render(html`&lt;h1&gt;Hello World!&lt;/h1&gt;`)\n  }\n}\n\nlaunch(HelloWorld, 'HelloWorld')\n</code></pre>\n<h3 class=\"text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300\" >Shadow Components</h3>\n<pre><code class=\"language-javascript\">import { Component, launch, html } from 'emmy-dom'\n\nclass HelloWorld extends Component {\n  constructor() {\n    super()\n    this.render(html`&lt;h1&gt;Hello World!&lt;/h1&gt;`)\n  }\n}\n\nlaunch(HelloWorld, 'HelloWorld')\n</code></pre>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Emmy Hooks</h2>\n<p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code>state</code> property. </p>\n<h3 class=\"text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300\" >useState</h3>\n<pre><code class=\"language-javascript\">import { load, html } from 'emmy-dom'\n\nfunction counter() {\n  const [count, setCount] = this.useState(0)\n\n  this.useEffect(() =&gt; {\n    this.querySelector('#increment').addEventListener('click', () =&gt; {\n      setCount(count() + 1)\n    })\n  }, ['didMount'])\n\n  return () =&gt; html`\n    &lt;div&gt;\n      &lt;h1&gt;Count: ${count()}&lt;/h1&gt;\n      &lt;button id='increment'&gt;+&lt;/button&gt;\n    &lt;/div&gt;\n  `\n}\n\nload(counter, 'Counter')\n</code></pre>\n<h3 class=\"text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300\" >useEffect</h3>\n<pre><code class=\"language-javascript\">import { load, html } from 'emmy-dom'\n\nfunction Counter() {\n  const [count, setCount] = useState(0)\n\n  this.useEffect(() =&gt; {\n    this.querySelector('#increment').addEventListener('click', () =&gt; {\n      setCount(count() + 1)\n    })\n  }, ['didMount'])\n\n  this.useEffect(() =&gt; {\n    console.log('Count changed to', count())\n  }, [count])\n\n  return () =&gt; html`\n    &lt;div&gt;\n      &lt;h1&gt;Count: ${count()}&lt;/h1&gt;\n      &lt;button id='increment'&gt;+&lt;/button&gt;\n    &lt;/div&gt;\n  `\n}\n\nload(Counter, 'Counter')\n</code></pre>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Emmy Router</h2>\n<p>Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>\n<pre><code class=\"language-javascript\">import { load, Router, Route, html } from 'emmy-dom'\n\nload('/home.html', 'Home')\nload('/about.html', 'About')\n\nconst app = () =&gt; html`\n  &lt;div&gt;\n    &lt;Route path='/' component='Home' /&gt;\n    &lt;Route path='/about' component='About' /&gt;\n    &lt;Router&gt;&lt;/Router&gt;\n  &lt;/div&gt;\n`\n\nload(app, 'App')\n</code></pre>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Why Functional Components?</h2>\n<p>Functional components are easier to write than class components. For example, the following class component:</p>\n<pre><code class=\"language-javascript\">import { LightComponent, launch, html } from 'emmy-dom'\n\nclass OldCounter extends LightComponent {\n  constructor() {\n    super()\n\n    this.setAttribute('counter', 0)\n    this.setAttribute('word', 'a')\n\n    this.render(html`\n      &lt;div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'&gt;\n        &lt;h1 class='text-3xl font-bold'&gt;Counter&lt;/h1&gt;\n        &lt;h3 class='text-3xl font-bold' id='counter'&gt;${this.getAttribute('counter')}&lt;/h3&gt;\n        &lt;h3 class='text-3xl font-bold' id='word'&gt;${this.getAttribute('word')}&lt;/h3&gt;\n        &lt;button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;\n          Increment\n        &lt;/button&gt;\n        &lt;button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;\n          Word Change\n        &lt;/button&gt;\n      &lt;/div&gt;\n\n    `, (component) =&gt; {\n      component.querySelector('#plusButton').onclick = () =&gt; {\n        componentsetAttribute('counter', parseInt(component.getAttribute('counter')) + 1)\n      }\n      component.querySelector('#wordButton').onclick = () =&gt; {\n        component.setAttribute('word', 'a' + component.getAttribute('word'))\n      }\n    })\n  }\n\n  static get observedAttributes() {\n    return ['counter', 'word']\n  }\n\n  attributeChangedCallback(name, oldValue, newValue) {\n    if (name === 'counter') {\n      this.$('#counter').innerHTML = newValue\n    }\n    else if (name === 'word') {\n      this.$('#word').innerHTML = newValue\n    }\n  }\n}\n\nlaunch(OldCounter, 'OldCounter')\n</code></pre>\n<p>can be written as the following functional component:</p>\n<pre><code class=\"language-javascript\">import { load, html } from 'emmy-dom'\n\nfunction counter () {\n  const [count, setCount] = this.useState(0)\n  const [word, setWord] = this.useState('a')\n\n  this.useEffect(() =&gt; {\n    const handleClick = () =&gt; setCount(count() + 1)\n    this.querySelector('#plusButton').addEventListener('click', handleClick)\n\n    const handleWord = () =&gt; setWord('a' + word())\n    this.querySelector('#wordButton').addEventListener('click', handleWord)\n  }, ['didMount'])\n\n  return () =&gt; html`\n    &lt;div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'&gt;\n      &lt;h1 class='text-3xl font-bold'&gt;Counter&lt;/h1&gt;\n      &lt;h3 class='text-3xl font-bold'&gt;${count()}&lt;/h3&gt;\n      &lt;h3 class='text-3xl font-bold'&gt;${word()}&lt;/h3&gt;\n      &lt;button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;\n        Increment\n      &lt;/button&gt;\n      &lt;button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;\n        Word Change\n      &lt;/button&gt;\n    &lt;/div&gt;\n  `\n}\n\nload(counter, 'Counter')\n</code></pre>\n<hr>\nMight be useful to you. Give it a try! 🚀\n\n<ul class=\"list-disc list-inside text-lg font-normal mb-2 text-gray-600 dark:text-gray-300\" >\n<li><a class=\"underline text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-400 \"  href=\"/documentation/rails\">Ruby on Rails with Emmy.js</a></li>\n</ul>\n</section>","rails":"<section class=\"flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6\"><link rel=\"stylesheet\" type='text/css' href=\"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css\" />\n          \n<h1 class=\"text-3xl md:text-5xl font-extrabold mb-2 text-purple-600 dark:text-purple-300\" >Adding Emmy.js to your Ruby on Rails project <i class=\"devicon-rails-plain colored\"></i></h1>\n<h2 class=\"text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300\" >Quick Start</h2>\n<ol class=\"list-decimal list-inside text-lg font-normal mb-2 text-gray-600 dark:text-gray-300\" >\n<li>Install the <code>emmy-dom</code> npm package:</li>\n</ol>\n<pre><code class=\"language-bash\">npm i emmy-dom\n</code></pre>\n<ol class=\"list-decimal list-inside text-lg font-normal mb-2 text-gray-600 dark:text-gray-300\"  start=\"2\">\n<li>Use importmap to import the <code>emmy-dom</code> package:</li>\n</ol>\n<pre><code class=\"language-bash\">./bin/importmap pin emmy-dom --download\n</code></pre>\n<hr>\nMight be useful to you. Give it a try! 🚀\n\n<ul class=\"list-disc list-inside text-lg font-normal mb-2 text-gray-600 dark:text-gray-300\" >\n<li><a class=\"underline text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-400 \"  href=\"/documentation\">Quick Start</a></li>\n</ul>\n</section>"}}
     import { load, html, Router, Route } from 'emmy-dom'
     import Toastify from 'toastify-js'
     import 'toastify-js/src/toastify.css'
-    const Emmy = {}
-    Emmy.md = `<section class="flex flex-col justify-top items-left text-left p-4 pt-0 mb-4 sm:w-[90%] md:w-[70%] h-fit box-border gap-6"><h1 class="text-3xl md:text-5xl font-extrabold mb-2 text-purple-600 dark:text-purple-300">emmy-dom</h1>
-<p>Emmy.js is a JavaScript library for building user interfaces. It is inspired by React.js and Astro</p>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Functional Components</h2>
-<p>You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:</p>
-<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
-
-function helloWorld() {
-  return html\`&lt;h1&gt;Hello World!&lt;/h1&gt;\`
-}
-
-load(helloWorld, 'HelloWorld')
-</code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Page Components</h2>
-<p>You can use page components to create components that are rendered only once, from a html file. The following example shows how to create a page component:</p>
-<pre><code class="language-html">&lt;!-- home.html --&gt;
-&lt;h1&gt;Hello World!&lt;/h1&gt;
-</code></pre>
-<pre><code class="language-javascript">import { load } from 'emmy-dom'
-
-load('/home.html', 'Home')
-</code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Class Components</h2>
-<p>You can use class components to create components with classes. The following example shows how to create a class component:</p>
-<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">Light Components</h3>
-<pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
-
-class HelloWorld extends LightComponent {
-  constructor() {
-    super()
-    this.render(html\`&lt;h1&gt;Hello World!&lt;/h1&gt;\`)
-  }
-}
-
-launch(HelloWorld, 'HelloWorld')
-</code></pre>
-<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">Shadow Components</h3>
-<pre><code class="language-javascript">import { Component, launch, html } from 'emmy-dom'
-
-class HelloWorld extends Component {
-  constructor() {
-    super()
-    this.render(html\`&lt;h1&gt;Hello World!&lt;/h1&gt;\`)
-  }
-}
-
-launch(HelloWorld, 'HelloWorld')
-</code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Emmy Hooks</h2>
-<p>Emmy Hooks are inspired by React Hooks. You can use them to add state to your functional components without manually managing the <code>state</code> property. </p>
-<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">useState</h3>
-<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
-
-function counter() {
-  const [count, setCount] = this.useState(0)
-
-  this.useEffect(() =&gt; {
-    this.querySelector('#increment').addEventListener('click', () =&gt; {
-      setCount(count() + 1)
-    })
-  }, ['didMount'])
-
-  return () =&gt; html\`
-    &lt;div&gt;
-      &lt;h1&gt;Count: \${count()}&lt;/h1&gt;
-      &lt;button id='increment'&gt;+&lt;/button&gt;
-    &lt;/div&gt;
-  \`
-}
-
-load(counter, 'Counter')
-</code></pre>
-<h3 class="text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300">useEffect</h3>
-<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
-
-function Counter() {
-  const [count, setCount] = useState(0)
-
-  this.useEffect(() =&gt; {
-    this.querySelector('#increment').addEventListener('click', () =&gt; {
-      setCount(count() + 1)
-    })
-  }, ['didMount'])
-
-  this.useEffect(() =&gt; {
-    console.log('Count changed to', count())
-  }, [count])
-
-  return () =&gt; html\`
-    &lt;div&gt;
-      &lt;h1&gt;Count: \${count()}&lt;/h1&gt;
-      &lt;button id='increment'&gt;+&lt;/button&gt;
-    &lt;/div&gt;
-  \`
-}
-
-load(Counter, 'Counter')
-</code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Emmy Router</h2>
-<p>Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
-<pre><code class="language-javascript">import { load, Router, Route, html } from 'emmy-dom'
-
-load('/home.html', 'Home')
-load('/about.html', 'About')
-
-const app = () =&gt; html\`
-  &lt;div&gt;
-    &lt;Route path='/' component='Home' /&gt;
-    &lt;Route path='/about' component='About' /&gt;
-    &lt;Router&gt;&lt;/Router&gt;
-  &lt;/div&gt;
-\`
-
-load(app, 'App')
-</code></pre>
-<h2 class="text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300">Why Functional Components?</h2>
-<p>Functional components are easier to write than class components. For example, the following class component:</p>
-<pre><code class="language-javascript">import { LightComponent, launch, html } from 'emmy-dom'
-
-class OldCounter extends LightComponent {
-  constructor() {
-    super()
-
-    this.setAttribute('counter', 0)
-    this.setAttribute('word', 'a')
-
-    this.render(html\`
-      &lt;div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'&gt;
-        &lt;h1 class='text-3xl font-bold'&gt;Counter&lt;/h1&gt;
-        &lt;h3 class='text-3xl font-bold' id='counter'&gt;\${this.getAttribute('counter')}&lt;/h3&gt;
-        &lt;h3 class='text-3xl font-bold' id='word'&gt;\${this.getAttribute('word')}&lt;/h3&gt;
-        &lt;button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;
-          Increment
-        &lt;/button&gt;
-        &lt;button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;
-          Word Change
-        &lt;/button&gt;
-      &lt;/div&gt;
-
-    \`, (component) =&gt; {
-      component.querySelector('#plusButton').onclick = () =&gt; {
-        componentsetAttribute('counter', parseInt(component.getAttribute('counter')) + 1)
-      }
-      component.querySelector('#wordButton').onclick = () =&gt; {
-        component.setAttribute('word', 'a' + component.getAttribute('word'))
-      }
-    })
-  }
-
-  static get observedAttributes() {
-    return ['counter', 'word']
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'counter') {
-      this.$('#counter').innerHTML = newValue
-    }
-    else if (name === 'word') {
-      this.$('#word').innerHTML = newValue
-    }
-  }
-}
-
-launch(OldCounter, 'OldCounter')
-</code></pre>
-<p>can be written as the following functional component:</p>
-<pre><code class="language-javascript">import { load, html } from 'emmy-dom'
-
-function counter () {
-  const [count, setCount] = this.useState(0)
-  const [word, setWord] = this.useState('a')
-
-  this.useEffect(() =&gt; {
-    const handleClick = () =&gt; setCount(count() + 1)
-    this.querySelector('#plusButton').addEventListener('click', handleClick)
-
-    const handleWord = () =&gt; setWord('a' + word())
-    this.querySelector('#wordButton').addEventListener('click', handleWord)
-  }, ['didMount'])
-
-  return () =&gt; html\`
-    &lt;div class='flex flex-col justify-center items-center space-y-3 text-center w-full h-full'&gt;
-      &lt;h1 class='text-3xl font-bold'&gt;Counter&lt;/h1&gt;
-      &lt;h3 class='text-3xl font-bold'&gt;\${count()}&lt;/h3&gt;
-      &lt;h3 class='text-3xl font-bold'&gt;\${word()}&lt;/h3&gt;
-      &lt;button id='plusButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;
-        Increment
-      &lt;/button&gt;
-      &lt;button id='wordButton' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'&gt;
-        Word Change
-      &lt;/button&gt;
-    &lt;/div&gt;
-  \`
-}
-
-load(counter, 'Counter')
-</code></pre>
-</section>`
   
       
     function app() {
@@ -302,7 +106,8 @@ load(counter, 'Counter')
     <Header></Header>
     <Route href='/' to='Home'></Route>
     <Route href='/docs' to='Docs'></Route>
-    <Route href='/documentation' to='Markdown'></Route>
+    <Route href='/documentation' to='Index'></Route>
+    <Route href='/documentation/rails' to='Rails'></Route>
     <Route href='/404' to='Code404'></Route>
     <Route href='/status' to='Status'></Route>
     <Router></Router>
@@ -426,18 +231,19 @@ load(counter, 'Counter')
       element.connectedCallback()
     })
   
-    function row() {
-  return html`
-    <li class='py-3 sm:py-4 justify-between space-x-3 rtl:space-x-reverse flex items-center gap-5'>
-      <p class='text-sm font-semibold text-gray-900 truncate dark:text-white'>
-        ${this.innerHTML}
-      </p>
-      <Pill type='${this.getAttribute("status")}'></Pill>
-    </li>
-  `;
+    function index() {
+  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", Emmy.markdown.index;
 }
-    load(row, 'Row')
-    document.querySelectorAll('emmy-row').forEach((element) => {
+    load(index, 'Index')
+    document.querySelectorAll('emmy-index').forEach((element) => {
+      element.connectedCallback()
+    })
+  
+    function rails() {
+  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", Emmy.markdown.rails;
+}
+    load(rails, 'Rails')
+    document.querySelectorAll('emmy-rails').forEach((element) => {
       element.connectedCallback()
     })
   
@@ -586,11 +392,18 @@ load(counter, 'Counter')
       element.connectedCallback()
     })
   
-    function markdown() {
-  return this.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", Emmy.md;
+    function row() {
+  return html`
+    <li class='py-3 sm:py-4 justify-between space-x-3 rtl:space-x-reverse flex items-center gap-5'>
+      <p class='text-sm font-semibold text-gray-900 truncate dark:text-white'>
+        ${this.innerHTML}
+      </p>
+      <Pill type='${this.getAttribute("status")}'></Pill>
+    </li>
+  `;
 }
-    load(markdown, 'Markdown')
-    document.querySelectorAll('emmy-markdown').forEach((element) => {
+    load(row, 'Row')
+    document.querySelectorAll('emmy-row').forEach((element) => {
       element.connectedCallback()
     })
   
