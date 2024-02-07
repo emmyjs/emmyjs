@@ -13,3 +13,10 @@ export function rails () {
 }
 
 load(rails, 'Rails')
+
+export function vite () {
+  this.className = 'flex flex-col justify-center items-center text-center w-full h-fit box-border'
+  return Emmy.markdown.vite
+}
+
+load(vite, 'Vite')

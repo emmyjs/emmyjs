@@ -220,3 +220,4 @@ load(counter, 'Counter')
 Might be useful to you. Give it a try! 🚀
 
 - [Ruby on Rails with Emmy.js](/documentation/rails)
+- [Vite with Emmy.js](/documentation/vite)
