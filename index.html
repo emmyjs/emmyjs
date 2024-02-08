@@ -111,12 +111,12 @@
       
     function about() {
   return this.className = "flex flex-col justify-between items-center text-center w-full gap-6", html`
-    <main class='flex flex-col justify-center items-center gap-8'>
+    <main class='flex flex-col justify-center items-center gap-8 max-w-[80%] lg:max-w-full'>
       <h1 class='text-3xl md:text-5xl drop-shadow-lg font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Our Story</h1>
       <section class='flex flex-col justify-center items-center gap-6 lg:max-w-[70%]'>
         <h2 class='text-2xl drop-shadow-lg font-semibold text-emerald-600 dark:text-emerald-300'>The Beginning</h2>
-        <article class='flex flex-row justify-center items-center gap-6'>
-          <figure class='w-full flex flex-col justify-left items-center gap-2'>
+        <article class='flex flex-col md:flex-row justify-center items-center gap-6'>
+          <figure class='w-full flex flex-col justify-left items-center gap-2 hidden md:block'>
             <img src='./first-emmyjs.png' alt='First Emmy.js landing page' class='rounded-lg shadow-lg'>
             <figcaption>First Emmy.js landing page</figcaption>
           </figure>
@@ -130,11 +130,15 @@
             <p class='text-xl text-left'>
               The <strong class='drop-shadow-lg font-semibold text-purple-600 dark:text-purple-300'>functional approach</strong> to web components was a hit, and the project grew to be a npm package and a growing community.
           </div>
+          <figure class='w-full flex flex-col justify-left items-center gap-2 md:hidden'>
+            <img src='./first-emmyjs.png' alt='First Emmy.js landing page' class='rounded-lg shadow-lg'>
+            <figcaption>First Emmy.js landing page</figcaption>
+          </figure>
         </article>
       </section>
       <section class='flex flex-col justify-center items-center gap-6 lg:max-w-[70%]'>
         <h2 class='text-2xl drop-shadow-lg font-semibold text-emerald-600 dark:text-emerald-300'>The Team</h2>
-        <article class='flex flex-row justify-center items-center gap-6'>
+        <article class='flex flex-col md:flex-row justify-center items-center gap-6'>
           <div class='flex flex-col items-start gap-2'>
             <p class='text-xl text-left'>
               Emmy.js is a project by <a href='https://www.linkedin.com/in/eanorambuena/' target='_blank' rel='noopener noreferrer'>Emmanuel Norambuena</a>, a <strong class='drop-shadow-lg font-semibold text-purple-600 dark:text-purple-300'>software engineer</strong> with a passion for creating simple tools.
