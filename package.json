@@ -9,9 +9,11 @@
     "preview": "vite preview",
     "watch": "watch 'npm run ssr' ./app",
     "ssr": "bun main.js",
+    "co": "npm run ssr && git add . && sui-mono commit && git push",
     "prod": "npm run ssr && npm run build && npm run preview"
   },
   "devDependencies": {
+    "@s-ui/mono": "2.45.0",
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.10",
     "autoprefixer": "10.4.16",
