@@ -16,13 +16,13 @@ export function app () {
   this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border'
 
   return html`
-    <Header></Header>
-    <Route href='/' to='Home'></Route>
-    <Route href='/docs' to='Docs'></Route>
+    <Header />
+    <Route href='/' to='Home' />
+    <Route href='/docs' to='Docs' />
     ${Emmy.markdownRoutes}
-    <Route href='/404' to='Code404'></Route>
-    <Route href='/status' to='Status'></Route>
-    <Router></Router>
+    <Route href='/404' to='Code404' />
+    <Route href='/status' to='Status' />
+    <Router />
   `
 }
 

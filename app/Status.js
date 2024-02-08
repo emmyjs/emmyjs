@@ -11,11 +11,11 @@ export function status() {
       <Row status='stable'>Functional Components</Row>
       <Row status='stable'>Declarative props</Row>
       <Row status='stable'>Emmy Hooks</Row>
+      <Row status='stable'>Auto-close tags</Row>
       <Row status='experimental'>Emmy Router: Routes</Row>
       <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>
       <Row status='planned'>Server-side rendering</Row>
-      <Row status='planned'>Auto-close tags</Row>
     </ul>
     <h2 class='text-2xl font-bold mt-8'>Statuses legend</h2>
     <ul role='list' class='max-w-lg md:max-w-4xl divide-y divide-gray-200 dark:divide-gray-700'>

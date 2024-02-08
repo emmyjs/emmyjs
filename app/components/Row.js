@@ -7,7 +7,7 @@ export function row({ props }) {
       <p class='text-sm font-semibold text-gray-900 truncate dark:text-white'>
         ${this.innerHTML}
       </p>
-      <Pill type='${props().status()}'></Pill>
+      <Pill type='${props().status()}' />
     </li>
   `
 }
