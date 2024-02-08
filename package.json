@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm run ssr && vite",
+    "dev": "concurrently --raw 'npm run watch' 'vite'",
     "build": "vite build",
     "preview": "vite preview",
+    "watch": "watch 'npm run ssr' ./app",
     "ssr": "bun main.js",
     "prod": "npm run ssr && npm run build && npm run preview"
   },
@@ -14,9 +15,11 @@
     "@tailwindcss/forms": "0.5.7",
     "@tailwindcss/typography": "0.5.10",
     "autoprefixer": "10.4.16",
+    "concurrently": "8.2.2",
     "postcss": "8.4.31",
     "tailwindcss": "3.3.5",
-    "vite": "5.0.10"
+    "vite": "5.0.10",
+    "watch": "1.0.2"
   },
   "dependencies": {
     "emmy-dom": "1.0.0",

@@ -15,6 +15,7 @@ const Emmy = {}
 
 await saveMarkdown(Emmy, Object.keys(markdown))
 
+console.log('Building app...')
 build({
   app: App,
   dependencies: /*javascript*/`

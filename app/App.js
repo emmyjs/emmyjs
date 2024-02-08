@@ -1,4 +1,4 @@
-import { load, html, capitalizeFirstLetter } from 'emmy-dom/dist/server.js'
+import { load, html } from 'emmy-dom/dist/server.js'
 import './Home.js'
 import './Docs.js'
 import './Status.js'
