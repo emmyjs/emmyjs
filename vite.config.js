@@ -8,7 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         docs: resolve(__dirname, 'index.html'),
         status: resolve(__dirname, 'index.html'),
-        documentation: resolve(__dirname, 'index.html')
+        documentation: resolve(__dirname, 'index.html'),
       }
     }
   }

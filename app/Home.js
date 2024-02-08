@@ -6,13 +6,13 @@ export function home () {
 
   return html`
     <main class='flex flex-col justify-center items-center gap-4'>
-      <h1 class='text-3xl font-bold'>Hello from Emmy.js!</h1>
+      <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Hello from Emmy.js!</h1>
       <p class='text-xl'>
         Run <code style='font-family: source-code-pro, Menlo, Monaco, Consolas'>
           npm install emmy-dom
         </code> and start building your app!
       </p>
-      <a href='/docs' class='inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white'>
+      <a href='/getting-started' class='inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white'>
         <img src='/logo.png' alt='Emmy.js logo' class='w-6 h-6 mr-2'>
         <span class='w-full'>Get started with Emmy.js</span>
         <svg class='w-4 h-4 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>

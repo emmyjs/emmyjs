@@ -1,4 +1,5 @@
 import { load, html } from 'emmy-dom/dist/server.js'
+import './About.js'
 import './Home.js'
 import './Docs.js'
 import './Status.js'
@@ -18,10 +19,12 @@ export function app () {
   return html`
     <Header />
     <Route href='/' to='Home' />
+    <Route href='/our-story' to='About' />
+    <Route href='/getting-started' to='Docs' />
     <Route href='/docs' to='Docs' />
+    <Route href='/status' to='Status' />
     ${Emmy.markdownRoutes}
     <Route href='/404' to='Code404' />
-    <Route href='/status' to='Status' />
     <Router />
   `
 }

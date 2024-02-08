@@ -1,4 +1,5 @@
 import { build } from 'emmy-dom/dist/server.js'
+import { about } from './app/About.js'
 import { app, App } from './app/App.js'
 import { counter } from './app/components/Counter.js'
 import { header } from './app/components/Header.js'
@@ -25,7 +26,7 @@ build({
     import 'toastify-js/src/toastify.css'
   `,
   generators: {
-    app, docs, home, ...markdown, status,
+    about, app, docs, home, ...markdown, status,
     counter, header, pill, row, underConstruction
   },
   template: './template.html'

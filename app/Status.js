@@ -5,7 +5,7 @@ export function status() {
   this.className = 'flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4'
 
   return html`
-    <h1 class='text-4xl font-bold'>Features Status</h1>
+    <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Features Status</h1>
     <ul role='list' class='max-w-lg divide-y divide-gray-200 dark:divide-gray-700'>
       <Row status='stable'>Class components</Row>
       <Row status='stable'>Functional Components</Row>
