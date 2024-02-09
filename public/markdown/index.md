@@ -115,25 +115,6 @@ function counter({ el }) {
 load(counter, 'Counter')
 ```
 
-## Emmy Router
-Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:
-```javascript
-import { load, Router, Route, html } from 'emmy-dom'
-
-load('/home.html', 'Home')
-load('/about.html', 'About')
-
-const app = () => html`
-  <div>
-    <Route path='/' component='Home' />
-    <Route path='/about' component='About' />
-    <Router />
-  </div>
-`
-
-load(app, 'App')
-```
-
 ## Why Functional Components?
 Functional components are easier to write than class components. For example, the following class component:
 ```javascript
@@ -158,14 +139,13 @@ class OldCounter extends LightComponent {
           Word Change
         </button>
       </div>
-
     `, (component) => {
-      component.querySelector('#plusButton').onclick = () => {
+      component.querySelector('#plusButton').addEventListener('click', () => {
         componentsetAttribute('counter', parseInt(component.getAttribute('counter')) + 1)
-      }
-      component.querySelector('#wordButton').onclick = () => {
+      })
+      component.querySelector('#wordButton').addEventListener('click', () => {
         component.setAttribute('word', 'a' + component.getAttribute('word'))
-      }
+      })
     })
   }
 
@@ -257,14 +237,34 @@ You can set props using the `el.props` setter. The following example shows how t
 ```javascript
 import { load, html } from 'emmy-dom'
 
-function helloWorld({ el }) {
+function helloWorld({ el, props }) {
   el.props = { name: 'World' }
-  return html`<h1>Hello ${el.props().name()}!</h1>`
+  return html`<h1>Hello ${props().name()}!</h1>`
 }
 
 load(helloWorld, 'HelloWorld')
 ```
 This do not modify the other props passed to the component. It only adds or modifies the props you set.
+
+## Emmy Router
+Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:
+```javascript
+import { load, Router, Route, html } from 'emmy-dom'
+
+load('/home.html', 'Home')
+load('/about.html', 'About')
+
+const app = () => html`
+  <div>
+    <Route path='/' component='Home' />
+    <Route path='/about' component='About' />
+    <Router />
+  </div>
+`
+
+load(app, 'App')
+```
+You can add `onclick=route(event)` attribute to any anchor tag to navigate to the specified route as a single page application. However, SPA Navigation is <strong>UNESTABLE</strong> and <strong>NOT RECOMMENDED</strong> for production yet.
 
 <hr>
 Might be useful to you. Give it a try! 🚀
