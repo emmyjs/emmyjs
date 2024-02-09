@@ -1,5 +1,5 @@
 # emmy-dom
-Emmy.js is a JavaScript library for building user interfaces. It is inspired by React.js and Astro
+Emmy.js is a JavaScript library for building user interfaces. Inspired by React.js, it uses the platform's native APIs to render components, in a declarative way.
 
 ## Functional Components
 You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:
@@ -64,11 +64,11 @@ Emmy Hooks are inspired by React Hooks. You can use them to add state to your fu
 ```javascript
 import { load, html } from 'emmy-dom'
 
-function counter() {
-  const [count, setCount] = this.useState(0)
+function counter({ el }) {
+  const [count, setCount] = el.useState(0)
 
-  this.useEffect(() => {
-    this.querySelector('#increment').addEventListener('click', () => {
+  el.useEffect(() => {
+    el.querySelector('#increment').addEventListener('click', () => {
       setCount(count() + 1)
     })
   }, ['didMount'])
@@ -88,16 +88,16 @@ load(counter, 'Counter')
 ```javascript
 import { load, html } from 'emmy-dom'
 
-function Counter() {
+function counter({ el }) {
   const [count, setCount] = useState(0)
 
-  this.useEffect(() => {
-    this.querySelector('#increment').addEventListener('click', () => {
+  el.useEffect(() => {
+    el.querySelector('#increment').addEventListener('click', () => {
       setCount(count() + 1)
     })
   }, ['didMount'])
 
-  this.useEffect(() => {
+  el.useEffect(() => {
     console.log('Count changed to', count())
   }, [count])
 
@@ -109,7 +109,7 @@ function Counter() {
   `
 }
 
-load(Counter, 'Counter')
+load(counter, 'Counter')
 ```
 
 ## Emmy Router
@@ -124,7 +124,7 @@ const app = () => html`
   <div>
     <Route path='/' component='Home' />
     <Route path='/about' component='About' />
-    <Router></Router>
+    <Router />
   </div>
 `
 
@@ -186,16 +186,16 @@ can be written as the following functional component:
 ```javascript
 import { load, html } from 'emmy-dom'
 
-function counter () {
-  const [count, setCount] = this.useState(0)
-  const [word, setWord] = this.useState('a')
+function counter ({ el }) {
+  const [count, setCount] = el.useState(0)
+  const [word, setWord] = el.useState('a')
 
-  this.useEffect(() => {
+  el.useEffect(() => {
     const handleClick = () => setCount(count() + 1)
-    this.querySelector('#plusButton').addEventListener('click', handleClick)
+    el.querySelector('#plusButton').addEventListener('click', handleClick)
 
     const handleWord = () => setWord('a' + word())
-    this.querySelector('#wordButton').addEventListener('click', handleWord)
+    el.querySelector('#wordButton').addEventListener('click', handleWord)
   }, ['didMount'])
 
   return () => html`
@@ -215,6 +215,53 @@ function counter () {
 
 load(counter, 'Counter')
 ```
+
+## Declarative Props
+
+We have beem using `el` to access the component instance (like `this` in class components). You can also get the props passed to the component using `props` property.
+
+The following example shows how to use props in a functional component:
+```javascript
+import { load, html } from 'emmy-dom'
+
+function helloWorld({ props }) {
+  return html`<h1>Hello ${props().name()}!</h1>`
+}
+
+load(helloWorld, 'HelloWorld')
+```
+
+### Declarative Children
+
+We can also get the children of the component using `children` property. The following example shows how to use children in a functional component:
+```javascript
+import { load, html } from 'emmy-dom'
+
+function helloWorld({ children }) {
+  return html`
+    <div>
+      <a href='#'>${children()}</a>
+    </div>
+  `
+}
+
+load(helloWorld, 'HelloWorld')
+```
+
+### Setting Props
+
+You can set props using the `el.props` setter. The following example shows how to set props in a functional component:
+```javascript
+import { load, html } from 'emmy-dom'
+
+function helloWorld({ el }) {
+  el.props = { name: 'World' }
+  return html`<h1>Hello ${el.props().name()}!</h1>`
+}
+
+load(helloWorld, 'HelloWorld')
+```
+This do not modify the other props passed to the component. It only adds or modifies the props you set.
 
 <hr>
 Might be useful to you. Give it a try! 🚀

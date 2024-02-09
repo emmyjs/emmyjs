@@ -11,7 +11,7 @@ export function status() {
       <Row status='stable'>Functional Components</Row>
       <Row status='stable'>Declarative props</Row>
       <Row status='stable'>Emmy Hooks</Row>
-      <Row status='stable'>Auto-close tags</Row>
+      <Row status='experimental'>Auto-close tags</Row>
       <Row status='experimental'>Emmy Router: Routes</Row>
       <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>
