@@ -1,5 +1,8 @@
-# emmy-dom
+# Quick Start with Emmy.js
+
 Emmy.js is a JavaScript library for building user interfaces. Inspired by React.js, it uses the platform's native APIs to render components, in a declarative way.
+
+It's core library `emmy-dom` allows you to create components using functional components, class components, and page components. It also includes hooks and a router to create single page applications.
 
 ## Functional Components
 You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:
@@ -266,5 +269,7 @@ This do not modify the other props passed to the component. It only adds or modi
 <hr>
 Might be useful to you. Give it a try! 🚀
 
-- [Ruby on Rails with Emmy.js](/documentation/rails)
-- [Vite with Emmy.js](/documentation/vite)
+- [Using Emmy.js with command-line interface (CLI) create-emmy](/documentation/cli)
+- [Adding Emmy.js to your Ruby on Rails project 
+<img class="inline h-[3rem]" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain-wordmark.svg" />](/documentation/rails)
+- [Adding Emmy.js to your Vite project <img class="inline h-[1.5rem]" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />](/documentation/vite)

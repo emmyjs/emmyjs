@@ -20,3 +20,10 @@ export function vite () {
 }
 
 load(vite, 'Vite')
+
+export function cli () {
+  this.className = 'flex flex-col justify-center items-center text-center w-full h-fit box-border'
+  return Emmy.markdown.cli
+}
+
+load(cli, 'Cli')

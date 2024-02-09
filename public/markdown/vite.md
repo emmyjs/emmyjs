@@ -3,7 +3,7 @@
 ## Quick Start
 1. Install the `emmy-dom` npm package:
 ```bash
-pnpm i emmy-dom
+npm i emmy-dom
 ```
 
 2. Create a new file called `counter.js` and add the following code:
@@ -34,14 +34,16 @@ load(counter, 'Counter')
 ...
   <body>
     ...
-    <script type="module" src="./counter.js"></script>
+    <emmy-counter></emmy-counter>
+    ...
+    <script type='module' src='./counter.js'></script>
   </body>
 ...
 ```
 
 4. Run your Vite project:
 ```bash
-pnpm dev
+npm run dev
 ```
 
 5. Open your browser and navigate to `http://localhost:3000`. You should see a counter that increments when you click the `+` button.
@@ -51,4 +53,4 @@ That's it! You've successfully added Emmy.js to your Vite project. 🚀
 <hr>
 Might be useful to you. Give it a try! 🚀
 
-- [Quick Start](/documentation)
+- [Quick Start with Emmy.js](/documentation)
