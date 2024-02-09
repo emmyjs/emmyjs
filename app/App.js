@@ -8,7 +8,6 @@ import { saveDocumentationRoutes } from '../emmydocs.js'
 import * as markdown from './Markdown.js'
 
 const Emmy = {}
-
 saveDocumentationRoutes(Emmy, Object.keys(markdown))
 
 load('/Code404.html', 'Code404')

@@ -1,4 +1,5 @@
 import { load, html } from 'emmy-dom/dist/server.js'
+import './Search.js'
 
 export function header () {
   const [hidden, setHidden] = this.useState(true)
@@ -23,6 +24,7 @@ export function header () {
           <img class='dark:hidden h-8 w-8 mr-3' src='/android-chrome-512x512.png' alt='Emmy.js logo'>
           <span class='self-center text-2xl font-semibold whitespace-nowrap'>Emmy.js</span>
         </a>
+        <Search />
         <button data-collapse-toggle='navbar-default' type='button' class='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600' aria-controls='navbar-default' aria-expanded='false'>
           <span class='sr-only'>Open main menu</span>
           <svg class='w-5 h-5' aria-hidden='true' fill='none' viewBox='0 0 17 14'>

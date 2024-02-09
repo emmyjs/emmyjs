@@ -1,6 +1,6 @@
 import { load, html } from 'emmy-dom/dist/server.js'
 
-export function pill() {
+export function pill () {
   let type = this.getAttribute('type')
 
   const colors = {
