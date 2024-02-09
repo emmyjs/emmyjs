@@ -1,16 +1,18 @@
 import { load, html } from 'emmy-dom/dist/server.js'
 import './components/Counter.js'
 
-export function home () {
-  this.className = 'flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4'
+export function home ({ el }) {
+  el.className = 'flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4'
 
   return html`
     <main class='flex flex-col justify-center items-center gap-6'>
       <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Hello from Emmy.js!</h1>
-      <section class='flex flex-col gap-4 items-center'>
-        <h2 class='text-2xl font-bold text-gray-800 dark:text-gray-200'>Thank you for the <strong class='text-emerald-600 dark:text-emerald-300'>1000+</strong> downloads on npm!</h2>
-        <img class='h-[9rem]' alt='downloads' src='https://camo.githubusercontent.com/797c23189a69f45f9359dc3bf0d4caf80cdcbaf69331b3a8898f3d7a1aad3ca5/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64742f656d6d792d646f6d' data-canonical-src='https://img.shields.io/npm/dt/emmy-dom' style='max-width: 100%;'>
-      </section>
+      <a href='https://www.npmjs.com/package/emmy-dom' class='flex flex-col items-center gap-4'>
+        <section id='confetti' class='flex flex-col gap-4 items-center'>
+          <h2 class='text-2xl font-bold text-gray-800 dark:text-gray-200'>Thank you for the <strong class='text-emerald-600 dark:text-emerald-300'>1000+</strong> downloads on npm!</h2>
+          <img class='w-[90%]' alt='downloads' src='https://camo.githubusercontent.com/797c23189a69f45f9359dc3bf0d4caf80cdcbaf69331b3a8898f3d7a1aad3ca5/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64742f656d6d792d646f6d' data-canonical-src='https://img.shields.io/npm/dt/emmy-dom' style='max-width: 100%;'>
+        </section>
+      </a>
       <p class='text-xl'>
         Run <code style='font-family: source-code-pro, Menlo, Monaco, Consolas'>
           npm install emmy-dom
