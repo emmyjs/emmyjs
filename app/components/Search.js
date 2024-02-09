@@ -9,12 +9,13 @@ export function search ({ el }) {
 
   el.useEffect(() => {
     let miniSearch = new MiniSearch({
-      fields: ['id', 'content', 'url'], // fields to index for full-text search
-      storeFields: ['content', 'url'] // fields to return with search results
+      fields: ['id', 'title', 'content', 'url'], // fields to index for full-text search
+      storeFields: ['title', 'content', 'url'] // fields to return with search results
     })
     const documents = Object.entries(Emmy.markdown ?? {}).map(([key, value]) => {
       return {
         id: key,
+        title: value.match(/<h1(.*?)>(.*?)<\/h1>/).slice(2).join(''),
         url: (key === 'index') ? '/documentation' : `/documentation/${key}`,
         content: value
       }
@@ -65,22 +66,18 @@ export function search ({ el }) {
           <div class='p-4 md:p-5'>
             <p class='text-gray-500 dark:text-gray-400 mb-4'>${results().length} ${results().length === 1 ? 'result' : 'results'} found</p>
             <ul class='space-y-4 mb-4'>
-              ${results().map(result => {
-                // get only inner content of h1 tag
-                const h1Content = result.content.match(/<h1(.*?)>(.*?)<\/h1>/).slice(2).join('')
-                return html`
-                  <li>
-                    <a href='${result.url}' class='inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500'>                        
-                      <div class='block'>
-                        <div class='w-full text-lg font-semibold'>${h1Content}</div>
-                      </div>
-                      <svg class='w-4 h-4 ms-3 rtl:rotate-180 text-gray-500 dark:text-gray-400' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
-                        <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
-                      </svg>
-                    </a>
-                  </li>
-                `
-              }).join('')}
+              ${results().map(result => html`
+                <li>
+                  <a href='${result.url}' class='inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500'>                        
+                    <div class='block'>
+                      <div class='w-full text-lg font-semibold'>${result.title}</div>
+                    </div>
+                    <svg class='w-4 h-4 ms-3 rtl:rotate-180 text-gray-500 dark:text-gray-400' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
+                      <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
+                    </svg>
+                  </a>
+                </li>
+              `).join('')}
             </ul>
           </div>
         </article>
