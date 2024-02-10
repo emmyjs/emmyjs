@@ -1,28 +1,24 @@
-import { build } from 'emmy-dom/dist/server.js'
-import { about } from './app/About.js'
-import { app, App } from './app/App.js'
-import { counter } from './app/components/Counter.js'
-import { header } from './app/components/Header.js'
-import { pill } from './app/components/Pill.js'
-import { row } from './app/components/Row.js'
-import { search } from './app/components/Search.js'
-import { underConstruction } from './app/components/UnderConstruction.js'
-import { docs } from './app/Docs.js'
-import { home } from './app/Home.js'
-import { status } from './app/Status.js'
-import { saveMarkdown } from './emmydocs.js'
-import * as markdown from './app/Markdown.js'
-
-const Emmy = {}
+import { build, javascript, Emmy } from 'emmy-dom/dist/server'
+import { about } from './app/About'
+import { app, App } from './app/App'
+import { counter } from './app/components/Counter'
+import { header } from './app/components/Header'
+import { pill } from './app/components/Pill'
+import { row } from './app/components/Row'
+import { search } from './app/components/Search'
+import { underConstruction } from './app/components/UnderConstruction'
+import { docs } from './app/Docs'
+import { home } from './app/Home'
+import { status } from './app/Status'
+import { saveMarkdown } from './emmydocs'
+import * as markdown from './app/Markdown'
 
 await saveMarkdown(Emmy, Object.keys(markdown))
 
-console.log('Building app...')
 build({
   app: App,
-  dependencies: /*javascript*/`
-    const Emmy = ${JSON.stringify(Emmy)}
-    import { load, html, Router, Route } from 'emmy-dom'
+  dependencies: javascript`
+    import { load, html, jsx, Router, Route, Emmy } from 'emmy-dom'
     import Toastify from 'toastify-js'
     import 'toastify-js/src/toastify.css'
     import MiniSearch from 'minisearch'

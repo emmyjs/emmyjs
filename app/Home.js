@@ -1,5 +1,5 @@
-import { load, html } from 'emmy-dom/dist/server.js'
-import './components/Counter.js'
+import { load, html } from 'emmy-dom/dist/server'
+import './components/Counter'
 
 export function home ({ el }) {
   el.className = 'flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4'

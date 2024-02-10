@@ -1,7 +1,7 @@
-import { load, html } from 'emmy-dom/dist/server.js'
+import { load, html } from 'emmy-dom/dist/server'
 
-export function docs () {
-  this.className = 'flex flex-col justify-center items-center text-center w-full h-fit box-border'
+export function docs ({ el }) {
+  el.className = 'flex flex-col justify-center items-center text-center w-full h-fit box-border'
 
   return html`
     <div class='px-4 mx-auto h-fit' style='top: -1rem; box-sizing: border-box; width: 70%'>

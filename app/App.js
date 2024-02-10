@@ -1,19 +1,18 @@
-import { load, html } from 'emmy-dom/dist/server.js'
-import './About.js'
-import './Home.js'
-import './Docs.js'
-import './Status.js'
-import './components/Header.js'
-import { saveDocumentationRoutes } from '../emmydocs.js'
-import * as markdown from './Markdown.js'
+import { load, html, Emmy } from 'emmy-dom/dist/server'
+import './About'
+import './Home'
+import './Docs'
+import './Status'
+import './components/Header'
+import { saveDocumentationRoutes } from '../emmydocs'
+import * as markdown from './Markdown'
 
-const Emmy = {}
 saveDocumentationRoutes(Emmy, Object.keys(markdown))
 
 load('/Code404.html', 'Code404')
 
-export function app () {
-  this.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border'
+export function app ({ el }) {
+  el.className = 'flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border'
 
   return html`
     <Header />

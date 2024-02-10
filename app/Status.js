@@ -1,8 +1,8 @@
-import { load, html } from 'emmy-dom/dist/server.js'
-import './components/Row.js'
+import { load, html } from 'emmy-dom/dist/server'
+import './components/Row'
 
-export function status() {
-  this.className = 'flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4'
+export function status({ el }) {
+  el.className = 'flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4'
 
   return html`
     <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Features Status</h1>
@@ -11,7 +11,8 @@ export function status() {
       <Row status='stable'>Functional Components</Row>
       <Row status='stable'>Declarative props</Row>
       <Row status='stable'>Emmy Hooks</Row>
-      <Row status='experimental'>Auto-close tags</Row>
+      <Row status='stable'>Auto-close tags</Row>
+      <Row status='experimental'>JSX in Client Components</Row>
       <Row status='experimental'>Emmy Router: Routes</Row>
       <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>

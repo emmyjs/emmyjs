@@ -1,17 +1,17 @@
-import { load, html } from 'emmy-dom/dist/server.js'
-import './Search.js'
+import { load, html } from 'emmy-dom/dist/server'
+import './Search'
 
-export function header () {
-  const [hidden, setHidden] = this.useState(true)
+export function header ({ el }) {
+  const [hidden, setHidden] = el.useState(true)
 
-  this.useEffect(() => {
-    this.querySelector('[data-collapse-toggle]').addEventListener('click', () => {
+  el.useEffect(() => {
+    el.querySelector('[data-collapse-toggle]').addEventListener('click', () => {
       setHidden(!hidden())
     })
   }, ['didMount'])
 
-  this.useEffect(() => {
-    const target = this.querySelector('#navbar-default')
+  el.useEffect(() => {
+    const target = el.querySelector('#navbar-default')
     target.setAttribute('aria-expanded', !hidden())
     target.classList = hidden() ? 'hidden w-full md:block md:w-auto' : 'w-full md:block md:w-auto'
   }, [hidden])

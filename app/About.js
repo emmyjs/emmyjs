@@ -1,7 +1,7 @@
-import { load, html } from 'emmy-dom/dist/server.js'
+import { load, html } from 'emmy-dom/dist/server'
 
-export function about () {
-  this.className = 'flex flex-col justify-between items-center text-center w-full gap-6'
+export function about ({ el }) {
+  el.className = 'flex flex-col justify-between items-center text-center w-full gap-6'
 
   return html`
     <main class='flex flex-col justify-center items-center gap-8 max-w-[80%] lg:max-w-full'>

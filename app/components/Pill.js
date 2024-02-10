@@ -1,7 +1,8 @@
-import { load, html } from 'emmy-dom/dist/server.js'
+import { load } from 'emmy-dom/dist/server'
 
-export function pill () {
-  let type = this.getAttribute('type')
+export function pill ({ el, props }) {
+  const { type } = props()
+  if (!type()) return ''
 
   const colors = {
     unstable: 'text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-yellow-900 text-yellow-300',
@@ -10,11 +11,11 @@ export function pill () {
     experimental: 'text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300',
     planned: 'text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-blue-900 text-blue-300'
   }
-  let color = colors[type.trim()]
+  let color = colors[type().trim()]
 
-  this.className = `${color} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`
+  el.className = `${color} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`
 
-  return type.charAt(0).toUpperCase() + type.slice(1)
+  return type().charAt(0).toUpperCase() + type().slice(1)
 }
 
 load(pill, 'Pill')
