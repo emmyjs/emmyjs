@@ -439,10 +439,7 @@
   
     function counter({ el }) {
   el.className = "flex flex-col justify-center items-center space-y-3";
-  const [counter, setCounter] = el.useState(0);
-  return el.useEffect(() => {
-    el.querySelector("#plusButton").addEventListener("click", () => setCounter(counter() + 1)), el.querySelector("#minusButton").addEventListener("click", () => setCounter(counter() - 1));
-  }, ["didMount"]), el.useEffect(() => {
+  const [counter, setCounter] = el.useState(0), spawnToast = (position) => {
     Toastify({
       text: `Counter value changed to ${counter()}`,
       style: {
@@ -451,9 +448,17 @@
         borderRadius: "10px"
       },
       gravity: "bottom",
+      position,
       duration: 600
     }).showToast();
-  }, [counter]), () => html`
+  }, increaseCounter = () => {
+    setCounter(counter() + 1), spawnToast("right");
+  }, decreaseCounter = () => {
+    setCounter(counter() - 1), spawnToast("left");
+  };
+  return el.useEffect(() => {
+    el.querySelector("#plusButton").addEventListener("click", increaseCounter), el.querySelector("#minusButton").addEventListener("click", decreaseCounter);
+  }, ["didMount"]), () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id='counter'>${counter()}</p>
     <div class='flex flex-row justify-center items-center space-x-2'>

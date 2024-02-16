@@ -6,12 +6,7 @@ export function counter ({ el }) {
   el.className = 'flex flex-col justify-center items-center space-y-3'
   const [counter, setCounter] = el.useState(0)
 
-  el.useEffect(() => {
-    el.querySelector('#plusButton').addEventListener('click', () => setCounter(counter() + 1))
-    el.querySelector('#minusButton').addEventListener('click', () => setCounter(counter() - 1))
-  }, ['didMount'])
-
-  el.useEffect(() => {
+  const spawnToast = (position) => {
     Toastify({
       text: `Counter value changed to ${counter()}`,
       style: {
@@ -20,9 +15,25 @@ export function counter ({ el }) {
         borderRadius: '10px',
       },
       gravity: 'bottom',
+      position: position,
       duration: 600
     }).showToast()
-  }, [counter])
+  }
+
+  const increaseCounter = () => {
+    setCounter(counter() + 1)
+    spawnToast('right')
+  }
+
+  const decreaseCounter = () => {
+    setCounter(counter() - 1)
+    spawnToast('left')
+  }
+
+  el.useEffect(() => {
+    el.querySelector('#plusButton').addEventListener('click', increaseCounter)
+    el.querySelector('#minusButton').addEventListener('click', decreaseCounter)
+  }, ['didMount'])
 
   return () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
