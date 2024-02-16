@@ -27,8 +27,8 @@
         <emmy-search state="{'rerenderCount':0}" emmy-hydratation="true">
     <form class="hidden lg:block">
       <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-      <fieldset class="flex flex-row border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <input type="search" id="search" placeholder="Search documentation..." required="" class="block px-4 ps-10 text-sm text-gray-900 border border-gray-50 rounded-lg bg-gray-50 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:border-gray-700"></input>
+      <fieldset class="flex flex-row rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-100 focus:border-blue-500 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <input type="search" id="search" placeholder="Search documentation..." required="" class="block px-4 ps-10 text-sm border-none rounded-lg text-gray-900 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-none focus:outline-none focus:border-none"></input>
         <button type="submit" class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4">
           <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
@@ -112,7 +112,7 @@
           npm install emmy-dom
         </code> and start building your app!
       </p>
-      <a href="/getting-started" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-500 bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+      <a href="/getting-started" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-500 bg-gray-50 border border-gray-300 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white">
         <img class="hidden dark:block w-6 h-6 mr-2" src="/logo.png" alt="Emmy.js logo"></img>
         <img class="dark:hidden w-6 h-6 mr-2" src="/android-chrome-512x512.png" alt="Emmy.js logo"></img>
         <span class="w-full">Get started with Emmy.js</span>
@@ -124,10 +124,10 @@
     <h2 class="text-2xl font-bold">Counter</h2>
     <p id="counter">0</p>
     <div class="flex flex-row justify-center items-center space-x-2">
-      <button id="plusButton" class="font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 bg-gray-200 hover:bg-gray-300 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+      <button id="plusButton" class="font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-4 hover:bg-gray-100 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
         +
       </button>
-      <button id="minusButton" class="font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 bg-gray-200 hover:bg-gray-300 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+      <button id="minusButton" class="font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-4 hover:bg-gray-100 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
         -
       </button>
     </div>
@@ -322,7 +322,7 @@
           npm install emmy-dom
         </code> and start building your app!
       </p>
-      <a href='/getting-started' class='inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-500 bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white'>
+      <a href='/getting-started' class='inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-500 bg-gray-50 border border-gray-300 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white'>
         <img class='hidden dark:block w-6 h-6 mr-2' src='/logo.png' alt='Emmy.js logo'>
         <img class='dark:hidden w-6 h-6 mr-2' src='/android-chrome-512x512.png' alt='Emmy.js logo'>
         <span class='w-full'>Get started with Emmy.js</span>
@@ -457,10 +457,10 @@
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id='counter'>${counter()}</p>
     <div class='flex flex-row justify-center items-center space-x-2'>
-      <button id='plusButton' class='font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 bg-gray-200 hover:bg-gray-300 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>
+      <button id='plusButton' class='font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-4 hover:bg-gray-100 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>
         +
       </button>
-      <button id='minusButton' class='font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none focus:ring-4 bg-gray-200 hover:bg-gray-300 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>
+      <button id='minusButton' class='font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-4 hover:bg-gray-100 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'>
         -
       </button>
     </div>
@@ -581,8 +581,8 @@
   }, ["didMount"]), () => html`
     <form class='hidden lg:block'>
       <label for='search' class='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'>Search</label>
-      <fieldset class='flex flex-row border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
-        <input type='search' id='search' placeholder='Search documentation...' required class='block px-4 ps-10 text-sm text-gray-900 border border-gray-50 rounded-lg bg-gray-50 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:border-gray-700'>
+      <fieldset class='flex flex-row rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-100 focus:border-blue-500 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+        <input type='search' id='search' placeholder='Search documentation...' required class='block px-4 ps-10 text-sm border-none rounded-lg text-gray-900 bg-transparent hover:bg-gray-100 dark:hover:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-none focus:outline-none focus:border-none' />
         <button type='submit' class='text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4'>
           <svg class='w-4 h-4 text-gray-500 dark:text-gray-400' aria-hidden='true' fill='none' viewBox='0 0 20 20'>
             <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z'/>
