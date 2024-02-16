@@ -42,3 +42,4 @@ That's it! You've successfully added Emmy.js to your Ruby on Rails project. 🚀
 Might be useful to you. Give it a try! 🚀
 
 - [Quick Start with Emmy.js](/documentation)
+- [Using Emmy.js with create-emmy](/documentation/cli)
