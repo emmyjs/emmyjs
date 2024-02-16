@@ -269,7 +269,7 @@ You can add `onclick=route(event)` attribute to any anchor tag to navigate to th
 <hr>
 Might be useful to you. Give it a try! 🚀
 
-- [Using Emmy.js with command-line interface (CLI) create-emmy](/documentation/cli)
+- [Using Emmy.js with create-emmy](/documentation/cli)
 - [Adding Emmy.js to your Ruby on Rails project 
 <img class="inline h-[3rem]" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain-wordmark.svg" />](/documentation/rails)
 - [Adding Emmy.js to your Vite project <img class="inline h-[1.5rem]" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />](/documentation/vite)
