@@ -1,4 +1,4 @@
-import { load, html } from 'emmy-dom/dist/server'
+import { load, html } from '@emmy-dom/dist/server'
 import MiniSearch from 'minisearch'
 
 const Emmy = {}
@@ -33,7 +33,7 @@ export function search ({ el }) {
     })
 
     el.querySelector('#close-modal').addEventListener('click', () => setModal(false))
-  }, ['didMount'])
+  }, [])
 
   return () => html`
     <form class='hidden lg:block'>

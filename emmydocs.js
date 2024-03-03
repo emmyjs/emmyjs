@@ -1,4 +1,4 @@
-import { html, capitalizeFirstLetter } from 'emmy-dom/dist/server.js'
+import { html, capitalizeFirstLetter } from '@emmy-dom/dist/server'
 import { marked } from 'marked'
 import { readFileSync } from 'node:fs'
 

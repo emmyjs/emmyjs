@@ -1,4 +1,5 @@
-import { build, javascript, Emmy } from 'emmy-dom/dist/server'
+import 'module-alias/register'
+import { build, javascript, Emmy } from '@emmy-dom/dist/server'
 import { about } from './app/About'
 import { app, App } from './app/App'
 import { counter } from './app/components/Counter'
@@ -18,7 +19,8 @@ await saveMarkdown(Emmy, Object.keys(markdown))
 build({
   app: App,
   dependencies: javascript`
-    import { load, html, jsx, Router, Route, Emmy } from 'emmy-dom'
+    import { load, html, jsx, Router, Route, Emmy, loadGlobalEmmy as lge } from './canary-emmy-dom/dist/index'
+    lge(${JSON.stringify(Emmy)})
     import Toastify from 'toastify-js'
     import 'toastify-js/src/toastify.css'
     import MiniSearch from 'minisearch'

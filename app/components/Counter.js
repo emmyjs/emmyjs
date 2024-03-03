@@ -1,4 +1,4 @@
-import { load, html } from 'emmy-dom/dist/server'
+import { load, html } from '@emmy-dom/dist/server'
 import Toastify from 'toastify-js'
 import 'toastify-js/src/toastify.css'
 
@@ -33,7 +33,7 @@ export function counter ({ el }) {
   el.useEffect(() => {
     el.querySelector('#plusButton').addEventListener('click', increaseCounter)
     el.querySelector('#minusButton').addEventListener('click', decreaseCounter)
-  }, ['didMount'])
+  }, [])
 
   return () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>

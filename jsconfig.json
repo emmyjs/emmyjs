@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@emmy-dom/*": ["canary-emmy-dom/*"]
+    }
+  }
+}

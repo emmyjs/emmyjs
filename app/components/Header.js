@@ -1,4 +1,4 @@
-import { load, html } from 'emmy-dom/dist/server'
+import { load, html } from '@emmy-dom/dist/server'
 import './Search'
 
 export function header ({ el }) {
@@ -8,7 +8,7 @@ export function header ({ el }) {
     el.querySelector('[data-collapse-toggle]').addEventListener('click', () => {
       setHidden(!hidden())
     })
-  }, ['didMount'])
+  }, [])
 
   el.useEffect(() => {
     const target = el.querySelector('#navbar-default')

@@ -1,4 +1,4 @@
-import { load, Emmy } from 'emmy-dom/dist/server'
+import { load, Emmy } from '@emmy-dom/dist/server'
 
 Emmy.markdown = {}
 

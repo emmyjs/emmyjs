@@ -10,7 +10,8 @@
     "watch": "watch 'npm run ssr' ./app",
     "ssr": "bun main.js",
     "co": "npm run ssr && git add . && sui-mono commit && git push",
-    "prod": "npm run ssr && npm run build && npm run preview"
+    "prod": "npm run ssr && npm run build && npm run preview",
+    "lab": "node installCanaryEmmy.js"
   },
   "devDependencies": {
     "@s-ui/mono": "2.45.0",
