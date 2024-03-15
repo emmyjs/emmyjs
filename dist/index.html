@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Emmy.js</title>
+    <meta charset="utf-8">
+    <meta name="viewport"    content="width=device-width,initial-scale=1">
+    <meta name="author"      content="Emmanuel Norambuena">
+    <meta name="title"       content="Emmy.js">
+    <meta name="generator"   content="Emmy.js">
+    <meta name="description" content="Emmy.js is a simple and lightweight JavaScript library for building web applications using Web Components">
+    <meta name="keywords"    content="Emmy.js, Web Components, Functional, library, framework, JavaScript">
+    <meta name="robots"      content="index,follow">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script type="module" crossorigin src="/assets/main-BC2fISM5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DE3-sUnl.css">
+  </head>
+  <body class="antialiased h-screen w-full flex flex-col justify-center items-center dark:bg-slate-900 dark:text-white bg-white text-slate-900">
+    <div class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
+      
+    <emmy-app state="{'rerenderCount':0}" class="flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border">
+    <emmy-header state="{'rerenderCount':0}" emmy-hydratation="true">
+    <nav class="border-gray-200 z-40">
+      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://emmyjs.pages.dev" class="flex items-center">
+          <img class="hidden dark:block h-8 mr-3" src="/logo.png" alt="Emmy.js logo"></img>
+          <img class="dark:hidden h-8 w-8 mr-3" src="/android-chrome-512x512.png" alt="Emmy.js logo"></img>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap">Emmy.js</span>
+        </a>
+        <emmy-search state="{'rerenderCount':0}" emmy-hydratation="true">
+    <form class="hidden lg:block">
+      <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+      <fieldset class="flex flex-row rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-100 focus:border-blue-500 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <input type="search" id="search" placeholder="Search documentation..." required="" class="block px-4 ps-10 text-sm border-none rounded-lg text-gray-900 bg-transparent autofill:bg-transparent hover:bg-gray-100 dark:text-white dark:placeholder-gray-400 dark:hover:bg-gray-700 dark:autofill:bg-transparent"></input>
+        <button type="submit" class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+          </svg>
+        </button>
+      </fieldset>
+    </form>
+    <undefined></undefined>
+    <div id="select-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed absolute top-50 left-50 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <section class="p-4 w-full max-w-md max-h-full">
+        <article class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+              Search results
+            </h3>
+            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="select-modal" id="close-modal">
+              <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <undefined></undefined>
+          <div class="p-4 md:p-5">
+            <p class="text-gray-500 dark:text-gray-400 mb-4">0 results found</p>
+            <ul class="space-y-4 mb-4">
+              
+            </ul>
+          </div>
+        </article>
+      </section>
+    </div>
+  </emmy-search>
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 text-gray-400 hover:bg-gray-700 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path>
+          </svg>
+        </button>
+        <div class="hidden w-50 md:block md:w-auto" id="navbar-default" aria-expanded="false">
+          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:md:bg-gray-900 border-gray-700">
+            <li>
+              <a href="/" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent" aria-current="page">Home</a>
+            </li>
+            <li>
+              <undefined></undefined>
+              <a href="/documentation" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Docs</a>
+            </li>
+            <li>
+              <a href="/our-story" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Our Story</a>
+            </li>
+            <li>
+              <a href="/status" onclick="route(event)" class="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:hover:text-blue-500 hover:bg-gray-700 hover:text-white md:hover:bg-transparent">Status</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </emmy-header>
+    <emmy-route href="/" to="Home"></emmy-route>
+    <emmy-route href="/our-story" to="About"></emmy-route>
+    <emmy-route href="/getting-started" to="Docs"></emmy-route>
+    <emmy-route href="/docs" to="Docs"></emmy-route>
+    <emmy-route href="/status" to="Status"></emmy-route>
+    <emmy-route href="/documentation/cli" to="Cli"></emmy-route>
+<emmy-route href="/documentation" to="Index"></emmy-route>
+<emmy-route href="/documentation/rails" to="Rails"></emmy-route>
+<emmy-route href="/documentation/vite" to="Vite"></emmy-route>
+    <emmy-route href="/404" to="Code404"></emmy-route>
+    <emmy-router class="flex flex-col justify-center items-center space-y-3 text-center w-full h-fit box-border"><emmy-home state="{'rerenderCount':0}" class="flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4">
+    <main class="flex flex-col justify-center items-center gap-6">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed">Hello from Emmy.js!</h1>
+      <a href="https://www.npmjs.com/package/emmy-dom" class="flex flex-col items-center gap-4">
+        <section id="confetti" class="flex flex-col gap-4 items-center">
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Thank you for the <strong class="text-emerald-600 dark:text-emerald-300">1500+</strong> downloads on npm!</h2>
+          <img class="w-[90%]" alt="downloads" src="https://camo.githubusercontent.com/797c23189a69f45f9359dc3bf0d4caf80cdcbaf69331b3a8898f3d7a1aad3ca5/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64742f656d6d792d646f6d" data-canonical-src="https://img.shields.io/npm/dt/emmy-dom" style="max-width: 100%;"></img>
+        </section>
+      </a>
+      <p class="text-xl">
+        Run <code style="font-family: source-code-pro, Menlo, Monaco, Consolas">
+          npm install emmy-dom
+        </code> and start building your app!
+      </p>
+      <a href="/getting-started" class="inline-flex items-center justify-center p-5 text-base font-medium rounded-lg text-gray-500 bg-gray-50 border border-gray-300 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white">
+        <img class="hidden dark:block w-6 h-6 mr-2" src="/logo.png" alt="Emmy.js logo"></img>
+        <img class="dark:hidden w-6 h-6 mr-2" src="/android-chrome-512x512.png" alt="Emmy.js logo"></img>
+        <span class="w-full">Get started with Emmy.js</span>
+        <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+        </svg>
+      </a>
+      <emmy-counter state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3" emmy-hydratation="true">
+    <h2 class="text-2xl font-bold">Counter</h2>
+    <p id="counter">0</p>
+    <div class="flex flex-row justify-center items-center space-x-2">
+      <button id="plusButton" class="font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-4 hover:bg-gray-100 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+        +
+      </button>
+      <button id="minusButton" class="font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-4 hover:bg-gray-100 focus:ring-gray-300 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+        -
+      </button>
+    </div>
+  </emmy-counter>
+      <a href="https://github.com/emmyjs" class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mb-2">
+        <svg class="w-4 h-4 mr-2" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path>
+        </svg>
+        View Emmy.js on GitHub
+      </a>
+    </main>
+    <footer class="dark:text-white text-slate-900 text-center p-6 w-full flex justify-center gap-0 sm:justify-between">
+      <a href="https://github.com/emmyjs/emmyjs" target="_blank" rel="noopener noreferrer" class="inline-block">
+        <svg class="w-4 h-4 mr-2 inline-block" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <p>Made with <span class="text-red-500">♥</span> by <a href="https://www.linkedin.com/in/eanorambuena/" target="_blank" rel="noopener noreferrer">@eanorambuena</a></p>
+    </footer>
+  </emmy-home></emmy-router>
+  </emmy-app>
+  
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/languages/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://emmyjs.pages.dev/dracula-modified.css">
+  </body>
+</html>
