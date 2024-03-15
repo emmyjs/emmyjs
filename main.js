@@ -1,4 +1,3 @@
-import 'module-alias/register'
 import { build, javascript, Emmy } from '@emmy-dom/dist/server'
 import { about } from './app/About'
 import { app, App } from './app/App'
