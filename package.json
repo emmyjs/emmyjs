@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently --raw 'npm run watch' 'vite'",
-    "build": "npm run lab && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "watch": "watch 'npm run ssr' ./app",
     "ssr": "bun main.js",
     "co": "npm run ssr && git add . && sui-mono commit && git push",
-    "prod": "npm run ssr && npm run build && npm run preview",
-    "lab": "node installCanaryEmmy.js"
+    "prod": "npm run ssr && npm run build && npm run preview"
   },
   "devDependencies": {
     "@s-ui/mono": "2.45.0",

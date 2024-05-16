@@ -1,4 +1,4 @@
-import { load, html, Emmy } from '@emmy-dom/dist/server'
+import { load, html, Emmy } from 'emmy-dom/dist/server'
 import './About'
 import './Home'
 import './Docs'
