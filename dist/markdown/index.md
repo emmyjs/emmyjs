@@ -1,11 +1,11 @@
 # Quick Start with Emmy.js
 
-Emmy.js is a JavaScript library for building user interfaces. Inspired by React.js, it uses the platform's native APIs to render components, in a declarative way.
+Emmy.js is a JavaScript library for building user interfaces using functional web components. Inspired by React.js, it uses the platform's native APIs to render components, in a declarative way.
 
 It's core library `emmy-dom` allows you to create components using functional components, class components, and page components. It also includes hooks and a router to create single page applications.
 
 ## Functional Components
-You can use functional components to create components without classes. Functional components are just functions that return a string of HTML code or a function that returns a string of HTML code. The following example shows how to create a functional component:
+You can use functional components to create components without classes. Functional components are just functions that return a HTML code or a function that returns HTML code. The following example shows how to create a functional component:
 ```javascript
 import { load, html } from 'emmy-dom'
 
