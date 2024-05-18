@@ -167,8 +167,7 @@
   
       
     function about({ el }) {
-  el.className = "flex flex-col justify-between items-center text-center w-full gap-6";
-  return html`
+  return el.className = "flex flex-col justify-between items-center text-center w-full gap-6", html`
     <main class='flex flex-col justify-center items-center gap-8 max-w-[80%] lg:max-w-full'>
       <h1 class='text-3xl md:text-5xl drop-shadow-lg font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Our Story</h1>
       <section class='flex flex-col justify-center items-center gap-6 lg:max-w-[70%]'>
@@ -227,8 +226,7 @@
     })
   
     function app({ el }) {
-  el.className = "flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border";
-  return html`
+  return el.className = "flex flex-col justify-space-between space-y-3 text-center w-full h-full box-border", html`
     <Header />
     <Route href='/' to='Home' />
     <Route href='/our-story' to='About' />
@@ -246,8 +244,7 @@
     })
   
     function docs({ el }) {
-  el.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border";
-  return html`
+  return el.className = "flex flex-col justify-center items-center text-center w-full h-fit box-border", html`
     <div class='px-4 mx-auto h-fit' style='top: -1rem; box-sizing: border-box; width: 70%'>
       <div class='bg-gray-100 dark:bg-gray-800 border border-gray-700 rounded-lg p-8 md:p-12 mb-8'>
         <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md bg-gray-700 text-red-400 mb-2'>
@@ -318,8 +315,7 @@
     })
   
     function home({ el }) {
-  el.className = "flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4";
-  return html`
+  return el.className = "flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4", html`
     <main class='flex flex-col justify-center items-center gap-6'>
       <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Hello from Emmy.js!</h1>
       <a href='https://www.npmjs.com/package/emmy-dom' class='flex flex-col items-center gap-4'>
@@ -369,8 +365,7 @@
     })
   
     function cli({ el }) {
-  el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border";
-  return Emmy.markdown.cli;
+  return el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border", Emmy.markdown.cli;
 }
     load(cli, 'Cli')
     document.querySelectorAll('emmy-cli').forEach((element) => {
@@ -378,8 +373,7 @@
     })
   
     function index({ el }) {
-  el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border";
-  return Emmy.markdown.index;
+  return el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border", Emmy.markdown.index;
 }
     load(index, 'Index')
     document.querySelectorAll('emmy-index').forEach((element) => {
@@ -387,8 +381,7 @@
     })
   
     function rails({ el }) {
-  el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border";
-  return Emmy.markdown.rails;
+  return el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border", Emmy.markdown.rails;
 }
     load(rails, 'Rails')
     document.querySelectorAll('emmy-rails').forEach((element) => {
@@ -396,8 +389,7 @@
     })
   
     function vite({ el }) {
-  el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border";
-  return Emmy.markdown.vite;
+  return el.className = "flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border", Emmy.markdown.vite;
 }
     load(vite, 'Vite')
     document.querySelectorAll('emmy-vite').forEach((element) => {
@@ -405,8 +397,7 @@
     })
   
     function status({ el }) {
-  el.className = "flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4";
-  return html`
+  return el.className = "flex flex-col justify-center items-center text-center w-full h-fit mb-[10%] gap-4", html`
     <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Features Status</h1>
     <ul role='list' class='max-w-lg divide-y divide-gray-200 dark:divide-gray-700'>
       <Row status='stable'>Class components</Row>
@@ -419,6 +410,7 @@
       <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>
       <Row status='planned'>Server-side rendering</Row>
+      <Row status='experimental'>CLI create-emmy</Row>
     </ul>
     <h2 class='text-2xl font-bold mt-8'>Statuses legend</h2>
     <ul role='list' class='max-w-lg md:max-w-4xl divide-y divide-gray-200 dark:divide-gray-700'>
@@ -472,17 +464,13 @@
       duration: 600
     }).showToast();
   }, increaseCounter = () => {
-    setCounter(counter() + 1);
-    spawnToast("right");
+    setCounter(counter() + 1), spawnToast("right");
   }, decreaseCounter = () => {
-    setCounter(counter() - 1);
-    spawnToast("left");
+    setCounter(counter() - 1), spawnToast("left");
   };
-  el.useEffect(() => {
-    el.querySelector("#plusButton").addEventListener("click", increaseCounter);
-    el.querySelector("#minusButton").addEventListener("click", decreaseCounter);
-  }, []);
-  return () => html`
+  return el.useEffect(() => {
+    el.querySelector("#plusButton").addEventListener("click", increaseCounter), el.querySelector("#minusButton").addEventListener("click", decreaseCounter);
+  }, []), () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id='counter'>${counter()}</p>
     <div class='flex flex-row justify-center items-center space-x-2'>
@@ -502,17 +490,14 @@
   
     function header({ el }) {
   const [hidden, setHidden] = el.useState(!0);
-  el.useEffect(() => {
+  return el.useEffect(() => {
     el.querySelector("[data-collapse-toggle]").addEventListener("click", () => {
       setHidden(!hidden());
     });
-  }, []);
-  el.useEffect(() => {
+  }, []), el.useEffect(() => {
     const target = el.querySelector("#navbar-default");
-    target.setAttribute("aria-expanded", !hidden());
-    target.classList = hidden() ? "hidden w-full md:block md:w-auto" : "w-full md:block md:w-auto";
-  }, [hidden]);
-  return html`
+    target.setAttribute("aria-expanded", !hidden()), target.classList = hidden() ? "hidden w-full md:block md:w-auto" : "w-full md:block md:w-auto";
+  }, [hidden]), html`
     <nav class='border-gray-200 z-40'>
       <div class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
         <a href='https://emmyjs.pages.dev' class='flex items-center'>
@@ -564,8 +549,7 @@
     experimental: "text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-purple-900 text-purple-300",
     planned: "text-xs font-medium me-2 px-2.5 py-0.5 rounded-full bg-blue-900 text-blue-300"
   }[type().trim()];
-  el.className = `${color} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`;
-  return type().charAt(0).toUpperCase() + type().slice(1);
+  return el.className = `${color} inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium`, type().charAt(0).toUpperCase() + type().slice(1);
 }
     load(pill, 'Pill')
     document.querySelectorAll('emmy-pill').forEach((element) => {
@@ -589,7 +573,7 @@
   
     function search({ el }) {
   const [modal, setModal] = el.useState(!1), [results, setResults] = el.useState([]);
-  el.useEffect(() => {
+  return el.useEffect(() => {
     let miniSearch = new MiniSearch({
       fields: ["id", "title", "content", "url"],
       storeFields: ["title", "content", "url"]
@@ -602,20 +586,16 @@
         content: value
       };
     });
-    miniSearch.addAll(documents);
-    el.querySelector("form").addEventListener("submit", (e) => {
+    miniSearch.addAll(documents), el.querySelector("form").addEventListener("submit", (e) => {
       e.preventDefault();
       const search = e.target.querySelector("input").value;
       if (!search)
         return;
-      setResults(miniSearch.search(search));
-      if (results().length === 0)
+      if (setResults(miniSearch.search(search)), results().length === 0)
         setResults(documents);
       setModal(!0);
-    });
-    el.querySelector("#close-modal").addEventListener("click", () => setModal(!1));
-  }, []);
-  return () => html`
+    }), el.querySelector("#close-modal").addEventListener("click", () => setModal(!1));
+  }, []), () => html`
     <form class='hidden lg:block'>
       <label for='search' class='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'>Search</label>
       <fieldset class='flex flex-row rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-100 focus:border-blue-500 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500'>
@@ -671,8 +651,7 @@
     })
   
     function underConstruction({ el }) {
-  el.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full";
-  return html`<div class='text-white text-3xl font-bold mb-4'>Under construction \u{1f6a7}</div>`;
+  return el.className = "absolute inset-0 bg-gray-900 bg-opacity-90 flex flex-col justify-center items-center w-full h-full", html`<div class='text-white text-3xl font-bold mb-4'>Under construction \u{1f6a7}</div>`;
 }
     load(underConstruction, 'UnderConstruction')
     document.querySelectorAll('emmy-underconstruction').forEach((element) => {

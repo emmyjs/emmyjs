@@ -17,6 +17,7 @@ export function status({ el }) {
       <Row status='unstable'>Emmy Router: SPA Navigation</Row>
       <Row status='unstable'>Prerendering</Row>
       <Row status='planned'>Server-side rendering</Row>
+      <Row status='experimental'>CLI create-emmy</Row>
     </ul>
     <h2 class='text-2xl font-bold mt-8'>Statuses legend</h2>
     <ul role='list' class='max-w-lg md:max-w-4xl divide-y divide-gray-200 dark:divide-gray-700'>
