@@ -11,6 +11,10 @@
         @apply underline text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-400;
     }
 
+    .markdown code {
+        @apply font-mono font-medium text-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 p-1 rounded;
+    }
+
     .markdown h1 {
         @apply text-3xl md:text-5xl font-extrabold mb-2 text-purple-600 dark:text-purple-300;
     }
