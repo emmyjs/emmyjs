@@ -5,3 +5,89 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+@layer components {
+    .markdown a {
+        @apply underline text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-400;
+    }
+
+    .markdown h1 {
+        @apply text-3xl md:text-5xl font-extrabold mb-2 text-purple-600 dark:text-purple-300;
+    }
+
+    .markdown h2 {
+        @apply text-3xl font-extrabold mb-2 text-emerald-600 dark:text-emerald-300;
+    }
+
+    .markdown h3 {
+        @apply text-2xl font-bold mb-2 text-blue-600 dark:text-blue-300;
+    }
+
+    .markdown h4 {
+        @apply text-xl font-bold mb-2 text-indigo-600 dark:text-indigo-300;
+    }
+
+    .markdown h5 {
+        @apply text-lg font-bold mb-2 text-pink-600 dark:text-pink-300;
+    }
+
+    .markdown ol {
+        @apply list-decimal list-inside text-lg font-normal mb-2 text-gray-600 dark:text-gray-300;
+    }
+
+    .markdown p {
+        @apply text-lg font-normal mb-2 text-gray-600 dark:text-gray-300;
+    }
+
+    .markdown ul {
+        @apply list-disc list-inside text-lg font-normal mb-2 text-gray-600 dark:text-gray-300;
+    }
+
+    .hljs, .hljs * {
+        @apply font-mono font-medium text-lg;
+    }
+
+    .hljs .class_ {
+        @apply font-medium not-italic text-amber-600 dark:text-amber-300;
+    }
+
+    .hljs .function_ {
+        @apply font-medium not-italic text-emerald-600 dark:text-emerald-300;
+    }
+
+    .hljs .language_ {
+        @apply text-gray-600 dark:text-gray-300;
+    }
+
+    .hljs-attr {
+        @apply not-italic text-indigo-600 dark:text-indigo-300;
+    }
+
+    .hljs-keyword {
+        @apply font-medium not-italic text-blue-600 dark:text-blue-300;
+    }
+
+    .hljs-name {
+        @apply font-medium not-italic text-amber-600 dark:text-amber-300;
+    }
+
+    .hljs-params {
+        @apply text-red-600 dark:text-red-300;
+    }
+
+    .hljs-property {
+        @apply text-indigo-600 dark:text-indigo-300;
+    }
+
+    .hljs-string {
+        @apply text-green-600 dark:text-green-300;
+    }
+
+    .hljs-subst {
+        @apply text-indigo-600 dark:text-indigo-300;
+    }
+
+    .hljs-tag, .hljs-tag * {
+        @apply text-gray-300 dark:text-gray-600;
+    }
+}

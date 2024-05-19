@@ -49,6 +49,7 @@ export function status({ el }) {
         </div>
         <span class='ml-2'>Not implemented yet</span>
       </li>
+    </ul>
   `
 }
 
