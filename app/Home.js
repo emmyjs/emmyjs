@@ -3,7 +3,7 @@ import './components/Counter'
 
 export function home ({ el }) {
   el.className = 'flex flex-col justify-between items-center text-center w-full h-[80dvh] gap-4'
-  const numberOfDownloads = 3200
+  const numberOfDownloads = 3300
   return html`
     <main class='flex flex-col justify-center items-center gap-6'>
       <h1 class='text-3xl md:text-5xl font-extrabold text-purple-600 dark:text-purple-300 leading-relaxed'>Hello from Emmy.js!</h1>
