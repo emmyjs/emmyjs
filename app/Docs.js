@@ -18,7 +18,7 @@ export function docs ({ el }) {
         <p class='text-lg font-normal text-gray-700 dark:text-gray-400 mb-6'>
           Emmy.js is a JavaScript library for building user interfaces. It is a lightweight library that is easy to learn and use.
         </p>
-        <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:ring-blue-900'>
+        <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-900'>
           See the tutorial
           <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
             <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
@@ -39,7 +39,7 @@ export function docs ({ el }) {
           <p class='text-lg font-normal text-gray-700 dark:text-gray-400 mb-4'>
             Learn the basics of Emmy.js, including how to create a simple application, using components, and how to work with data.
           </p>
-          <a href='/documentation' class='text-blue-600 text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>Read more
+          <a href='/documentation' class='text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>Read more
             <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
             <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
           </svg>
@@ -58,7 +58,7 @@ export function docs ({ el }) {
           <p class='text-lg font-normal text-gray-700 dark:text-gray-400 mb-4'>
             Explore Emmy.js in action with these examples of Emmy.js applications.
           </p>
-          <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='text-blue-600 text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>Read more
+          <a href='https://www.youtube.com/watch?v=rOxAJ9c068c' class='text-blue-500 hover:underline font-medium text-lg inline-flex items-center'>Read more
             <svg class='w-3.5 h-3.5 ml-2' aria-hidden='true' fill='none' viewBox='0 0 14 10'>
               <path stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 5h12m0 0L9 1m4 4L9 9'/>
             </svg>

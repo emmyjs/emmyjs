@@ -12,6 +12,7 @@ import { home } from './app/Home'
 import { status } from './app/Status'
 import { saveMarkdown } from './emmydocs'
 import * as markdown from './app/Markdown'
+import { footer } from 'app/components/Footer'
 
 await saveMarkdown(Emmy, Object.keys(markdown))
 
@@ -26,7 +27,7 @@ build({
   `,
   generators: {
     about, app, docs, home, ...markdown, status,
-    counter, header, pill, row, search, underConstruction
+    counter, header, pill, row, search, underConstruction, footer
   },
   template: './template.html'
 })
