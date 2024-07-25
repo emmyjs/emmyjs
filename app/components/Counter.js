@@ -1,10 +1,6 @@
-import { load, html } from 'emmy-dom/dist/server'
+import { load, html, useRef } from 'emmy-dom/dist/server'
 import Toastify from 'toastify-js'
 import 'toastify-js/src/toastify.css'
-
-function useRef(value) {
-  return { current: value }
-}
 
 export function counter ({ el }) {
   el.className = 'flex flex-col justify-center items-center space-y-3'
@@ -37,8 +33,7 @@ export function counter ({ el }) {
   el.useEffect(() => {
     el.querySelector('#plusButton').addEventListener('click', increaseCounter)
     el.querySelector('#minusButton').addEventListener('click', decreaseCounter)
-    console.log('rerendered')
-  }, ['didMount'])
+  }, [])
 
   return () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>

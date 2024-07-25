@@ -435,8 +435,8 @@
     count.current--, spawnToast("left");
   };
   return el.useEffect(() => {
-    el.querySelector("#plusButton").addEventListener("click", increaseCounter), el.querySelector("#minusButton").addEventListener("click", decreaseCounter), console.log("rerendered");
-  }, ["didMount"]), () => html`
+    el.querySelector("#plusButton").addEventListener("click", increaseCounter), el.querySelector("#minusButton").addEventListener("click", decreaseCounter);
+  }, []), () => html`
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id='counter'>${count.current}</p>
     <div class='flex flex-row justify-center items-center space-x-2'>
