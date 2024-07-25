@@ -17,6 +17,9 @@ load(helloWorld, 'HelloWorld')
 ```
 
 ## Page Components
+
+<div class='bg-yellow-900 text-yellow-300 inline-flex items-center me-2 px-2.5 py-0.5 rounded-full text-xs font-medium'>Unestable</div>
+
 You can use page components to create components that are rendered only once, from a html file. The following example shows how to create a page component:
 ```html
 <!-- home.html -->
@@ -26,7 +29,7 @@ You can use page components to create components that are rendered only once, fr
 ```javascript
 import { load } from 'emmy-dom'
 
-load('/home.html', 'Home')
+await load('/home.html', 'Home')
 ```
 
 ## Class Components

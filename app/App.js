@@ -4,8 +4,6 @@ import * as markdown from './Markdown'
 
 saveDocumentationRoutes(Emmy, Object.keys(markdown))
 
-load('/Code404.html', 'Code404')
-
 export function app ({ el }) {
   el.className = 'flex flex-col justify-space-between gap-2 text-center w-full h-full box-border'
 
@@ -23,4 +21,4 @@ export function app ({ el }) {
   `
 }
 
-export const App = load(app, 'App')
+export const App = await load(app, 'App')

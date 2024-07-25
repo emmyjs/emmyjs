@@ -12,14 +12,14 @@
     <meta name="robots"      content="index,follow">
     <meta name="theme-color" content="#0F172A">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <script type="module" crossorigin src="/assets/main-dKCqUIxd.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-BWkZlYxc.css">
+    <script type="module" crossorigin src="/assets/main-cksjG7if.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-C6Y3LC5s.css">
   </head>
   <body class="antialiased h-screen w-full flex flex-col justify-center items-center dark:bg-slate-900 dark:text-white bg-white text-slate-900">
     <div class="flex flex-col justify-center items-center space-y-3 text-center w-full h-full">
       
     <emmy-app state="{'rerenderCount':0}" class="flex flex-col justify-space-between gap-2 text-center w-full h-full box-border">
-    <emmy-header state="{'rerenderCount':0}" emmy-hydratation="true">
+    <emmy-header state="{'rerenderCount':0}">
     <nav class="border-gray-200 z-40">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="https://emmyjs.pages.dev" class="flex items-center">
@@ -27,7 +27,7 @@
           <img class="dark:hidden h-8 w-8 mr-3" src="/android-chrome-512x512.png" alt="Emmy.js logo"></img>
           <span class="self-center text-2xl font-semibold whitespace-nowrap">Emmy.js</span>
         </a>
-        <emmy-search state="{'rerenderCount':0}" emmy-hydratation="true">
+        <emmy-search state="{'rerenderCount':0}">
     <form class="hidden lg:block">
       <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
       <fieldset class="flex flex-row rounded-lg border border-gray-300 bg-gray-50 hover:bg-gray-100 focus:border-blue-500 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -40,7 +40,7 @@
       </fieldset>
     </form>
     <undefined></undefined>
-    <div id="select-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed absolute top-50 left-50 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="select-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden absolute top-50 left-50 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <section class="p-4 w-full max-w-md max-h-full">
         <article class="relative bg-white rounded-lg shadow dark:bg-gray-700">
           <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -121,7 +121,7 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"></path>
         </svg>
       </a>
-      <emmy-counter state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3" emmy-hydratation="true">
+      <emmy-counter state="{'rerenderCount':0}" class="flex flex-col justify-center items-center space-y-3">
     <h2 class="text-2xl font-bold">Counter</h2>
     <p id="counter">0</p>
     <div class="flex flex-row justify-center items-center space-x-2">
@@ -135,7 +135,14 @@
   </emmy-counter>
     </main>
   </emmy-home></emmy-router>
-    <emmy-footer></emmy-footer>
+    <emmy-footer state="{'rerenderCount':0}" class="dark:text-white text-slate-900 text-center p-6 w-full flex justify-center gap-0 sm:justify-between">
+    <a href="https://github.com/emmyjs/emmyjs" target="_blank" rel="noopener noreferrer" class="inline-block">
+      <svg class="w-4 h-4 mr-2 inline-block" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"></path>
+      </svg>
+    </a>
+    <p>Made with <span class="text-red-500">♥</span> by <a href="https://www.linkedin.com/in/eanorambuena/" target="_blank" rel="noopener noreferrer">@eanorambuena</a></p>
+  </emmy-footer>
   </emmy-app>
   
     </div>

@@ -48,7 +48,7 @@ export function search ({ el }) {
       </fieldset>
     </form>
     <!-- Main modal -->
-    <div id='select-modal' tabindex='-1' aria-hidden='${!modal()}' class='${modal() ? '' : 'hidden' } overflow-y-auto overflow-x-hidden fixed absolute top-50 left-50 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full'>
+    <div id='select-modal' tabindex='-1' aria-hidden='${!modal()}' class='${modal() ? '' : 'hidden' } overflow-y-auto overflow-x-hidden absolute top-50 left-50 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full'>
       <section class='p-4 w-full max-w-md max-h-full'>
         <article class='relative bg-white rounded-lg shadow dark:bg-gray-700'>
           <div class='flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600'>

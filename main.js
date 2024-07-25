@@ -24,6 +24,9 @@ build({
     import Toastify from 'toastify-js'
     import 'toastify-js/src/toastify.css'
     import MiniSearch from 'minisearch'
+    function useRef(value) {
+      return { current: value }
+    }
   `,
   generators: {
     about, app, docs, home, ...markdown, status,

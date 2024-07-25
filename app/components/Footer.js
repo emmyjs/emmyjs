@@ -1,4 +1,4 @@
-import { html } from 'emmy-dom/dist/server'
+import { html, load } from 'emmy-dom/dist/server'
 
 export function footer ({ el }) {
   el.className = 'dark:text-white text-slate-900 text-center p-6 w-full flex justify-center gap-0 sm:justify-between'
@@ -11,3 +11,5 @@ export function footer ({ el }) {
     <p>Made with <span class='text-red-500'>&#9829;</span> by <a href='https://www.linkedin.com/in/eanorambuena/' target='_blank' rel='noopener noreferrer'>@eanorambuena</a></p>
   `
 }
+
+load(footer, 'Footer')
