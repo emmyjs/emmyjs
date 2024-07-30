@@ -1,4 +1,4 @@
-import { load, html, useRef } from 'emmy-dom/dist/server'
+import { load, html, useRef } from 'emmy-dom/server'
 import Toastify from 'toastify-js'
 import 'toastify-js/src/toastify.css'
 

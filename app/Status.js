@@ -1,4 +1,4 @@
-import { load, html } from 'emmy-dom/dist/server'
+import { load, html } from 'emmy-dom/server'
 import './components/Row'
 
 export function status({ el }) {

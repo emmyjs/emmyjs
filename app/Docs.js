@@ -1,4 +1,4 @@
-import { load, html } from 'emmy-dom/dist/server'
+import { load, html } from 'emmy-dom/server'
 
 export function docs ({ el }) {
   el.className = 'flex flex-col justify-center items-center text-center w-full h-fit box-border'

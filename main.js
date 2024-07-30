@@ -1,4 +1,4 @@
-import { build, javascript, Emmy } from 'emmy-dom/dist/server'
+import { build, javascript, Emmy } from 'emmy-dom/server'
 import { about } from './app/About'
 import { app, App } from './app/App'
 import { counter } from './app/components/Counter'

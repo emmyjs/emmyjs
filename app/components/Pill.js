@@ -1,4 +1,4 @@
-import { load } from 'emmy-dom/dist/server'
+import { load } from 'emmy-dom/server'
 
 export function pill ({ el, props }) {
   const { type } = props()

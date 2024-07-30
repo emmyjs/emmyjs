@@ -1,4 +1,4 @@
-import { load, html, Emmy } from 'emmy-dom/dist/server'
+import { load, html, Emmy } from 'emmy-dom/server'
 import { saveDocumentationRoutes } from '../emmydocs'
 import * as markdown from './Markdown'
 
