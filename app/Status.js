@@ -50,6 +50,9 @@ export function status({ el }) {
         <span class='ml-2'>Not implemented yet</span>
       </li>
     </ul>
+    <a href='https://emmyjs.github.io/emmy-dom/' class='text-blue-500 dark:text-blue-400 underline'>
+      See the code coverage report for more details
+    </a>
   `
 }
 

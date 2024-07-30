@@ -990,6 +990,9 @@ Might be useful to you. Give it a try! 🚀
         <span class='ml-2'>Not implemented yet</span>
       </li>
     </ul>
+    <a href='https://emmyjs.github.io/emmy-dom/' class='text-blue-500 dark:text-blue-400 underline'>
+      See the code coverage report for more details
+    </a>
   `}N(cn,"Status");document.querySelectorAll("emmy-status").forEach(n=>{n.connectedCallback()});function dn({el:n}){n.className="flex flex-col justify-center items-center space-y-3";const e=en(0),t=i=>{Ht({text:`Counter value changed to ${e.current}`,style:{background:"#1F2937",color:"#fff",borderRadius:"10px"},gravity:"bottom",position:i,duration:600}).showToast()},r=()=>{e.current++,t("right")},a=()=>{e.current--,t("left")};return n.useEffect(()=>{n.querySelector("#plusButton").addEventListener("click",r),n.querySelector("#minusButton").addEventListener("click",a)},[]),()=>_`
     <h2 class='text-2xl font-bold'>Counter</h2>
     <p id='counter'>${e.current}</p>
