@@ -6,7 +6,7 @@
 
 [You can see a tutorial on how to use create-emmy here](https://www.youtube.com/watch?v=rOxAJ9c068c)
 <p>
-  <strong>Note:</strong> This tutorial is under construction. Please check back later.
+  <strong>Note:</strong> This tutorial is under construction. Please come back later.
 </p>
 
 ## Quick Start

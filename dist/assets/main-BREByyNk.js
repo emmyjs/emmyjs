@@ -15,7 +15,7 @@
 <p><code>create-emmy</code> is a command-line interface (CLI) for creating Emmy.js applications. It is a tool that helps you to create a new Emmy.js app with a single command.</p>
 <p><a href="https://www.youtube.com/watch?v=rOxAJ9c068c">You can see a tutorial on how to use create-emmy here</a></p>
 <p>
-  <strong>Note:</strong> This tutorial is under construction. Please check back later.
+  <strong>Note:</strong> This tutorial is under construction. Please come back later.
 </p>
 
 <h2>Quick Start</h2>
@@ -244,8 +244,8 @@ load(helloWorld, 'HelloWorld')
 </code></pre>
 <p>This do not modify the other props passed to the component. It only adds or modifies the props you set.</p>
 <h2>Emmy Router</h2>
-<p><span class='bg-yellow-900 text-yellow-300 inline-flex items-center me-2 px-2.5 py-0.5 rounded-full text-xs font-medium w-fit'>Unestable</span>
-Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
+<p><span class='bg-yellow-900 text-yellow-300 inline-flex items-center me-2 px-2.5 py-0.5 rounded-full text-xs font-medium w-fit'>Unestable</span></p>
+<p>Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
 <pre><code class="language-javascript">import { load, Router, Route, html } from 'emmy-dom'
 
 load('/home.html', 'Home')
@@ -412,7 +412,7 @@ Might be useful to you. Give it a try! 🚀
 <p><code>create-emmy</code> is a command-line interface (CLI) for creating Emmy.js applications. It is a tool that helps you to create a new Emmy.js app with a single command.</p>
 <p><a href="https://www.youtube.com/watch?v=rOxAJ9c068c">You can see a tutorial on how to use create-emmy here</a></p>
 <p>
-  <strong>Note:</strong> This tutorial is under construction. Please check back later.
+  <strong>Note:</strong> This tutorial is under construction. Please come back later.
 </p>
 
 <h2>Quick Start</h2>
@@ -641,8 +641,8 @@ load(helloWorld, 'HelloWorld')
 </code></pre>
 <p>This do not modify the other props passed to the component. It only adds or modifies the props you set.</p>
 <h2>Emmy Router</h2>
-<p><span class='bg-yellow-900 text-yellow-300 inline-flex items-center me-2 px-2.5 py-0.5 rounded-full text-xs font-medium w-fit'>Unestable</span>
-Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
+<p><span class='bg-yellow-900 text-yellow-300 inline-flex items-center me-2 px-2.5 py-0.5 rounded-full text-xs font-medium w-fit'>Unestable</span></p>
+<p>Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:</p>
 <pre><code class="language-javascript">import { load, Router, Route, html } from 'emmy-dom'
 
 load('/home.html', 'Home')

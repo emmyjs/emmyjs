@@ -251,6 +251,7 @@ This do not modify the other props passed to the component. It only adds or modi
 
 ## Emmy Router
 <span class='bg-yellow-900 text-yellow-300 inline-flex items-center me-2 px-2.5 py-0.5 rounded-full text-xs font-medium w-fit'>Unestable</span>
+
 Emmy Router is inspired by React Router. You can use it to create a single page application. The following example shows how to create a single page application with Emmy Router:
 ```javascript
 import { load, Router, Route, html } from 'emmy-dom'
