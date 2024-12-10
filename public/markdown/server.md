@@ -22,13 +22,19 @@ mv index.html template.html
 ...
 ```
 
-3. Create a new file called `main.js` in the root of your project:
+3. Replace the import of `Emmy` in your components file with the following code:
+
+```js
+import { ... } from 'emmy-dom/server'
+```
+
+4. Create a new file called `main.js` in the root of your project:
 
 ```bash
 touch main.js
 ```
 
-4. Add the following code to `main.js`:
+5. Add the following code to `main.js`:
 
 ```js
 import { build, javascript, Emmy } from 'emmy-dom/server'
@@ -47,7 +53,33 @@ build({
 })
 ```
 
+6. Modify your `package.json` file to include the `main.js` int the scripts:
 
+```json
+{
+  ...
+  "scripts": {
+    "dev": "concurrently --raw 'npm run watch' 'vite'",
+    "build": "npm run ssr && vite build",
+    "preview": "vite preview",
+    "watch": "watch 'npm run ssr' ./app",
+    "ssr": "bun main.js"
+  }
+  ...
+}
+```
+
+7. Install the `bun` package globally. If you haven't already installed it, run the following command:
+
+```bash
+npm install -g bun
+```
+
+8. Install the `concurrently` package as a dev dependency:
+
+```bash
+npm install concurrently -D
+```
 
 <hr>
 Might be useful to you. Give it a try! 🚀
