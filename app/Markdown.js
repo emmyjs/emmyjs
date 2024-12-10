@@ -36,3 +36,10 @@ export function typescript ({ el }) {
 }
 
 load(typescript, 'Typescript')
+
+export function server ({ el }) {
+  el.className = 'flex flex-col justify-center items-center text-center max-w-[90%] lg:max-w-full h-fit box-border'
+  return Emmy.markdown.server
+}
+
+load(server, 'Server')
