@@ -110,4 +110,4 @@ module.exports = {
 Might be useful to you. Give it a try! 🚀
 
 - [Quick Start with Emmy.js](/documentation)
-- [Using Emmy.js with create-emmy](/documentation/cli)
+- [Adding Emmy.js to your Vite project <img class="inline h-[1.5rem]" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />](/documentation/vite)
